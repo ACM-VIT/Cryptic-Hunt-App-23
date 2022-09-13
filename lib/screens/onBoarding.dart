@@ -107,12 +107,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                       duration: const Duration(milliseconds: 250),
                       curve: Curves.linear,
                     );
-                  } else {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const QrScanner()),
-                    );
                   }
                 },
                 style: ElevatedButton.styleFrom(
