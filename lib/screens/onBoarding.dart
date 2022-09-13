@@ -52,7 +52,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                       curve: Curves.linear,
                     );
                   },
-                  child: const Text("SKIP"),
+                  child: const Text(
+                    "SKIP",
+                    style: TextStyle(color: Colors.blueGrey),
+                  ),
                 ),
               ],
             ),
