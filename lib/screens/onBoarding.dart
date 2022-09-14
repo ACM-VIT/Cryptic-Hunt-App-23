@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -53,7 +55,11 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   },
                   child: const Text(
                     "SKIP",
-                    style: TextStyle(color: Colors.blueGrey),
+                    style: TextStyle(
+                        color: Color(0xFF777777),
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16),
                   ),
                 ),
               ],
@@ -74,7 +80,14 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               flex: 1,
               child: Column(
                 children: [
-                  const Text("Experience the one of a kind hunt with us!"),
+                  const Text(
+                    "Experience the one of a kind hunt with us!",
+                    style: TextStyle(
+                        color: Color(0xFF777777),
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14),
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
@@ -113,7 +126,11 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                     primary: const Color(0xFFFF7A01)),
                 child: const Text(
                   "NEXT",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'Poppins-SemiBold',
+                      fontSize: 14),
                 ),
               ),
             )
