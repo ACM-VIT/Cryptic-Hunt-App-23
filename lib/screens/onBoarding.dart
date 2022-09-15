@@ -1,8 +1,10 @@
+import 'package:cryptic_hunt/screens/sample.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoarding extends StatelessWidget {
+  static String id = "OnBoarding";
   const OnBoarding({Key? key}) : super(key: key);
 
   @override
@@ -11,19 +13,13 @@ class OnBoarding extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const OnBoardingPage(),
+      home: OnBoardingPage(),
     );
   }
 }
 
-class OnBoardingPage extends StatefulWidget {
-  const OnBoardingPage({Key? key}) : super(key: key);
-
-  @override
-  State<OnBoardingPage> createState() => _OnBoardingPageState();
-}
-
-class _OnBoardingPageState extends State<OnBoardingPage> {
+class OnBoardingPage extends StatelessWidget {
+  OnBoardingPage({Key? key}) : super(key: key);
   final Widget svg1 = SvgPicture.asset('assets/onBoarding/a.svg');
   final Widget svg2 = SvgPicture.asset('assets/onBoarding/b.svg');
   final Widget svg3 = SvgPicture.asset('assets/onBoarding/c.svg');
@@ -62,20 +58,24 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 ),
               ],
             ),
-            Expanded(
-              flex: 5,
-              child: PageView(
-                controller: controller,
-                scrollDirection: Axis.horizontal,
-                children: [
-                  svg1,
-                  svg2,
-                  svg3,
-                ],
+            //TODO1: put text and SmoothPageIndicator in column inside expanded
+            Flexible(
+              child: Container(
+                constraints: const BoxConstraints(
+                    minHeight: 200, minWidth: double.infinity),
+                child: PageView(
+                  controller: controller,
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    svg1,
+                    svg2,
+                    svg3,
+                  ],
+                ),
               ),
             ),
-            Expanded(
-              flex: 1,
+            Container(
+              alignment: Alignment.topCenter,
               child: Column(
                 children: [
                   const Text(
@@ -106,7 +106,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.all(20),
+              margin: const EdgeInsets.all(30),
+              alignment: Alignment.topCenter,
               child: ElevatedButton(
                 onPressed: () {
                   double? currentpage = controller.page;
@@ -117,6 +118,11 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                       duration: const Duration(milliseconds: 250),
                       curve: Curves.linear,
                     );
+                  } else {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Sample()));
                   }
                 },
                 style: ElevatedButton.styleFrom(

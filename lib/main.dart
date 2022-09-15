@@ -1,44 +1,35 @@
+import 'package:cryptic_hunt/screens/login.dart';
 import 'package:cryptic_hunt/screens/onBoarding.dart';
+import 'package:cryptic_hunt/screens/sample.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const myApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+// ignore: camel_case_types
+class myApp extends StatelessWidget {
+  const myApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    isLoggedIn();
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
+      title: "Routes",
+      initialRoute: Login.id,
+      routes: {
+        Login.id: (context) => const Login(),
+        OnBoarding.id: (context) => const OnBoarding(),
+        Sample.id: (context) => const Sample(),
+      },
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Cryptic Hunt")),
-      body: Container(
-        alignment: Alignment.center,
-        child: TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const OnBoarding()),
-              );
-            },
-            child: const Text("Scan")),
-      ),
-    );
-  }
+void isLoggedIn() async {
+  final SharedPreferences sharedPreferences =
+      await SharedPreferences.getInstance();
+  final loggedIn = sharedPreferences.getBool("Logged_In") ?? false;
+  Fluttertoast.showToast(msg: "$loggedIn");
 }
