@@ -36,7 +36,7 @@ class LoginPage extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const OnBoarding()),
               );
             },
-            child: const Text("Scan")),
+            child: const Text("Login")),
       ),
     );
   }
