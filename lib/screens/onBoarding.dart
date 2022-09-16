@@ -10,9 +10,6 @@ class OnBoarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: OnBoardingPage(),
     );
   }
@@ -30,7 +27,8 @@ class OnBoardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 0,
+        title: const Text("Crytic Hunt"),
+        backgroundColor: const Color(0xffff7a01),
       ),
       body: Center(
         child: Column(

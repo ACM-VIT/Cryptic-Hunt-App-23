@@ -1,4 +1,5 @@
 import 'package:cryptic_hunt/Providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
+import 'package:cryptic_hunt/screens/hamburger.dart';
 import 'package:cryptic_hunt/screens/login.dart';
 import 'package:cryptic_hunt/screens/onBoarding.dart';
 import 'package:cryptic_hunt/screens/Loading.dart';
@@ -20,12 +21,13 @@ class myApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Routes",
-      initialRoute: SplashScreen.id,
+      initialRoute: Hamburger.id,
       routes: {
         SplashScreen.id: (context) => const SplashScreen(),
         Login.id: (context) => const Login(),
         OnBoarding.id: (context) => const OnBoarding(),
         Loading.id: (context) => const Loading(),
+        Hamburger.id: (context) => const Hamburger(),
       },
     );
   }

@@ -21,7 +21,8 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 0,
+        title: const Text("Crytic Hunt"),
+        backgroundColor: const Color(0xffff7a01),
       ),
       body: Container(
         alignment: Alignment.center,
