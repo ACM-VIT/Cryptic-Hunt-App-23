@@ -1,44 +1,34 @@
-import 'package:cryptic_hunt/services/qr_scanner.dart';
+import 'package:cryptic_hunt/Providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
+import 'package:cryptic_hunt/screens/hamburger.dart';
+import 'package:cryptic_hunt/screens/login.dart';
+import 'package:cryptic_hunt/screens/onBoarding.dart';
+import 'package:cryptic_hunt/screens/Loading.dart';
+import 'package:cryptic_hunt/screens/splashScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => Percentage(),
+    child: const myApp(),
+  ));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+// ignore: camel_case_types
+class myApp extends StatelessWidget {
+  const myApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Cryptic Hunt")),
-      body: Container(
-        alignment: Alignment.center,
-        child: TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const QrScanner()),
-              );
-            },
-            child: const Text("Scan")),
-      ),
+      title: "Routes",
+      initialRoute: Hamburger.id,
+      routes: {
+        SplashScreen.id: (context) => const SplashScreen(),
+        Login.id: (context) => const Login(),
+        OnBoarding.id: (context) => const OnBoarding(),
+        Loading.id: (context) => const Loading(),
+        Hamburger.id: (context) => const Hamburger(),
+      },
     );
   }
 }
