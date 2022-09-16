@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'onBoarding.dart';
@@ -44,6 +43,5 @@ class LoginPage extends StatelessWidget {
   void writeInSharedPreference() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.setBool("Logged_In", true);
-    Fluttertoast.showToast(msg: "Saved");
   }
 }

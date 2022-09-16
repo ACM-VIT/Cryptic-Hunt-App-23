@@ -41,7 +41,6 @@ dependencies:
   introduction_screen: ^3.0.2
   smooth_page_indicator: ^1.0.0+2
   shared_preferences: ^2.0.15
-  fluttertoast: ^8.0.9
 
 dev_dependencies:
   flutter_test:
