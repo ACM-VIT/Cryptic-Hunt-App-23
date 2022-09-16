@@ -9,12 +9,8 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Cryptic Hunt',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const LoginPage(),
+    return const MaterialApp(
+      home: LoginPage(),
     );
   }
 }
@@ -24,7 +20,9 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Cryptic Hunt")),
+      appBar: AppBar(
+        toolbarHeight: 0,
+      ),
       body: Container(
         alignment: Alignment.center,
         child: TextButton(

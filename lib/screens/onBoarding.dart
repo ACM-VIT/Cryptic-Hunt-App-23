@@ -1,4 +1,4 @@
-import 'package:cryptic_hunt/screens/sample.dart';
+import 'package:cryptic_hunt/screens/Loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -30,8 +30,7 @@ class OnBoardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFFFF7A01),
-        title: const Text("Cryptic Hunt"),
+        toolbarHeight: 0,
       ),
       body: Center(
         child: Column(
@@ -122,7 +121,7 @@ class OnBoardingPage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Sample()));
+                            builder: (context) => const Loading()));
                   }
                 },
                 style: ElevatedButton.styleFrom(

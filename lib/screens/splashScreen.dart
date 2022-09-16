@@ -1,4 +1,4 @@
-import 'package:cryptic_hunt/screens/sample.dart';
+import 'package:cryptic_hunt/screens/Loading.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,7 +26,7 @@ class SplashScreenState extends State<SplashScreen> {
     loggedIn = sharedPreferences.getBool("Logged_In") ?? false;
     if (loggedIn) {
       Navigator.of(context)
-          .pushNamedAndRemoveUntil(Sample.id, (route) => false);
+          .pushNamedAndRemoveUntil(Loading.id, (route) => false);
     } else {
       Navigator.of(context).pushNamedAndRemoveUntil(Login.id, (route) => false);
     }
@@ -34,8 +34,11 @@ class SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text("Splash")),
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 0,
+      ),
+      body: const Center(child: Text("Splash")),
     );
   }
 }
