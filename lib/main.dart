@@ -1,3 +1,4 @@
+import 'package:cryptic_hunt/screens/speakerScreen.dart';
 import 'package:cryptic_hunt/services/qr_scanner.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +35,7 @@ class MyHomePage extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const QrScanner()),
+                MaterialPageRoute(builder: (context) => const SpeakerScreen()),
               );
             },
             child: const Text("Scan")),
