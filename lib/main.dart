@@ -1,10 +1,9 @@
-
-import 'package:cryptic_hunt/screens/speakerScreen.dart';
 import 'package:cryptic_hunt/Providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
 import 'package:cryptic_hunt/screens/hamburger.dart';
 import 'package:cryptic_hunt/screens/login.dart';
 import 'package:cryptic_hunt/screens/onBoarding.dart';
 import 'package:cryptic_hunt/screens/Loading.dart';
+import 'package:cryptic_hunt/screens/signUp.dart';
 import 'package:cryptic_hunt/screens/splashScreen.dart';
 
 import 'package:flutter/material.dart';
@@ -24,9 +23,10 @@ class myApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Routes",
-      initialRoute: Hamburger.id,
+      initialRoute: SignUp.id,
       //initialRoute: NavigationManager.id,
       routes: {
+        SignUp.id: (context) => SignUp(),
         SplashScreen.id: (context) => const SplashScreen(),
         Login.id: (context) => const Login(),
         OnBoarding.id: (context) => const OnBoarding(),
