@@ -22,7 +22,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.1"
-
     charcode:
     dependency: transitive
     description:
@@ -30,7 +29,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.1"
-
   clock:
     dependency: transitive
     description:
@@ -52,8 +50,18 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
-
+<<<<<<< HEAD
+  dio:
+    dependency: "direct main"
+    description:
+      name: dio
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.6"
+  dots_indicator:
+=======
     dots_indicator:
+>>>>>>> bf622a6511b0d2c47c7e683b44c1b22e0ad0fbed
     dependency: transitive
     description:
       name: dots_indicator
@@ -67,8 +75,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.1"
-
-
     ffi:
     dependency: transitive
     description:
@@ -83,7 +89,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.4"
-
   flutter:
     dependency: "direct main"
     description: flutter
@@ -148,8 +153,18 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.2"
-
+<<<<<<< HEAD
+  http_parser:
+    dependency: transitive
+    description:
+      name: http_parser
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.1"
+  introduction_screen:
+=======
     introduction_screen:
+>>>>>>> bf622a6511b0d2c47c7e683b44c1b22e0ad0fbed
     dependency: "direct main"
     description:
       name: introduction_screen
@@ -219,7 +234,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
-
      path_provider_linux:
     dependency: transitive
     description:
@@ -255,7 +269,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.0.0"
-
     platform:
     dependency: transitive
     description:
@@ -263,7 +276,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.0"
-
   plugin_platform_interface:
     dependency: transitive
     description:
@@ -408,7 +420,18 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
+    version: "0.4.9"
+  typed_data:
+    dependency: transitive
+    description:
+      name: typed_data
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.3.1"
+=======
     version: "0.4.12"
+>>>>>>> bf622a6511b0d2c47c7e683b44c1b22e0ad0fbed
   vector_math:
     dependency: transitive
     description:
@@ -416,8 +439,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
-
-
      win32:
     dependency: transitive
     description:
@@ -441,5 +462,4 @@ packages:
     version: "6.1.0"
 sdks:
   dart: ">=2.17.5 <3.0.0"
-
   flutter: ">=3.0.0"

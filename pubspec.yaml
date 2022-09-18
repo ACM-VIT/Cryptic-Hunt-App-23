@@ -37,11 +37,12 @@ dependencies:
   google_sign_in: ^5.4.1
 
   introduction_screen: ^3.0.2
-  percent_indicator: ^4.2.2
-  provider: ^6.0.3
-  qr_code_scanner: ^1.0.0
-  shared_preferences: ^2.0.15
   smooth_page_indicator: ^1.0.0+2
+  dio: ^4.0.6
+  shared_preferences: ^2.0.15
+  provider: ^6.0.3
+  percent_indicator: ^4.2.2
+  qr_code_scanner: ^1.0.1
 
 dev_dependencies:
 
@@ -74,6 +75,13 @@ flutter:
     - assets/onBoarding/b.svg
     - assets/onBoarding/c.svg
     - assets/Loading/Owl.svg
+    - assets/HamBurger/timeline.svg
+    - assets/HamBurger/profilepic.svg
+    - assets/HamBurger/archive.svg
+    - assets/HamBurger/profile.svg
+    - assets/HamBurger/resources.svg
+    - assets/HamBurger/sponsors.svg
+    - assets/HamBurger/faq.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

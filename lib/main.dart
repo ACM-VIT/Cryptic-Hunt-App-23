@@ -25,6 +25,7 @@ class myApp extends StatelessWidget {
     return MaterialApp(
       title: "Routes",
       initialRoute: Hamburger.id,
+      //initialRoute: NavigationManager.id,
       routes: {
         SplashScreen.id: (context) => const SplashScreen(),
         Login.id: (context) => const Login(),
