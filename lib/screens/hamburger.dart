@@ -1,5 +1,7 @@
 import 'package:cryptic_hunt/screens/login.dart';
+import 'package:cryptic_hunt/screens/speakerScreen.dart';
 import 'package:cryptic_hunt/services/qr_scanner.dart';
+import 'package:cryptic_hunt/widgets/countdowntimer.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -61,6 +63,26 @@ class HamburgerPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const Login()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Countdown timer'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const CountDownTimer()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Speakers'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SpeakerScreen()),
                 );
               },
             ),
