@@ -1,9 +1,12 @@
+
+import 'package:cryptic_hunt/screens/speakerScreen.dart';
 import 'package:cryptic_hunt/Providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
 import 'package:cryptic_hunt/screens/hamburger.dart';
 import 'package:cryptic_hunt/screens/login.dart';
 import 'package:cryptic_hunt/screens/onBoarding.dart';
 import 'package:cryptic_hunt/screens/Loading.dart';
 import 'package:cryptic_hunt/screens/splashScreen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
