@@ -4,8 +4,10 @@ import 'package:cryptic_hunt/screens/hamburger.dart';
 import 'package:cryptic_hunt/screens/login.dart';
 import 'package:cryptic_hunt/screens/onBoarding.dart';
 import 'package:cryptic_hunt/screens/Loading.dart';
+import 'package:cryptic_hunt/screens/signUp.dart';
 import 'package:cryptic_hunt/screens/splashScreen.dart';
 import 'package:cryptic_hunt/widgets/countdowntimer.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -26,6 +28,7 @@ class myApp extends StatelessWidget {
       initialRoute: Hamburger.id,
       //initialRoute: NavigationManager.id,
       routes: {
+        SignUp.id: (context) => SignUp(),
         SplashScreen.id: (context) => const SplashScreen(),
         Login.id: (context) => const Login(),
         OnBoarding.id: (context) => const OnBoarding(),
