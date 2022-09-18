@@ -4,6 +4,7 @@ import 'package:cryptic_hunt/screens/login.dart';
 import 'package:cryptic_hunt/screens/onBoarding.dart';
 import 'package:cryptic_hunt/screens/Loading.dart';
 import 'package:cryptic_hunt/screens/splashScreen.dart';
+import 'package:cryptic_hunt/widgets/countdowntimer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,6 +29,7 @@ class myApp extends StatelessWidget {
         OnBoarding.id: (context) => const OnBoarding(),
         Loading.id: (context) => const Loading(),
         Hamburger.id: (context) => const Hamburger(),
+        CountDownTimer.id: (context) => const CountDownTimer(),
       },
     );
   }
