@@ -46,7 +46,7 @@ class _CountDownTimerState extends State<CountDownTimer> {
 
   int index = 0;
   final pages = [
-    const MyHomePage(),
+    // const MyHomePage(),
     const CountDownTimer(),
     const Leaderboard()
   ];
