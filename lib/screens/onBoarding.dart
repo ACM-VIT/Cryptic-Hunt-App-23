@@ -1,4 +1,4 @@
-import 'package:cryptic_hunt/screens/Loading.dart';
+import 'Loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';

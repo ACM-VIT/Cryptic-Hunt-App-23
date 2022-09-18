@@ -40,13 +40,13 @@ class _CountDownTimerState extends State<CountDownTimer> {
     int seconds = myDuration.inSeconds.remainder(60);
     // print("$hours:$minutes:$seconds");
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 244, 234, 1),
+      // backgroundColor: const Color.fromARGB(255, 244, 234, 1),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 4),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -60,7 +60,7 @@ class _CountDownTimerState extends State<CountDownTimer> {
                       textAlign: TextAlign.left,
                     ),
                     const Expanded(child: SizedBox()),
-                    SvgPicture.asset("assets/Owl-7.svg"),
+                    SvgPicture.asset('assets/Owl-7.svg')
                   ],
                 ),
               ),

@@ -1,5 +1,4 @@
-import 'package:cryptic_hunt/Providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
-import 'package:cryptic_hunt/screens/splashScreen.dart';
+import '/Providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/percent_indicator.dart';

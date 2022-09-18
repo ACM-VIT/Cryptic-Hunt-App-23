@@ -1,9 +1,10 @@
-import 'package:cryptic_hunt/Providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
-import 'package:cryptic_hunt/screens/hamburger.dart';
-import 'package:cryptic_hunt/screens/login.dart';
-import 'package:cryptic_hunt/screens/onBoarding.dart';
-import 'package:cryptic_hunt/screens/Loading.dart';
-import 'package:cryptic_hunt/screens/splashScreen.dart';
+import 'providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
+import 'screens/hamburger.dart';
+import 'screens/login.dart';
+import 'screens/navigation_manager.dart';
+import 'screens/onBoarding.dart';
+import 'screens/Loading.dart';
+import 'screens/splashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,9 +21,11 @@ class myApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      color: const Color(0xffC7C7C7),
       title: "Routes",
-      initialRoute: Hamburger.id,
+      initialRoute: NavigationManager.id,
       routes: {
+        NavigationManager.id: (context) => const NavigationManager(),
         SplashScreen.id: (context) => const SplashScreen(),
         Login.id: (context) => const Login(),
         OnBoarding.id: (context) => const OnBoarding(),

@@ -1,5 +1,5 @@
-import 'package:cryptic_hunt/screens/login.dart';
-import 'package:cryptic_hunt/services/qr_scanner.dart';
+import 'login.dart';
+import '../services/qr_scanner.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -33,7 +33,7 @@ class HamburgerPage extends StatelessWidget {
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: const Color(0xffff7a01),
+                color: Color(0xffff7a01),
               ),
               child: Text('Options'),
             ),
