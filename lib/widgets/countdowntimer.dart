@@ -1,3 +1,6 @@
+import 'package:cryptic_hunt/main.dart';
+import 'package:cryptic_hunt/screens/leaderboard.dart';
+
 import 'timedisplay.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -33,20 +36,28 @@ class _CountDownTimerState extends State<CountDownTimer> {
     });
   }
 
+  int index = 0;
+  final pages = [
+    // const MyHomePage(),
+    const CountDownTimer(),
+    const Leaderboard()
+  ];
+
   @override
   Widget build(BuildContext context) {
     int hours = myDuration.inHours;
     int minutes = myDuration.inMinutes.remainder(60);
     int seconds = myDuration.inSeconds.remainder(60);
-    // print("$hours:$minutes:$seconds");
+
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 244, 234, 1),
+      // backgroundColor: const Color.fromARGB(255, 244, 234, 1),
+
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 4),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
