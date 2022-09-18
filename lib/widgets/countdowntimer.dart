@@ -1,11 +1,12 @@
 import 'package:cryptic_hunt/screens/leaderboard.dart';
-
+import 'package:cryptic_hunt/screens/my_home_page.dart';
 import 'timedisplay.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'dart:async';
 
 class CountDownTimer extends StatefulWidget {
+  static String id = "CountDownTimer";
   const CountDownTimer({super.key});
 
   @override
@@ -17,22 +18,29 @@ class _CountDownTimerState extends State<CountDownTimer> {
   Duration myDuration = const Duration(seconds: 0);
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   void initState() {
     startTimer();
     super.initState();
   }
 
   void startTimer() {
-    myDuration = DateTime(2022, 9, 15, 8).difference(DateTime.now());
+    myDuration = DateTime(2022, 9, 20, 8).difference(DateTime.now());
     countDown =
         Timer.periodic(const Duration(seconds: 1), (_) => setCountDown());
   }
 
   void setCountDown() {
-    setState(() {
-      final secondsRemaining = myDuration.inSeconds - 1;
-      myDuration = Duration(seconds: secondsRemaining);
-    });
+    if (mounted) {
+      setState(() {
+        final secondsRemaining = myDuration.inSeconds - 1;
+        myDuration = Duration(seconds: secondsRemaining);
+      });
+    }
   }
 
   int index = 0;
@@ -107,7 +115,7 @@ class _CountDownTimerState extends State<CountDownTimer> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   TimeDisplay(hours),
-                  const Text(
+                  Text(
                     style: TextStyle(
                       fontSize: 60,
                       fontWeight: FontWeight.bold,
@@ -115,7 +123,7 @@ class _CountDownTimerState extends State<CountDownTimer> {
                     ":",
                   ),
                   TimeDisplay(minutes),
-                  const Text(
+                  Text(
                     style: TextStyle(
                       fontSize: 60,
                       fontWeight: FontWeight.bold,

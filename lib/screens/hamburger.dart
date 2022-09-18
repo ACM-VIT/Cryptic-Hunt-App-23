@@ -1,6 +1,8 @@
+import 'package:cryptic_hunt/widgets/countdowntimer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:cryptic_hunt/widgets/hamburger_item.dart';
 
 class Hamburger extends StatelessWidget {
   static String id = "Hamburger";
@@ -20,7 +22,7 @@ class HamburgerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Crytic Hunt"),
+        title: const Text("Cryptic Hunt"),
         backgroundColor: const Color(0xffff7a01),
       ),
       drawer: Drawer(
@@ -71,120 +73,33 @@ class HamburgerPage extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.all(12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SvgPicture.asset('assets/HamBurger/timeline.svg'),
-                  const Padding(padding: EdgeInsets.fromLTRB(13.59, 0, 0, 0)),
-                  const Text(
-                    "Timeline",
-                    style: TextStyle(
-                        color: Color(0xffFF8618),
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14),
-                  )
-                ],
-              ),
+            HamburgerItem(
+              svgPicture: SvgPicture.asset('assets/HamBurger/timeline.svg'),
+              text: 'Timeline',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const CountDownTimer()),
+                );
+              },
             ),
-            Container(
-              margin: const EdgeInsets.all(12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SvgPicture.asset('assets/HamBurger/archive.svg'),
-                  const Padding(padding: EdgeInsets.fromLTRB(13.59, 0, 0, 0)),
-                  const Text(
-                    "Archive",
-                    style: TextStyle(
-                        color: Color(0xffFF8618),
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14),
-                  )
-                ],
-              ),
+            HamburgerItem(
+              svgPicture: SvgPicture.asset('assets/HamBurger/archive.svg'),
+              text: 'Archive',
             ),
-            Container(
-              margin: const EdgeInsets.all(12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SvgPicture.asset('assets/HamBurger/resources.svg'),
-                  const Padding(padding: EdgeInsets.fromLTRB(13.59, 0, 0, 0)),
-                  const Text(
-                    "Resources",
-                    style: TextStyle(
-                        color: Color(0xffFF8618),
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.all(12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SvgPicture.asset('assets/HamBurger/faq.svg'),
-                  const Padding(padding: EdgeInsets.fromLTRB(13.59, 0, 0, 0)),
-                  const Text(
-                    "Frequently Asked Questions",
-                    style: TextStyle(
-                        color: Color(0xffFF8618),
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.all(12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SvgPicture.asset('assets/HamBurger/sponsors.svg'),
-                  const Padding(padding: EdgeInsets.fromLTRB(13.59, 0, 0, 0)),
-                  const Text(
-                    "Our Sponsors",
-                    style: TextStyle(
-                        color: Color(0xffFF8618),
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.all(12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SvgPicture.asset('assets/HamBurger/profile.svg'),
-                  const Padding(padding: EdgeInsets.fromLTRB(13.59, 0, 0, 0)),
-                  const Text(
-                    "Profile",
-                    style: TextStyle(
-                        color: Color(0xffFF8618),
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14),
-                  )
-                ],
-              ),
-            ),
+            HamburgerItem(
+                svgPicture: SvgPicture.asset('assets/HamBurger/resources.svg'),
+                text: 'Resources'),
+            HamburgerItem(
+                svgPicture: SvgPicture.asset('assets/HamBurger/faq.svg'),
+                text: 'Frequently Asked Questions'),
+            HamburgerItem(
+                svgPicture: SvgPicture.asset('assets/HamBurger/sponsors.svg'),
+                text: 'Our Sponsors'),
+            HamburgerItem(
+                svgPicture: SvgPicture.asset('assets/HamBurger/profile.svg'),
+                text: 'Profile'),
           ],
         ),
       ),

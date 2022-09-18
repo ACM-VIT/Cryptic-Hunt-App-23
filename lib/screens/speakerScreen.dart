@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SpeakerScreen extends StatelessWidget {
+  static String id = 'SpeakerScreen';
   const SpeakerScreen({super.key});
-  
 
   @override
   Widget build(BuildContext context) {
@@ -13,11 +13,11 @@ class SpeakerScreen extends StatelessWidget {
             child: ListView(
           padding: const EdgeInsets.only(left: 22, right: 22),
           children: [
-            Column(  
+            Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 20), 
+                const SizedBox(height: 20),
                 const TabView(),
                 const SizedBox(
                   height: 25,
@@ -39,34 +39,46 @@ class SpeakerScreen extends StatelessWidget {
                     runSpacing: 12,
                     children: const [
                       SpeakerCard(
-                          name: "SS Roy",
-                          description:
-                              "How to grow a social network How to grow a social network",
-                          button: SpeakerCardButton(statusText: 'Live Now!'),),
+                        name: "SS Roy",
+                        description:
+                            "How to grow a social network How to grow a social network",
+                        button: SpeakerCardButton(statusText: 'Live Now!'),
+                      ),
                       SpeakerCard(
-                          name: "SS Roy",
-                          description: "How to grow a social network",
-                          button: SpeakerCardButton(statusText: 'Event Over'),),
+                        name: "SS Roy",
+                        description: "How to grow a social network",
+                        button: SpeakerCardButton(statusText: 'Event Over'),
+                      ),
                       SpeakerCard(
-                          name: "SS Roy",
-                          description: "How to grow a social network",
-                          button: SpeakerCardButton(statusText: 'On 27st Sept, 2022'),),
+                        name: "SS Roy",
+                        description: "How to grow a social network",
+                        button:
+                            SpeakerCardButton(statusText: 'On 27st Sept, 2022'),
+                      ),
                       SpeakerCard(
-                          name: "SS Roy",
-                          description: "How to grow a social network",
-                          button: SpeakerCardButton(statusText: 'On 27st Sept, 2022'),),
+                        name: "SS Roy",
+                        description: "How to grow a social network",
+                        button:
+                            SpeakerCardButton(statusText: 'On 27st Sept, 2022'),
+                      ),
                       SpeakerCard(
-                          name: "SS Roy",
-                          description: "How to grow a social network",
-                          button: SpeakerCardButton(statusText: 'On 27st Sept, 2022'),),
+                        name: "SS Roy",
+                        description: "How to grow a social network",
+                        button:
+                            SpeakerCardButton(statusText: 'On 27st Sept, 2022'),
+                      ),
                       SpeakerCard(
-                          name: "SS Roy",
-                          description: "How to grow a social network",
-                          button: SpeakerCardButton(statusText: 'On 27st Sept, 2022'),),
+                        name: "SS Roy",
+                        description: "How to grow a social network",
+                        button:
+                            SpeakerCardButton(statusText: 'On 27st Sept, 2022'),
+                      ),
                       SpeakerCard(
-                          name: "SS Roy",
-                          description: "How to grow a social network",
-                          button: SpeakerCardButton(statusText: 'On 27st Sept, 2022'),),
+                        name: "SS Roy",
+                        description: "How to grow a social network",
+                        button:
+                            SpeakerCardButton(statusText: 'On 27st Sept, 2022'),
+                      ),
                     ],
                   ),
                 ),
