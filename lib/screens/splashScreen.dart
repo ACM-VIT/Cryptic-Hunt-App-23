@@ -1,4 +1,4 @@
-import 'package:cryptic_hunt/screens/Loading.dart';
+import 'Loading.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
