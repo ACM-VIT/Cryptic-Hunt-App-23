@@ -5,6 +5,8 @@ import 'screens/navigation_manager.dart';
 import 'screens/onBoarding.dart';
 import 'screens/Loading.dart';
 import 'screens/splashScreen.dart';
+import 'package:cryptic_hunt/screens/speakerScreen.dart';
+import 'package:cryptic_hunt/widgets/countdowntimer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -31,6 +33,8 @@ class myApp extends StatelessWidget {
         OnBoarding.id: (context) => const OnBoarding(),
         Loading.id: (context) => const Loading(),
         Hamburger.id: (context) => const Hamburger(),
+        CountDownTimer.id: (context) => const CountDownTimer(),
+        SpeakerScreen.id: (context) => const SpeakerScreen(),
       },
     );
   }
