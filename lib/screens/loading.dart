@@ -1,4 +1,4 @@
-import 'package:cryptic_hunt/Providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
+import '../Providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
 // ignore: unused_import
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
