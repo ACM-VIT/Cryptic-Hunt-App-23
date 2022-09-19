@@ -96,44 +96,49 @@ class LoginPage extends StatelessWidget {
             const SizedBox(height: 35),
             ChangeNotifierProvider(
               create: (_) => GoogleSignInProvider(),
-              child: Container(
-                margin: const EdgeInsets.only(left: 18, right: 18),
-                width: double.infinity,
-                height: 50,
-                child: Consumer<GoogleSignInProvider>(
-                  builder: (context, provider, child) {
-                    return ElevatedButton(
-                      onPressed: () {
-                        writeInSharedPreference();
-                        // TODO: Sign In With Google (Make API request)
-                        provider.login();
-                      },
-                      style: ElevatedButton.styleFrom(
-                          primary: const Color(0xFFFFFFFF),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8))),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset('assets/login/google_icon.png'),
+              child: Consumer<GoogleSignInProvider>(
+                builder: (context, provider, child) {
+                  return provider.signingIn
+                      ? const Center(
+                          child: CircularProgressIndicator(color: Colors.white),
+                        )
+                      : Container(
+                          margin: const EdgeInsets.only(left: 18, right: 18),
+                          width: double.infinity,
+                          height: 50,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // writeInSharedPreference();
+                              provider.login();
+                            },
+                            style: ElevatedButton.styleFrom(
+                                primary: const Color(0xFFFFFFFF),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8))),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset(
+                                      'assets/login/google_icon.png'),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "Sign In with Google",
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color:
+                                          const Color.fromRGBO(13, 13, 13, 1)),
+                                ),
+                              ],
+                            ),
                           ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            "Sign In with Google",
-                            style: GoogleFonts.poppins(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: const Color.fromRGBO(13, 13, 13, 1)),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+                        );
+                },
               ),
             ),
             const SizedBox(
@@ -145,8 +150,8 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  void writeInSharedPreference() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.setBool("Logged_In", true);
-  }
+  // void writeInSharedPreference() async {
+  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //   sharedPreferences.setBool("Logged_In", true);
+  // }
 }

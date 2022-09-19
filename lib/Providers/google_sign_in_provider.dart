@@ -11,6 +11,8 @@ class GoogleSignInProvider with ChangeNotifier {
   String? _accessToken;
   String? _idToken;
 
+  bool signingIn = false;
+
   String? get accessToken => _accessToken;
   String? get idToken => _idToken;
 
@@ -26,16 +28,22 @@ class GoogleSignInProvider with ChangeNotifier {
 
     final googleAuth = await googleUser.authentication;
 
+    _accessToken = googleAuth.accessToken;
+    _idToken = googleAuth.idToken;
+
+    signingIn = true;
+    notifyListeners();
+
     final credential = GoogleAuthProvider.credential(
         accessToken: _accessToken, idToken: _idToken);
 
     await FirebaseAuth.instance.signInWithCredential(credential);
 
-    _accessToken = await auth.currentUser?.getIdToken();
-    _idToken = googleAuth.idToken;
-
+    String? token = await auth.currentUser?.getIdToken(true);
     Response? response =
-        await apiService.get(endpoint: '/users/profile', token: _accessToken);
+        await apiService.get(endpoint: '/users/profile', token: token);
+
+    signingIn = false;
 
     print(response.toString());
     print(
