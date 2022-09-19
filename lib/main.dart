@@ -27,7 +27,7 @@ class myApp extends StatelessWidget {
     return MaterialApp(
       color: const Color(0xffC7C7C7),
       title: "Routes",
-      initialRoute: NavigationManager.id,
+      initialRoute: OnBoarding.id,
       routes: {
         NavigationManager.id: (context) => const NavigationManager(),
         SignUp.id: (context) => SignUp(),

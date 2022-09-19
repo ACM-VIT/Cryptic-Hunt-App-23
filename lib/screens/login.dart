@@ -1,3 +1,4 @@
+import 'package:cryptic_hunt/screens/navigation_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -98,9 +99,12 @@ class LoginPage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   writeInSharedPreference();
+                  // TODO: Sign In With Google (Make API request)
+
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const OnBoarding()),
+                    MaterialPageRoute(
+                        builder: (context) => const NavigationManager()),
                   );
                 },
                 style: ElevatedButton.styleFrom(

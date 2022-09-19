@@ -2,6 +2,7 @@ import 'Loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'login.dart';
 
 class OnBoarding extends StatelessWidget {
   static String id = "OnBoarding";
@@ -116,10 +117,8 @@ class OnBoardingPage extends StatelessWidget {
                       curve: Curves.linear,
                     );
                   } else {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Loading()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const Login()));
                   }
                 },
                 style: ElevatedButton.styleFrom(
