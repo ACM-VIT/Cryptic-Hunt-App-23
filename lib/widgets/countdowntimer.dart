@@ -1,5 +1,5 @@
 import 'package:cryptic_hunt/screens/leaderboard.dart';
-import 'package:cryptic_hunt/screens/my_home_page.dart';
+import 'package:cryptic_hunt/screens/loading_screen.dart';
 import 'timedisplay.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

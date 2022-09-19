@@ -3,16 +3,17 @@ import 'screens/hamburger.dart';
 import 'screens/login.dart';
 import 'screens/navigation_manager.dart';
 import 'screens/onBoarding.dart';
-import 'screens/Loading.dart';
-import 'screens/splashScreen.dart';
 import 'package:cryptic_hunt/screens/speakerScreen.dart';
 import 'package:cryptic_hunt/screens/signUp.dart';
 import 'package:cryptic_hunt/widgets/countdowntimer.dart';
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:cryptic_hunt/screens/loading_screen.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(ChangeNotifierProvider(
     create: (context) => Percentage(),
     child: const myApp(),
@@ -29,12 +30,12 @@ class myApp extends StatelessWidget {
       title: "Routes",
       initialRoute: OnBoarding.id,
       routes: {
+        LoadingScreen.id: (context) => const LoadingScreen(),
         NavigationManager.id: (context) => const NavigationManager(),
         SignUp.id: (context) => SignUp(),
-        SplashScreen.id: (context) => const SplashScreen(),
+        // SplashScreen.id: (context) => const SplashScreen(),
         Login.id: (context) => const Login(),
         OnBoarding.id: (context) => const OnBoarding(),
-        Loading.id: (context) => const Loading(),
         // Hamburger.id: (context) => const Hamburger(),
         CountDownTimer.id: (context) => const CountDownTimer(),
         SpeakerScreen.id: (context) => const SpeakerScreen(),
