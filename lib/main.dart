@@ -29,14 +29,13 @@ class myApp extends StatelessWidget {
       title: "Routes",
       initialRoute: NavigationManager.id,
       routes: {
-
         NavigationManager.id: (context) => const NavigationManager(),
         SignUp.id: (context) => SignUp(),
         SplashScreen.id: (context) => const SplashScreen(),
         Login.id: (context) => const Login(),
         OnBoarding.id: (context) => const OnBoarding(),
         Loading.id: (context) => const Loading(),
-        Hamburger.id: (context) => const Hamburger(),
+        // Hamburger.id: (context) => const Hamburger(),
         CountDownTimer.id: (context) => const CountDownTimer(),
         SpeakerScreen.id: (context) => const SpeakerScreen(),
       },

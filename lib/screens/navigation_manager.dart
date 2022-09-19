@@ -2,6 +2,7 @@ import 'leaderboard.dart';
 import '/widgets/countdowntimer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:cryptic_hunt/widgets/hamburger_drawer.dart';
 
 class NavigationManager extends StatefulWidget {
   const NavigationManager({super.key});
@@ -19,6 +20,11 @@ class _NavigationManagerState extends State<NavigationManager> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Cryptic Hunt"),
+        backgroundColor: const Color(0xffff7a01),
+      ),
+      drawer: const HamburgerDrawer(),
       body: IndexedStack(
         index: currentIndex,
         children: pages,
