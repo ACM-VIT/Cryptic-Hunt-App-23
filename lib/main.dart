@@ -1,3 +1,5 @@
+import 'package:cryptic_hunt/screens/home_page.dart';
+
 import 'providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
 import 'screens/hamburger.dart';
 import 'screens/login.dart';
@@ -28,8 +30,9 @@ class myApp extends StatelessWidget {
     return MaterialApp(
       color: const Color(0xffC7C7C7),
       title: "Routes",
-      initialRoute: OnBoarding.id,
+      initialRoute: HomePage.id,
       routes: {
+        HomePage.id: (context) => const HomePage(),
         LoadingScreen.id: (context) => const LoadingScreen(),
         NavigationManager.id: (context) => const NavigationManager(),
         SignUp.id: (context) => SignUp(),

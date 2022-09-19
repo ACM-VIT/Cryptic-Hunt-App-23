@@ -107,11 +107,6 @@ class LoginPage extends StatelessWidget {
                         writeInSharedPreference();
                         // TODO: Sign In With Google (Make API request)
                         provider.login();
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const NavigationManager()),
-                        );
                       },
                       style: ElevatedButton.styleFrom(
                           primary: const Color(0xFFFFFFFF),
