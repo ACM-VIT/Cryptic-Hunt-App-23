@@ -6,7 +6,9 @@ import 'screens/onBoarding.dart';
 import 'screens/Loading.dart';
 import 'screens/splashScreen.dart';
 import 'package:cryptic_hunt/screens/speakerScreen.dart';
+import 'package:cryptic_hunt/screens/signUp.dart';
 import 'package:cryptic_hunt/widgets/countdowntimer.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -27,7 +29,9 @@ class myApp extends StatelessWidget {
       title: "Routes",
       initialRoute: NavigationManager.id,
       routes: {
+
         NavigationManager.id: (context) => const NavigationManager(),
+        SignUp.id: (context) => SignUp(),
         SplashScreen.id: (context) => const SplashScreen(),
         Login.id: (context) => const Login(),
         OnBoarding.id: (context) => const OnBoarding(),

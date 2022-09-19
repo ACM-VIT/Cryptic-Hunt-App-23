@@ -1,4 +1,3 @@
-import 'package:cryptic_hunt/main.dart';
 import 'package:cryptic_hunt/screens/leaderboard.dart';
 import 'package:cryptic_hunt/screens/my_home_page.dart';
 import 'timedisplay.dart';
