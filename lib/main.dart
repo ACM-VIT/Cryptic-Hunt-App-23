@@ -1,3 +1,5 @@
+import 'package:cryptic_hunt/Providers/question_group_list_notifier.dart';
+import 'package:cryptic_hunt/locator.dart';
 import 'package:cryptic_hunt/screens/home_page.dart';
 
 import 'providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
@@ -14,6 +16,7 @@ import 'package:provider/provider.dart';
 import 'package:cryptic_hunt/screens/loading_screen.dart';
 
 Future main() async {
+  setup();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(ChangeNotifierProvider(
@@ -30,18 +33,20 @@ class myApp extends StatelessWidget {
     return MaterialApp(
       color: const Color(0xffC7C7C7),
       title: "Routes",
-      initialRoute: HomePage.id,
+      initialRoute: NavigationManager.id,
       routes: {
-        HomePage.id: (context) => const HomePage(),
-        LoadingScreen.id: (context) => const LoadingScreen(),
-        NavigationManager.id: (context) => const NavigationManager(),
-        SignUp.id: (context) => SignUp(),
-        // SplashScreen.id: (context) => const SplashScreen(),
-        Login.id: (context) => const Login(),
-        OnBoarding.id: (context) => const OnBoarding(),
-        // Hamburger.id: (context) => const Hamburger(),
-        CountDownTimer.id: (context) => const CountDownTimer(),
-        SpeakerScreen.id: (context) => const SpeakerScreen(),
+        // HomePage.id: (context) => const HomePage(),
+        // LoadingScreen.id: (context) => const LoadingScreen(),
+        NavigationManager.id: (context) => ChangeNotifierProvider(
+            create: (context) => QuestionGroupListNotifier(),
+            child: const NavigationManager()),
+        // SignUp.id: (context) => SignUp(),
+        // // SplashScreen.id: (context) => const SplashScreen(),
+        // Login.id: (context) => const Login(),
+        // OnBoarding.id: (context) => const OnBoarding(),
+        // // Hamburger.id: (context) => const Hamburger(),
+        // CountDownTimer.id: (context) => const CountDownTimer(),
+        // SpeakerScreen.id: (context) => const SpeakerScreen(),
       },
     );
   }
