@@ -1,6 +1,8 @@
 import 'package:cryptic_hunt/Providers/google_sign_in_provider.dart';
+import 'package:cryptic_hunt/Providers/login_page_notifier.dart';
 import 'package:cryptic_hunt/screens/navigation_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -95,10 +97,10 @@ class LoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 35),
             ChangeNotifierProvider(
-              create: (_) => GoogleSignInProvider(),
-              child: Consumer<GoogleSignInProvider>(
+              create: (_) => LoginPageNotifier(),
+              child: Consumer<LoginPageNotifier>(
                 builder: (context, provider, child) {
-                  return provider.signingIn
+                  return provider.busy
                       ? const Center(
                           child: CircularProgressIndicator(color: Colors.white),
                         )

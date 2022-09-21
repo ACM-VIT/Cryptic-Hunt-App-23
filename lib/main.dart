@@ -1,3 +1,8 @@
+import 'package:cryptic_hunt/Providers/home_page_notifier.dart';
+import 'package:cryptic_hunt/Providers/question_group_list_notifier.dart';
+import 'package:cryptic_hunt/locator.dart';
+
+import 'package:cryptic_hunt/data/question.dart';
 import 'package:cryptic_hunt/screens/home_page.dart';
 
 import 'providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
@@ -12,10 +17,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cryptic_hunt/screens/loading_screen.dart';
+import '/screens/question_screen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  setup();
   runApp(ChangeNotifierProvider(
     create: (context) => Percentage(),
     child: const myApp(),
@@ -32,7 +39,13 @@ class myApp extends StatelessWidget {
       title: "Routes",
       initialRoute: HomePage.id,
       routes: {
-        HomePage.id: (context) => const HomePage(),
+        HomePage.id: (context) => ChangeNotifierProvider(
+              create: (context) => HomePageNotifier(),
+              child: Consumer<HomePageNotifier>(
+                  builder: (context, value, child) =>
+                      HomePage(notifier: value)),
+            ),
+        QuestionScreen.id: (context) => const QuestionScreen(),
         LoadingScreen.id: (context) => const LoadingScreen(),
         NavigationManager.id: (context) => const NavigationManager(),
         SignUp.id: (context) => SignUp(),

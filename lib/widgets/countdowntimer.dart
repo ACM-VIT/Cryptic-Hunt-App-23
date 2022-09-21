@@ -1,5 +1,8 @@
+import 'package:cryptic_hunt/Providers/question_group_list_notifier.dart';
 import 'package:cryptic_hunt/screens/leaderboard.dart';
 import 'package:cryptic_hunt/screens/loading_screen.dart';
+import 'package:cryptic_hunt/widgets/questionGroupList.dart';
+import 'package:provider/provider.dart';
 import 'timedisplay.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -29,7 +32,7 @@ class _CountDownTimerState extends State<CountDownTimer> {
   }
 
   void startTimer() {
-    myDuration = DateTime(2022, 9, 20, 8).difference(DateTime.now());
+    myDuration = DateTime(2022, 9, 25, 8).difference(DateTime.now());
     countDown =
         Timer.periodic(const Duration(seconds: 1), (_) => setCountDown());
   }
@@ -132,6 +135,12 @@ class _CountDownTimerState extends State<CountDownTimer> {
                   TimeDisplay(seconds),
                 ],
               ),
+              Expanded(
+                  child: ChangeNotifierProvider(
+                create: (context) => QuestionGroupListNotifier(),
+                builder: (context, child) => QuestionGroupList(
+                    state: Provider.of<QuestionGroupListNotifier>(context)),
+              ))
             ],
           ),
         ),
