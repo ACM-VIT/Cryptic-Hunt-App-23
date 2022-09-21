@@ -20,137 +20,118 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xffff7a01),
       body: Container(
+        margin: const EdgeInsets.symmetric(vertical: 20.0),
         width: double.infinity,
         color: const Color(0xffff7a01),
         //margin: const EdgeInsets.only(left: 16, right: 16),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 30),
-          child: ListView(
-            children: [
-              const Expanded(
-                  child: SizedBox(
-                    height: 106,
-                  ),
-                  flex: 1),
-              Align(
-                child: Expanded(
-                    child: Image.asset("assets/login/treasure.png"), flex: 1),
-                alignment: Alignment.centerLeft,
+        child: ListView(
+          clipBehavior: Clip.none,
+          children: [
+            const SizedBox(
+              height: 80,
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Image.asset(
+                "assets/login/treasure.png",
+                scale: 1.25,
               ),
-              const Expanded(child: SizedBox(height: 89)),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: RichText(
-                    text: TextSpan(
+            ),
+            const SizedBox(height: 60),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: RichText(
+                  text: TextSpan(
+                children: [
+                  TextSpan(
+                      text: "We are the ",
+                      style: GoogleFonts.poppins(
+                          textStyle: Theme.of(context).textTheme.headline1,
+                          fontSize: 28,
+                          fontWeight: FontWeight.w600,
+                          fontStyle: FontStyle.normal,
+                          color: const Color(0xFFFFFFFF))),
+                  TextSpan(
+                      text: "Event",
+                      style: GoogleFonts.poppins(
+                          textStyle: Theme.of(context).textTheme.headline1,
+                          fontSize: 28,
+                          fontWeight: FontWeight.w600,
+                          fontStyle: FontStyle.normal,
+                          color: const Color(0xFF181818))),
+                  TextSpan(
+                      text: "\neveryone’s been waiting for",
+                      style: GoogleFonts.poppins(
+                          textStyle: Theme.of(context).textTheme.headline1,
+                          fontSize: 28,
+                          fontWeight: FontWeight.w600,
+                          fontStyle: FontStyle.normal,
+                          color: const Color(0xFFFFFFFF))),
+                ],
+              )),
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: RichText(
+                  text: TextSpan(children: [
+                TextSpan(
+                    text:
+                        "Get notifications, know about the speaker sessions, about the tracks and know a lot more.",
+                    style: GoogleFonts.poppins(
+                        textStyle: Theme.of(context).textTheme.headline1,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
+                        color: const Color(0xFFFFF4EA))),
+              ])),
+            ),
+            const SizedBox(height: 35),
+            Container(
+              margin: const EdgeInsets.only(left: 18, right: 18),
+              width: double.infinity,
+              height: 50,
+              child: ElevatedButton(
+                onPressed: () {
+                  writeInSharedPreference();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const OnBoarding()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                    primary: const Color(0xFFFFFFFF),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8))),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    TextSpan(
-                        text: "We are the ",
-                        style: GoogleFonts.poppins(
-                            textStyle: Theme.of(context).textTheme.headline1,
-                            fontSize: 28,
-                            fontWeight: FontWeight.w600,
-                            fontStyle: FontStyle.normal,
-                            color: const Color(0xFFFFFFFF))),
-                    TextSpan(
-                        text: "Event",
-                        style: GoogleFonts.poppins(
-                            textStyle: Theme.of(context).textTheme.headline1,
-                            fontSize: 28,
-                            fontWeight: FontWeight.w600,
-                            fontStyle: FontStyle.normal,
-                            color: const Color(0xFF181818))),
-                    TextSpan(
-                        text: "\neveryone’s been waiting",
-                        style: GoogleFonts.poppins(
-                            textStyle: Theme.of(context).textTheme.headline1,
-                            fontSize: 28,
-                            fontWeight: FontWeight.w600,
-                            fontStyle: FontStyle.normal,
-                            color: const Color(0xFFFFFFFF))),
-                    TextSpan(
-                        text: "\nfor",
-                        style: GoogleFonts.poppins(
-                            textStyle: Theme.of(context).textTheme.headline1,
-                            fontSize: 28,
-                            fontWeight: FontWeight.w600,
-                            fontStyle: FontStyle.normal,
-                            color: const Color(0xFFFFFFFF))),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset('assets/login/google_icon.png'),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      "Sign In with Google",
+                      style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: const Color.fromRGBO(13, 13, 13, 1)),
+                    ),
                   ],
-                )),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: RichText(
-                    text: TextSpan(children: [
-                  TextSpan(
-                      text:
-                          "Get notifications, know about the speaker sessions, ",
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.headline1,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.normal,
-                          color: const Color(0xFFFFF4EA))),
-                  TextSpan(
-                      text: "\nabout the tracks and know a lot more.",
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.headline1,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.normal,
-                          color: const Color(0xFFFFF4EA))),
-                ])),
-              ),
-              Expanded(
-                child: const SizedBox(height: 35),
-              ),
-              Container(
-                margin: const EdgeInsets.only(left: 18, right: 18),
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
-                    writeInSharedPreference();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const OnBoarding()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                      primary: const Color(0xFFFFFFFF),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(8))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset('assets/login/google_icon.png'),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        "Sign In with Google",
-                        style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: const Color.fromRGBO(13, 13, 13, 1)),
-                      ),
-                    ],
-                  ),
                 ),
               ),
-              SizedBox(
-                height: 24,
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 24,
+            ),
+          ],
         ),
       ),
     );

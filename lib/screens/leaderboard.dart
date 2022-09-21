@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class Leaderboard extends StatefulWidget {
   const Leaderboard({super.key});
+
+  static String id = "Leaderboard";
 
   @override
   State<Leaderboard> createState() => _LeaderboardState();

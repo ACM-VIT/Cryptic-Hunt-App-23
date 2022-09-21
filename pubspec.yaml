@@ -31,6 +31,7 @@ environment:
 dependencies:
   cupertino_icons: ^1.0.2
   dio: ^4.0.6
+  firebase_auth: ^3.9.0
   flutter:
     sdk: flutter
   flutter_native_splash: ^2.2.9
@@ -68,6 +69,8 @@ flutter:
     - assets/onBoarding/b.svg
     - assets/onBoarding/c.svg
     - assets/Loading/Owl.svg
+    - assets/navbar/cryptic_hunt_icon.svg
+    - assets/navbar/leaderboard_icon.svg
     - assets/HamBurger/timeline.svg
     - assets/HamBurger/profilepic.svg
     - assets/HamBurger/archive.svg

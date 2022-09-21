@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "987332186514",
+    "project_id": "cryptic-hunt-4c9fb",
+    "storage_bucket": "cryptic-hunt-4c9fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:987332186514:android:4c5abe92f5d93bf557f14b",
+        "android_client_info": {
+          "package_name": "com.example.firebase_authentication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "987332186514-ec8ds8t0ickvd44c84ovi5amu4hj9q7i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firebase_authentication",
+            "certificate_hash": "7744dea2b62032bf40880bdf90bc9440d1b193d7"
+          }
+        },
+        {
+          "client_id": "987332186514-etf6upk163b2v8sbr3h3asp0jbjumfqa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkeJ9D5jHJVJrjUyGga8z_fTSmpa-Mx-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "987332186514-etf6upk163b2v8sbr3h3asp0jbjumfqa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

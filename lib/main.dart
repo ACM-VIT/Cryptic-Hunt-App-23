@@ -1,12 +1,15 @@
 import 'package:cryptic_hunt/screens/create_team.dart';
+import 'providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
+import 'screens/hamburger.dart';
+import 'screens/login.dart';
+import 'screens/navigation_manager.dart';
+import 'screens/onBoarding.dart';
+import 'screens/Loading.dart';
+import 'screens/splashScreen.dart';
 import 'package:cryptic_hunt/screens/speakerScreen.dart';
-import 'package:cryptic_hunt/Providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
-import 'package:cryptic_hunt/screens/hamburger.dart';
-import 'package:cryptic_hunt/screens/login.dart';
-import 'package:cryptic_hunt/screens/onBoarding.dart';
-import 'package:cryptic_hunt/screens/Loading.dart';
-import 'package:cryptic_hunt/screens/splashScreen.dart';
+import 'package:cryptic_hunt/screens/signUp.dart';
 import 'package:cryptic_hunt/widgets/countdowntimer.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,15 +26,17 @@ class myApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      color: const Color(0xffC7C7C7),
       title: "Routes",
-      initialRoute: Hamburger.id,
-      //initialRoute: NavigationManager.id,
+      initialRoute: NavigationManager.id,
       routes: {
+        NavigationManager.id: (context) => const NavigationManager(),
+        SignUp.id: (context) => SignUp(),
         SplashScreen.id: (context) => const SplashScreen(),
         Login.id: (context) => const Login(),
         OnBoarding.id: (context) => const OnBoarding(),
         Loading.id: (context) => const Loading(),
-        Hamburger.id: (context) => const Hamburger(),
+        // Hamburger.id: (context) => const Hamburger(),
         CountDownTimer.id: (context) => const CountDownTimer(),
         SpeakerScreen.id: (context) => const SpeakerScreen(),
         CreateTeam.id: (context) => const CreateTeamPage(),

@@ -45,10 +45,10 @@ class CreateTeamPage extends StatelessWidget {
                 height: 20,
               ),
               Container(
-                width: 130,
+               width: MediaQuery.of(context).size.width / 2,
                 color: const Color(0xFFFFFFFF),
                 padding: const EdgeInsets.all(8),
-                child: Row(
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text("text"),
                     const SizedBox(
@@ -65,6 +65,7 @@ class CreateTeamPage extends StatelessWidget {
                   ],
                 ),
               ),
+              
               const SizedBox(
                 height: 155,
               ),

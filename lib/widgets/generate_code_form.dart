@@ -7,7 +7,7 @@ class GenerateCodeForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Column(crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(
           height: 28,

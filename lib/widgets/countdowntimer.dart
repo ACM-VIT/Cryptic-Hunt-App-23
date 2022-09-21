@@ -1,4 +1,3 @@
-import 'package:cryptic_hunt/main.dart';
 import 'package:cryptic_hunt/screens/leaderboard.dart';
 import 'package:cryptic_hunt/screens/my_home_page.dart';
 import 'timedisplay.dart';
@@ -59,7 +58,6 @@ class _CountDownTimerState extends State<CountDownTimer> {
 
     return Scaffold(
       // backgroundColor: const Color.fromARGB(255, 244, 234, 1),
-
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 4),
@@ -79,7 +77,7 @@ class _CountDownTimerState extends State<CountDownTimer> {
                       textAlign: TextAlign.left,
                     ),
                     const Expanded(child: SizedBox()),
-                    SvgPicture.asset("assets/Owl-7.svg"),
+                    SvgPicture.asset('assets/Owl-7.svg')
                   ],
                 ),
               ),
