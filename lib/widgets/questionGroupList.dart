@@ -19,14 +19,12 @@ class QuestionGroupList extends StatefulWidget {
 class _QuestionGroupListState extends State<QuestionGroupList> {
   @override
   void initState() {
-    init();
+    getQuestionGroup();
     super.initState();
   }
 
-  Future<void> init() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    String? token = pref.getString('tokenId');
-    widget.state.getQuestionGroups(token!);
+  Future<void> getQuestionGroup() async {
+    widget.state.getQuestionGroups();
   }
 
   @override
@@ -36,7 +34,7 @@ class _QuestionGroupListState extends State<QuestionGroupList> {
             child: CircularProgressIndicator(),
           )
         : RefreshIndicator(
-            onRefresh: init,
+            onRefresh: getQuestionGroup,
             child: ListView.builder(
               itemCount: widget.state.questionGroups.length,
               itemBuilder: (context, index) => QuestionGroupListItem(
