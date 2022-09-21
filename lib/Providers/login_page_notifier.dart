@@ -1,23 +1,21 @@
 import 'package:cryptic_hunt/networking/ApiService.dart';
+import 'package:cryptic_hunt/networking/gauth_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 
-import '../data/question_group.dart';
-
-class QuestionGroupListNotifier extends ChangeNotifier {
+class LoginPageNotifier extends ChangeNotifier {
   bool busy = false;
-  List<QuestionGroup> questionGroups = [];
   late ApiService api;
+  late GAuthService auth;
 
-  QuestionGroupListNotifier() {
+  LoginPageNotifier() {
     api = GetIt.I<ApiService>();
+    auth = GetIt.I<GAuthService>();
   }
 
-  Future<void> getQuestionGroups(String token) async {
+  Future<void> login() async {
     isBusy(true);
-    questionGroups =
-        await api.getQuestionGroup(endpoint: "questiongroups", token: token) ??
-            [];
+    await auth.login();
     isBusy(false);
   }
 

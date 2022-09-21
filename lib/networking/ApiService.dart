@@ -48,8 +48,8 @@ class ApiService {
             .toList();
         return questionGroups;
       }
-    } catch (e) {
-      print("[ERROR_GET_QUESTION_GROUP] ${e.toString()}");
+    } on DioError catch (de, e) {
+      print("[ERROR_GET_QUESTION_GROUP] ${de.response}");
     }
   }
 }

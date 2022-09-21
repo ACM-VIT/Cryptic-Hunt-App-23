@@ -1,9 +1,12 @@
+import 'package:cryptic_hunt/Providers/google_sign_in_provider.dart';
 import 'package:cryptic_hunt/Providers/question_group_list_notifier.dart';
 import 'package:cryptic_hunt/widgets/questionGroupListItem.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class QuestionGroupList extends StatefulWidget {
   QuestionGroupList({super.key, required this.state});
@@ -16,8 +19,14 @@ class QuestionGroupList extends StatefulWidget {
 class _QuestionGroupListState extends State<QuestionGroupList> {
   @override
   void initState() {
-    widget.state.getQuestionGroups("yuu");
+    init();
     super.initState();
+  }
+
+  Future<void> init() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    String? token = pref.getString('tokenId');
+    widget.state.getQuestionGroups(token!);
   }
 
   @override
@@ -26,10 +35,13 @@ class _QuestionGroupListState extends State<QuestionGroupList> {
         ? Center(
             child: CircularProgressIndicator(),
           )
-        : ListView.builder(
-            itemCount: widget.state.questionGroups.length,
-            itemBuilder: (context, index) => QuestionGroupListItem(
-                questionGroup: widget.state.questionGroups[index]),
+        : RefreshIndicator(
+            onRefresh: init,
+            child: ListView.builder(
+              itemCount: widget.state.questionGroups.length,
+              itemBuilder: (context, index) => QuestionGroupListItem(
+                  questionGroup: widget.state.questionGroups[index]),
+            ),
           );
   }
 }
