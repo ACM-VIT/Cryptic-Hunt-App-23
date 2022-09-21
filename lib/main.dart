@@ -1,5 +1,5 @@
 import 'package:cryptic_hunt/Providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
-import 'package:cryptic_hunt/screens/QuestionScreen.dart';
+import 'package:cryptic_hunt/screens/question_page.dart';
 import 'package:cryptic_hunt/screens/hamburger.dart';
 import 'package:cryptic_hunt/screens/login.dart';
 import 'package:cryptic_hunt/screens/onBoarding.dart';
@@ -29,7 +29,7 @@ class myApp extends StatelessWidget {
         OnBoarding.id: (context) => const OnBoarding(),
         Loading.id: (context) => const Loading(),
         Hamburger.id: (context) => const Hamburger(),
-        Question.id: (context) => const Question(),
+        QuestionPage.id: (context) => QuestionPage(),
       },
     );
   }
