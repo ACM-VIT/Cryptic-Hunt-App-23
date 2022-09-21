@@ -18,6 +18,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         toolbarHeight: 0,
       ),
@@ -27,9 +28,14 @@ class ProfilePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Stack(
+            alignment: Alignment.topCenter,
             children: [
-              SvgPicture.asset(
-                'assets/profilepagebg.svg',
+              SizedBox(
+                width: double.infinity,
+                child: SvgPicture.asset(
+                  fit: BoxFit.cover,
+                  'assets/profilepagebg.svg',
+                ),
               ),
               const CustomAppBar(),
             ],
