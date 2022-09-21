@@ -3,17 +3,17 @@ import 'package:clipboard/clipboard.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CreateTeam extends StatefulWidget {
-  static String id = "createTeam";
+class CreateTeamFirst extends StatefulWidget {
+  static String id = "CreateTeamFirst";
   final TextEditingController controllerText = TextEditingController();
   final TextEditingController controllerNumber = TextEditingController();
-  CreateTeam({Key? key}) : super(key: key);
+  CreateTeamFirst({Key? key}) : super(key: key);
 
   @override
-  State<CreateTeam> createState() => _CreateTeam();
+  State<CreateTeamFirst> createState() => _CreateTeamFirst();
 }
 
-class _CreateTeam extends State<CreateTeam> {
+class _CreateTeamFirst extends State<CreateTeamFirst> {
   bool pressed = false;
   bool maxMemberError = false;
   bool emptyTeamFieldError = false;
