@@ -14,7 +14,7 @@ QuestionGroupDetail _$QuestionGroupDetailFromJson(Map<String, dynamic> json) =>
       json['isSequence'] as bool,
       json['numQuestionsSolvedQuestionGroup'] as int,
       json['numberOfQuestions'] as int,
-    )..questions = json['questions'] as List<dynamic>;
+    )..questions = json['questions'] as List<Question>;
 
 Map<String, dynamic> _$QuestionGroupDetailToJson(
         QuestionGroupDetail instance) =>

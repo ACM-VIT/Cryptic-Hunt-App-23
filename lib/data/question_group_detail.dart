@@ -13,7 +13,7 @@ class QuestionGroupDetail {
   String description;
   bool isSequence;
   int numQuestionsSolvedQuestionGroup;
-  List<Question?>? questions;
+  List<Question>? questions;
 
   factory QuestionGroupDetail.fromJson(Map<String, dynamic> json) =>
       _$QuestionGroupDetailFromJson(json);
