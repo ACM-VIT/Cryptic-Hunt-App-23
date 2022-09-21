@@ -50,7 +50,7 @@ class SignUp extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                      child: Textfeild("Enter your name here", controller,
+                      child: CustomTextfeild("Enter your name here", controller,
                           TextInputType.text),
                     ),
                     Padding(
@@ -60,7 +60,7 @@ class SignUp extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                      child: Textfeild("Enter your E-mail Address here",
+                      child: CustomTextfeild("Enter your E-mail Address here",
                           controller, TextInputType.text),
                     ),
                     Padding(
@@ -70,7 +70,7 @@ class SignUp extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                      child: Textfeild("Enter your Phone Number here",
+                      child: CustomTextfeild("Enter your Phone Number here",
                           controller, TextInputType.number),
                     ),
                   ],

@@ -6,7 +6,7 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomAppBarWidget();
+    return const CustomAppBarWidget();
   }
 }
 

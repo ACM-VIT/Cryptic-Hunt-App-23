@@ -1,8 +1,6 @@
 import 'package:cryptic_hunt/widgets/appbar.dart';
 import 'package:cryptic_hunt/widgets/signup/textWidget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfilePage extends StatelessWidget {
