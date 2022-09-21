@@ -29,7 +29,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Crytic Hunt"),
+        title: const Text("Cryptic Hunt"),
         backgroundColor: const Color(0xffff7a01),
       ),
       body: Padding(

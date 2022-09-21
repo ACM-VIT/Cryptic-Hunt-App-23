@@ -1,3 +1,4 @@
+import 'package:cryptic_hunt/screens/QuestionScreen.dart';
 import 'package:cryptic_hunt/screens/login.dart';
 import 'package:cryptic_hunt/services/qr_scanner.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class HamburgerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Crytic Hunt"),
+        title: const Text("Cryptic Hunt"),
         backgroundColor: const Color(0xffff7a01),
       ),
       drawer: Drawer(
@@ -61,6 +62,15 @@ class HamburgerPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const Login()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Question Page'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Question()),
                 );
               },
             ),
