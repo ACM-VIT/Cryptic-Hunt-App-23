@@ -80,6 +80,8 @@ flutter:
     - assets/HamBurger/faq.svg
     - assets/login/google_icon.png
     - assets/login/treasure.png
+    - assets/CreateTeam/logo.svg
+    - assets/CreateTeam/copy.svg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
