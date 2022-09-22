@@ -1,6 +1,7 @@
-
 import 'package:cryptic_hunt/screens/question_page.dart';
+import 'package:cryptic_hunt/screens/profile.dart';
 import 'package:cryptic_hunt/screens/create_team.dart';
+import 'package:cryptic_hunt/screens/faq_screen.dart';
 import 'providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
 import 'screens/hamburger.dart';
 import 'screens/login.dart';
@@ -31,6 +32,9 @@ class myApp extends StatelessWidget {
       title: "Routes",
       initialRoute: Hamburger.id,
       routes: {
+        ProfilePage.id: (context) => ProfilePage(),
+        NavigationManager.id: (context) => const NavigationManager(),
+        SignUp.id: (context) => SignUp(),
         SplashScreen.id: (context) => const SplashScreen(),
         Login.id: (context) => const Login(),
         OnBoarding.id: (context) => const OnBoarding(),
@@ -43,6 +47,7 @@ class myApp extends StatelessWidget {
         CountDownTimer.id: (context) => const CountDownTimer(),
         SpeakerScreen.id: (context) => const SpeakerScreen(),
         CreateTeam.id: (context) => const CreateTeamPage(),
+        'faq': (context) => const FaqScreen(),
       },
     );
   }
