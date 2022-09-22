@@ -29,6 +29,8 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  clipboard : ^0.1.3
+  timeline_tile: ^2.0.0
   cupertino_icons: ^1.0.2
   dio: ^4.0.6
   firebase_auth: ^3.9.0
@@ -81,6 +83,7 @@ flutter:
     - assets/HamBurger/faq.svg
     - assets/login/google_icon.png
     - assets/login/treasure.png
+    - assets/createTeam/Heading.svg
     - assets/question/
     - assets/profilepagebg.svg
     - assets/profilepageleadericon.svg

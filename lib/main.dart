@@ -12,6 +12,9 @@ import 'screens/splashScreen.dart';
 import 'package:cryptic_hunt/screens/speakerScreen.dart';
 import 'package:cryptic_hunt/screens/signUp.dart';
 import 'package:cryptic_hunt/widgets/countdowntimer.dart';
+import 'package:cryptic_hunt/screens/timeline.dart';
+import 'package:cryptic_hunt/screens/createTeam.dart';
+
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -46,6 +49,8 @@ class myApp extends StatelessWidget {
         // Hamburger.id: (context) => const Hamburger(),
         CountDownTimer.id: (context) => const CountDownTimer(),
         SpeakerScreen.id: (context) => const SpeakerScreen(),
+        Timeline.id: (context) => const Timeline(),
+        CreateTeamFirst.id: (context) => CreateTeamFirst(),
         CreateTeam.id: (context) => const CreateTeamPage(),
         'faq': (context) => const FaqScreen(),
       },
