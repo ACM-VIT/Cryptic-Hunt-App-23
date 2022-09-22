@@ -94,6 +94,7 @@ flutter:
     - assets/profilepagebg.svg
     - assets/profilepageleadericon.svg
     - assets/CreateTeam/logo.svg
+    - assets/join_team_bg.svg
     - assets/CreateTeam/copy.svg
     - assets/faq/owl.png
 

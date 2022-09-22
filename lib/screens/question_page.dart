@@ -29,7 +29,8 @@ class QuestionPage extends StatelessWidget {
                       child: back),
                   Padding(
                       padding: const EdgeInsets.fromLTRB(8, 40, 0, 0),
-                      child: TextWidget("Question Prompt", fontFamily,
+
+                      child: CustomTextWidget("Question Prompt", fontFamily,
                           FontWeight.w600, 24, const Color(0xff000000)))
                 ]),
                 const Padding(
@@ -41,15 +42,16 @@ class QuestionPage extends StatelessWidget {
                     )),
                 Padding(
                     padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-                    child: TextWidget("Question Title", fontFamily,
+
+                    child: CustomTextWidget("Question Title", fontFamily,
                         FontWeight.w600, 20, const Color(0xff000000))),
                 Padding(
                     padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
-                    child: TextWidget("Easy", fontFamily, FontWeight.w600, 16,
-                        const Color(0xff8A8A8A))),
+                    child: CustomTextWidget("Easy", fontFamily, FontWeight.w600,
+                        16, const Color(0xff8A8A8A))),
                 Padding(
                     padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
-                    child: TextWidget(
+                    child: CustomTextWidget(
                         "Lorem Ipsum is simply dummy text of "
                         "the printing and typesetting industry. "
                         "Lorem Ipsum has been the industry's "
@@ -72,9 +74,11 @@ class QuestionPage extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       fontSize: 14)),
             ),
-            const Padding(
-              padding: EdgeInsets.fromLTRB(16, 4, 16, 8),
-              child: TextField(),
+
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
+              child: CustomTextfeild(
+                  "Type your answer here", controller, TextInputType.text),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

@@ -30,7 +30,7 @@ class CustomAppBarWidget extends StatelessWidget {
                         color: Color(0xff181818),
                       ),
                     ),
-                    TextWidget("Profile", "Poppins", FontWeight.w600, 18,
+                    CustomTextWidget("Profile", "Poppins", FontWeight.w600, 18,
                         const Color(0xff181818))
                   ],
                 ),
