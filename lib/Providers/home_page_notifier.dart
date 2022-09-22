@@ -27,7 +27,7 @@ class HomePageNotifier extends ChangeNotifier {
           notifyListeners();
         }
         SharedPreferences pref = await SharedPreferences.getInstance();
-        String token = await user.getIdToken();
+        String token = await user.getIdToken(true);
         print("---------------------");
         print(token);
         print("---------------------");
