@@ -1,7 +1,7 @@
+import 'package:cryptic_hunt/screens/join_team.dart';
 import 'package:cryptic_hunt/screens/profile.dart';
 import 'package:cryptic_hunt/screens/create_team.dart';
 import 'providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
-import 'screens/hamburger.dart';
 import 'screens/login.dart';
 import 'screens/navigation_manager.dart';
 import 'screens/onBoarding.dart';
@@ -31,6 +31,7 @@ class myApp extends StatelessWidget {
       title: "Routes",
       initialRoute: ProfilePage.id,
       routes: {
+        JoinTeam.id: (context) => const JoinTeam(),
         ProfilePage.id: (context) => ProfilePage(),
         NavigationManager.id: (context) => const NavigationManager(),
         SignUp.id: (context) => SignUp(),

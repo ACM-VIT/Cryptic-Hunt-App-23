@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 
-class TextWidget extends StatelessWidget {
+class CustomTextWidget extends StatelessWidget {
   String text, fontFamily;
   FontWeight weight;
   double fontSize;
   Color color;
-  TextWidget(this.text, this.fontFamily, this.weight, this.fontSize, this.color,
+  CustomTextWidget(this.text, this.fontFamily, this.weight, this.fontSize, this.color,
       {Key? key})
       : super(key: key);
 
