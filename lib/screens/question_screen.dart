@@ -1,5 +1,4 @@
 import 'package:cryptic_hunt/Providers/question_screen_notifier.dart';
-import 'package:cryptic_hunt/Providers/sequence_question_screen_notifier.dart';
 import 'package:cryptic_hunt/data/answer.dart';
 import 'package:cryptic_hunt/widgets/alerts/alert.dart';
 import 'package:cryptic_hunt/widgets/alerts/alreadySubmittedAlert.dart';
@@ -93,6 +92,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
   }
 
   void changePageBy1(int x) {
+    //TODO: Write partial dialog
     if (x + widget.notifier.currentIndex < 0) {
       return;
     } else if (x + widget.notifier.currentIndex >=
