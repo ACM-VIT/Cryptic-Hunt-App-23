@@ -1,7 +1,8 @@
+import 'package:cryptic_hunt/screens/profile.dart';
 import 'package:flutter/material.dart';
 import 'hamburger_item.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:cryptic_hunt/widgets/countdowntimer.dart';
+import 'package:cryptic_hunt/widgets/countdown_timer.dart';
 
 class HamburgerDrawer extends StatelessWidget {
   const HamburgerDrawer({Key? key}) : super(key: key);
@@ -62,7 +63,7 @@ class HamburgerDrawer extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const CountDownTimer()),
+                MaterialPageRoute(builder: (context) => const CountdownTimer()),
               );
             },
           ),
@@ -80,8 +81,12 @@ class HamburgerDrawer extends StatelessWidget {
               svgPicture: SvgPicture.asset('assets/HamBurger/sponsors.svg'),
               text: 'Our Sponsors'),
           HamburgerItem(
-              svgPicture: SvgPicture.asset('assets/HamBurger/profile.svg'),
-              text: 'Profile'),
+            svgPicture: SvgPicture.asset('assets/HamBurger/profile.svg'),
+            text: 'Profile',
+            onTap: () {
+              Navigator.pushNamed(context, ProfilePage.id);
+            },
+          ),
         ],
       ),
     );

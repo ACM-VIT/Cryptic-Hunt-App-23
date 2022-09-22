@@ -11,7 +11,7 @@ import 'screens/Loading.dart';
 import 'screens/splashScreen.dart';
 import 'package:cryptic_hunt/screens/speakerScreen.dart';
 import 'package:cryptic_hunt/screens/signUp.dart';
-import 'package:cryptic_hunt/widgets/countdowntimer.dart';
+import 'package:cryptic_hunt/widgets/countdown_timer.dart';
 import 'package:cryptic_hunt/screens/timeline.dart';
 import 'package:cryptic_hunt/screens/createTeam.dart';
 
@@ -32,7 +32,7 @@ class myApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Routes",
-      initialRoute: NavigationManager.id,
+      initialRoute: Timeline.id,
       routes: {
         ProfilePage.id: (context) => ProfilePage(),
         NavigationManager.id: (context) => const NavigationManager(),
@@ -46,7 +46,7 @@ class myApp extends StatelessWidget {
         QuestionPage.id: (context) => QuestionPage(),
 
         // Hamburger.id: (context) => const Hamburger(),
-        CountDownTimer.id: (context) => const CountDownTimer(),
+        CountdownTimer.id: (context) => const CountdownTimer(),
         SpeakerScreen.id: (context) => const SpeakerScreen(),
         Timeline.id: (context) => const Timeline(),
         CreateTeamFirst.id: (context) => CreateTeamFirst(),

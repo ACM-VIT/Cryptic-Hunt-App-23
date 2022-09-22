@@ -1,19 +1,18 @@
 import 'package:cryptic_hunt/screens/leaderboard.dart';
-import 'package:cryptic_hunt/screens/my_home_page.dart';
 import 'timedisplay.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'dart:async';
 
-class CountDownTimer extends StatefulWidget {
+class CountdownTimer extends StatefulWidget {
   static String id = "CountDownTimer";
-  const CountDownTimer({super.key});
+  const CountdownTimer({super.key});
 
   @override
-  State<CountDownTimer> createState() => _CountDownTimerState();
+  State<CountdownTimer> createState() => _CountdownTimerState();
 }
 
-class _CountDownTimerState extends State<CountDownTimer> {
+class _CountdownTimerState extends State<CountdownTimer> {
   Timer? countDown;
   Duration myDuration = const Duration(seconds: 0);
 
@@ -46,7 +45,7 @@ class _CountDownTimerState extends State<CountDownTimer> {
   int index = 0;
   final pages = [
     // const MyHomePage(),
-    const CountDownTimer(),
+    const CountdownTimer(),
     const Leaderboard()
   ];
 

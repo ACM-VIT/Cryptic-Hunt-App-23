@@ -1,5 +1,5 @@
 import 'leaderboard.dart';
-import '/widgets/countdowntimer.dart';
+import '/widgets/countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cryptic_hunt/widgets/hamburger_drawer.dart';
@@ -14,7 +14,7 @@ class NavigationManager extends StatefulWidget {
 }
 
 class _NavigationManagerState extends State<NavigationManager> {
-  final pages = [const Leaderboard(), const CountDownTimer()];
+  final pages = [const Leaderboard(), const CountdownTimer()];
   int currentIndex = 0;
 
   @override

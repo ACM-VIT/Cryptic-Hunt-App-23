@@ -1,4 +1,4 @@
-import 'package:cryptic_hunt/widgets/appbar.dart';
+import 'package:cryptic_hunt/widgets/custom_app_bar.dart';
 import 'package:cryptic_hunt/widgets/signup/textWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -66,29 +66,29 @@ class ProfilePage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          TextWidget("Siddhant C", fontFamily, FontWeight.w700,
-                              24, const Color(0xff181818)),
+                          CustomTextWidget("Siddhant C", fontFamily,
+                              FontWeight.w700, 24, const Color(0xff181818)),
                           const Expanded(flex: 1, child: SizedBox()),
                           TextButton(
                               onPressed: () {},
-                              child: TextWidget("Logout", fontFamily,
+                              child: CustomTextWidget("Logout", fontFamily,
                                   FontWeight.w500, 14, const Color(0xff828282)))
                         ],
                       ),
-                      TextWidget("siddhantc@gmail.com", fontFamily,
+                      CustomTextWidget("siddhantc@gmail.com", fontFamily,
                           FontWeight.w400, 16, const Color(0xFFFF7A01)),
                       const SizedBox(
                         height: 24,
                       ),
-                      TextWidget("Members", fontFamily, FontWeight.w500, 20,
-                          const Color(0xff000000)),
+                      CustomTextWidget("Members", fontFamily, FontWeight.w500,
+                          20, const Color(0xff000000)),
                       const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
-                          TextWidget("Team Leader", fontFamily, FontWeight.w400,
-                              16, const Color(0xff181818)),
+                          CustomTextWidget("Team Leader", fontFamily,
+                              FontWeight.w400, 16, const Color(0xff181818)),
                           const SizedBox(
                             width: 10,
                           ),
@@ -105,8 +105,12 @@ class ProfilePage extends StatelessWidget {
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              TextWidget(teamMemberName[index], fontFamily,
-                                  FontWeight.w400, 16, const Color(0xff181818)),
+                              CustomTextWidget(
+                                  teamMemberName[index],
+                                  fontFamily,
+                                  FontWeight.w400,
+                                  16,
+                                  const Color(0xff181818)),
                               const SizedBox(
                                 height: 20,
                               )
