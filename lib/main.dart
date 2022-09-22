@@ -1,3 +1,5 @@
+import 'package:cryptic_hunt/screens/profile.dart';
+import 'package:cryptic_hunt/screens/create_team.dart';
 import 'providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
 import 'screens/hamburger.dart';
 import 'screens/login.dart';
@@ -6,7 +8,9 @@ import 'screens/onBoarding.dart';
 import 'screens/Loading.dart';
 import 'screens/splashScreen.dart';
 import 'package:cryptic_hunt/screens/speakerScreen.dart';
+import 'package:cryptic_hunt/screens/signUp.dart';
 import 'package:cryptic_hunt/widgets/countdowntimer.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -25,16 +29,19 @@ class myApp extends StatelessWidget {
     return MaterialApp(
       color: const Color(0xffC7C7C7),
       title: "Routes",
-      initialRoute: NavigationManager.id,
+      initialRoute: ProfilePage.id,
       routes: {
+        ProfilePage.id: (context) => ProfilePage(),
         NavigationManager.id: (context) => const NavigationManager(),
+        SignUp.id: (context) => SignUp(),
         SplashScreen.id: (context) => const SplashScreen(),
         Login.id: (context) => const Login(),
         OnBoarding.id: (context) => const OnBoarding(),
         Loading.id: (context) => const Loading(),
-        Hamburger.id: (context) => const Hamburger(),
+        // Hamburger.id: (context) => const Hamburger(),
         CountDownTimer.id: (context) => const CountDownTimer(),
         SpeakerScreen.id: (context) => const SpeakerScreen(),
+        CreateTeam.id: (context) => const CreateTeamPage(),
       },
     );
   }
