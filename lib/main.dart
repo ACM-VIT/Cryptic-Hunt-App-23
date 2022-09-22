@@ -1,9 +1,11 @@
 import 'package:cryptic_hunt/Providers/home_page_notifier.dart';
+import 'package:cryptic_hunt/Providers/profile_notifier.dart';
 import 'package:cryptic_hunt/Providers/question_group_list_notifier.dart';
 import 'package:cryptic_hunt/locator.dart';
 
 import 'package:cryptic_hunt/data/question.dart';
 import 'package:cryptic_hunt/screens/home_page.dart';
+import 'package:cryptic_hunt/screens/profile_page.dart';
 
 import 'providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
 import 'screens/hamburger.dart';
@@ -23,10 +25,14 @@ Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   setup();
-  runApp(ChangeNotifierProvider(
-    create: (context) => Percentage(),
-    child: const myApp(),
-  ));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<Percentage>(create: (_) => Percentage()),
+      ],
+      child: const myApp(),
+    ),
+  );
 }
 
 // ignore: camel_case_types
@@ -55,6 +61,7 @@ class myApp extends StatelessWidget {
         // Hamburger.id: (context) => const Hamburger(),
         CountDownTimer.id: (context) => const CountDownTimer(),
         SpeakerScreen.id: (context) => const SpeakerScreen(),
+        ProfilePage.id: (context) => ProfilePage(state: ProfileNotifier()),
       },
     );
   }

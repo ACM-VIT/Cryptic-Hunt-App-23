@@ -1,6 +1,7 @@
 import 'package:cryptic_hunt/Providers/google_sign_in_provider.dart';
 import 'package:cryptic_hunt/networking/ApiService.dart';
 import 'package:cryptic_hunt/networking/gauth_service.dart';
+import 'package:cryptic_hunt/networking/profile_service.dart';
 import 'package:get_it/get_it.dart';
 
 void setup() {
@@ -10,4 +11,6 @@ void setup() {
       () => GoogleSignInProvider());
 
   GetIt.I.registerSingleton<GAuthService>(GAuthService());
+  GetIt.I.registerSingleton<ProfileService>(
+      ProfileService('https://cryptic.aarav.wtf'));
 }
