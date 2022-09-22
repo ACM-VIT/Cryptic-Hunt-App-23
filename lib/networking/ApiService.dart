@@ -121,4 +121,25 @@ class ApiService {
       print("[ERROR_POST_HINT] ${de.response} \n ${de.requestOptions.headers}");
     }
   }
+
+  Future<List<QuestionGroup>?> getArchive({
+    String endpoint = "/questiongroups/archived",
+  }) async {
+    try {
+      Response response = await dio.get(
+        endpoint,
+      );
+      print(response.data);
+      if (response.statusCode == 200) {
+        List<QuestionGroup> questionGroups = (response.data)
+            .map<QuestionGroup>((i) => QuestionGroup.fromJson(i))
+            .toList();
+        return questionGroups;
+      }
+    } on DioError catch (de, e) {
+      print(
+          "[ERROR_GET_ARCHIVE] ${de.response} \n ${de.requestOptions.headers}");
+      rethrow;
+    }
+  }
 }
