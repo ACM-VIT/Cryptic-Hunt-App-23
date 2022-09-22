@@ -1,4 +1,4 @@
-import 'package:cryptic_hunt/screens/Loading.dart';
+import 'Loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -27,7 +27,7 @@ class OnBoardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Crytic Hunt"),
+        title: const Text("Cryptic Hunt"),
         backgroundColor: const Color(0xffff7a01),
       ),
       body: Center(

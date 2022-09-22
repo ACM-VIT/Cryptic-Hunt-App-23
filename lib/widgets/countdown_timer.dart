@@ -1,18 +1,25 @@
+import 'package:cryptic_hunt/screens/leaderboard.dart';
 import 'timedisplay.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'dart:async';
 
-class CountDownTimer extends StatefulWidget {
-  const CountDownTimer({super.key});
+class CountdownTimer extends StatefulWidget {
+  static String id = "CountDownTimer";
+  const CountdownTimer({super.key});
 
   @override
-  State<CountDownTimer> createState() => _CountDownTimerState();
+  State<CountdownTimer> createState() => _CountdownTimerState();
 }
 
-class _CountDownTimerState extends State<CountDownTimer> {
+class _CountdownTimerState extends State<CountdownTimer> {
   Timer? countDown;
   Duration myDuration = const Duration(seconds: 0);
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   void initState() {
@@ -21,32 +28,41 @@ class _CountDownTimerState extends State<CountDownTimer> {
   }
 
   void startTimer() {
-    myDuration = DateTime(2022, 9, 15, 8).difference(DateTime.now());
+    myDuration = DateTime(2022, 9, 20, 8).difference(DateTime.now());
     countDown =
         Timer.periodic(const Duration(seconds: 1), (_) => setCountDown());
   }
 
   void setCountDown() {
-    setState(() {
-      final secondsRemaining = myDuration.inSeconds - 1;
-      myDuration = Duration(seconds: secondsRemaining);
-    });
+    if (mounted) {
+      setState(() {
+        final secondsRemaining = myDuration.inSeconds - 1;
+        myDuration = Duration(seconds: secondsRemaining);
+      });
+    }
   }
+
+  int index = 0;
+  final pages = [
+    // const MyHomePage(),
+    const CountdownTimer(),
+    const Leaderboard()
+  ];
 
   @override
   Widget build(BuildContext context) {
     int hours = myDuration.inHours;
     int minutes = myDuration.inMinutes.remainder(60);
     int seconds = myDuration.inSeconds.remainder(60);
-    // print("$hours:$minutes:$seconds");
+
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 244, 234, 1),
+      // backgroundColor: const Color.fromARGB(255, 244, 234, 1),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 4),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -60,7 +76,7 @@ class _CountDownTimerState extends State<CountDownTimer> {
                       textAlign: TextAlign.left,
                     ),
                     const Expanded(child: SizedBox()),
-                    SvgPicture.asset("assets/Owl-7.svg"),
+                    SvgPicture.asset('assets/Owl-7.svg')
                   ],
                 ),
               ),
@@ -97,7 +113,7 @@ class _CountDownTimerState extends State<CountDownTimer> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   TimeDisplay(hours),
-                  const Text(
+                  Text(
                     style: TextStyle(
                       fontSize: 60,
                       fontWeight: FontWeight.bold,
@@ -105,7 +121,7 @@ class _CountDownTimerState extends State<CountDownTimer> {
                     ":",
                   ),
                   TimeDisplay(minutes),
-                  const Text(
+                  Text(
                     style: TextStyle(
                       fontSize: 60,
                       fontWeight: FontWeight.bold,
