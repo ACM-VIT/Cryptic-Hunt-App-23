@@ -2,7 +2,7 @@ import 'package:cryptic_hunt/widgets/signup/textWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../widgets/textField.dart';
+// import '../widgets/textField.dart';
 
 class QuestionPage extends StatelessWidget {
   static String id = 'Question';
@@ -29,6 +29,7 @@ class QuestionPage extends StatelessWidget {
                       child: back),
                   Padding(
                       padding: const EdgeInsets.fromLTRB(8, 40, 0, 0),
+
                       child: CustomTextWidget("Question Prompt", fontFamily,
                           FontWeight.w600, 24, const Color(0xff000000)))
                 ]),
@@ -41,6 +42,7 @@ class QuestionPage extends StatelessWidget {
                     )),
                 Padding(
                     padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+
                     child: CustomTextWidget("Question Title", fontFamily,
                         FontWeight.w600, 20, const Color(0xff000000))),
                 Padding(
@@ -72,6 +74,7 @@ class QuestionPage extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       fontSize: 14)),
             ),
+
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
               child: CustomTextfeild(

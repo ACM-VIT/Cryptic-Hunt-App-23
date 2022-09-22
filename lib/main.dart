@@ -33,7 +33,8 @@ class myApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Routes",
-      initialRoute: JoinTeam.id,
+      initialRoute: NavigationManager.id,
+
       routes: {
         JoinTeam.id: (context) => const JoinTeam(),
         ProfilePage.id: (context) => ProfilePage(),

@@ -66,8 +66,14 @@ flutter:
   assets:
 
     - assets/dude1.png
-    #   - images/a_dot_ham.jpeg
     - assets/Owl-7.svg
+    - assets/onBoarding/    
+    - assets/Loading/
+    - assets/navbar/    
+    - assets/HamBurger/    
+    - assets/leaderboard/
+    - assets/CreateTeam/  
+
     - assets/onBoarding/a.svg
     - assets/onBoarding/b.svg
     - assets/onBoarding/c.svg
@@ -109,6 +115,7 @@ flutter:
     - family: NotoSans
       fonts:
         - asset: fonts/NotoSans/NotoSans-Bold.ttf
+        - asset: fonts/NotoSans/NotoSans-SemiBold.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
