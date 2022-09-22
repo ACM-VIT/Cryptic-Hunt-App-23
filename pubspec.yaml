@@ -36,6 +36,7 @@ dependencies:
     sdk: flutter
   flutter_native_splash: ^2.2.9
   flutter_svg: ^1.1.5
+  getwidget: ^3.0.1
   google_fonts: ^3.0.1
   google_sign_in: ^5.4.1
   introduction_screen: ^3.0.2
@@ -84,7 +85,7 @@ flutter:
     - assets/profilepageleadericon.svg
     - assets/CreateTeam/logo.svg
     - assets/CreateTeam/copy.svg
-
+    - assets/faq/owl.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

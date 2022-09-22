@@ -1,5 +1,6 @@
 import 'package:cryptic_hunt/screens/profile.dart';
 import 'package:cryptic_hunt/screens/create_team.dart';
+import 'package:cryptic_hunt/screens/faq_screen.dart';
 import 'providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
 import 'screens/hamburger.dart';
 import 'screens/login.dart';
@@ -42,6 +43,7 @@ class myApp extends StatelessWidget {
         CountDownTimer.id: (context) => const CountDownTimer(),
         SpeakerScreen.id: (context) => const SpeakerScreen(),
         CreateTeam.id: (context) => const CreateTeamPage(),
+        'faq': (context) => const FaqScreen(),
       },
     );
   }
