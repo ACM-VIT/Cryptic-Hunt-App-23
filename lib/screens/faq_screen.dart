@@ -3,6 +3,7 @@ import 'package:getwidget/components/accordion/gf_accordion.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class FaqScreen extends StatelessWidget {
+  static String id = 'FaqScreen';
   const FaqScreen({Key? key}) : super(key: key);
 
   @override
@@ -11,7 +12,7 @@ class FaqScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFFFF4EA),
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 35,vertical:20 ),
+          padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,

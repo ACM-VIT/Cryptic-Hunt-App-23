@@ -34,7 +34,6 @@ class myApp extends StatelessWidget {
     return MaterialApp(
       title: "Routes",
       initialRoute: NavigationManager.id,
-
       routes: {
         JoinTeam.id: (context) => const JoinTeam(),
         ProfilePage.id: (context) => ProfilePage(),
@@ -54,7 +53,7 @@ class myApp extends StatelessWidget {
         Timeline.id: (context) => const Timeline(),
         CreateTeamFirst.id: (context) => CreateTeamFirst(),
         CreateTeam.id: (context) => const CreateTeamPage(),
-        'faq': (context) => const FaqScreen(),
+        FaqScreen.id: (context) => const FaqScreen(),
       },
     );
   }
