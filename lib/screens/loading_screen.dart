@@ -17,40 +17,37 @@ class LoadingScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: ChangeNotifierProvider(
-          create: (_) => Percentage(),
-          child: Column(
-            children: [
-              Consumer<Percentage>(
-                  builder: (context, percentage, child) => SizedBox(
-                        width: double.infinity,
-                        height: 18,
-                        child: LinearPercentIndicator(
-                          barRadius: const Radius.circular(10),
-                          lineHeight: 18,
-                          percent: percentage.getPercentage(),
-                          backgroundColor: const Color(0xffebe7e7),
-                          progressColor: const Color(0xffff7a01),
-                        ),
-                      )),
-              Expanded(
-                flex: 1,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset('assets/Loading/Owl.svg'),
-                    const Text(
-                      "Loading...",
-                      style: TextStyle(
-                          color: Color(0xff777777),
-                          fontFamily: 'NotoSans',
-                          fontSize: 24),
-                    ),
-                  ],
-                ),
+        child: Column(
+          children: [
+            Consumer<Percentage>(
+                builder: (context, percentage, child) => SizedBox(
+                      width: double.infinity,
+                      height: 18,
+                      child: LinearPercentIndicator(
+                        barRadius: const Radius.circular(10),
+                        lineHeight: 18,
+                        percent: percentage.getPercentage(),
+                        backgroundColor: const Color(0xffebe7e7),
+                        progressColor: const Color(0xffff7a01),
+                      ),
+                    )),
+            Expanded(
+              flex: 1,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset('assets/Loading/Owl.svg'),
+                  const Text(
+                    "Loading...",
+                    style: TextStyle(
+                        color: Color(0xff777777),
+                        fontFamily: 'NotoSans',
+                        fontSize: 24),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

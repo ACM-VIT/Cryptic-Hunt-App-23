@@ -1,4 +1,7 @@
+import 'package:cryptic_hunt/Providers/profile_notifier.dart';
+import 'package:cryptic_hunt/screens/profile_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'hamburger_item.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cryptic_hunt/widgets/countdowntimer.dart';
@@ -80,8 +83,23 @@ class HamburgerDrawer extends StatelessWidget {
               svgPicture: SvgPicture.asset('assets/HamBurger/sponsors.svg'),
               text: 'Our Sponsors'),
           HamburgerItem(
-              svgPicture: SvgPicture.asset('assets/HamBurger/profile.svg'),
-              text: 'Profile'),
+            svgPicture: SvgPicture.asset('assets/HamBurger/profile.svg'),
+            text: 'Profile',
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ChangeNotifierProvider(
+                          create: (_) => ProfileNotifier(),
+                          builder: (context, child) {
+                            return ProfilePage(
+                              state: Provider.of<ProfileNotifier>(context),
+                            );
+                          },
+                        )),
+              );
+            },
+          ),
         ],
       ),
     );
