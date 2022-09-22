@@ -1,5 +1,10 @@
+import 'package:cryptic_hunt/Providers/google_sign_in_provider.dart';
+import 'package:cryptic_hunt/Providers/login_page_notifier.dart';
+import 'package:cryptic_hunt/screens/navigation_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'onBoarding.dart';
 
@@ -91,41 +96,51 @@ class LoginPage extends StatelessWidget {
               ])),
             ),
             const SizedBox(height: 35),
-            Container(
-              margin: const EdgeInsets.only(left: 18, right: 18),
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {
-                  writeInSharedPreference();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const OnBoarding()),
-                  );
+            ChangeNotifierProvider(
+              create: (_) => LoginPageNotifier(),
+              child: Consumer<LoginPageNotifier>(
+                builder: (context, provider, child) {
+                  return provider.busy
+                      ? const Center(
+                          child: CircularProgressIndicator(color: Colors.white),
+                        )
+                      : Container(
+                          margin: const EdgeInsets.only(left: 18, right: 18),
+                          width: double.infinity,
+                          height: 50,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // writeInSharedPreference();
+                              provider.login();
+                            },
+                            style: ElevatedButton.styleFrom(
+                                primary: const Color(0xFFFFFFFF),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8))),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset(
+                                      'assets/login/google_icon.png'),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "Sign In with Google",
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color:
+                                          const Color.fromRGBO(13, 13, 13, 1)),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
                 },
-                style: ElevatedButton.styleFrom(
-                    primary: const Color(0xFFFFFFFF),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image.asset('assets/login/google_icon.png'),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      "Sign In with Google",
-                      style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: const Color.fromRGBO(13, 13, 13, 1)),
-                    ),
-                  ],
-                ),
               ),
             ),
             const SizedBox(
@@ -137,8 +152,8 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  void writeInSharedPreference() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.setBool("Logged_In", true);
-  }
+  // void writeInSharedPreference() async {
+  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //   sharedPreferences.setBool("Logged_In", true);
+  // }
 }

@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+
 import 'leaderboard.dart';
 import '/widgets/countdown_timer.dart';
 import 'package:flutter/material.dart';
@@ -14,56 +16,109 @@ class NavigationManager extends StatefulWidget {
 }
 
 class _NavigationManagerState extends State<NavigationManager> {
-  final pages = [const Leaderboard(), const CountdownTimer()];
+  final pages = [
+    CountDownTimer(),
+    const Leaderboard(),
+  ];
   int currentIndex = 0;
+
+  TextStyle selectedStyle(BuildContext context) {
+    return TextStyle(color: Theme.of(context).primaryColor);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Cryptic Hunt"),
-        backgroundColor: const Color(0xffff7a01),
-      ),
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          elevation: 0,
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Theme.of(context).scaffoldBackgroundColor,
+          ),
+          iconTheme:
+              IconThemeData(color: Theme.of(context).primaryColor, size: 30)),
       drawer: const HamburgerDrawer(),
-      body: IndexedStack(
-        index: currentIndex,
-        children: pages,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: IndexedStack(
+          index: currentIndex,
+          children: pages,
+        ),
       ),
       bottomNavigationBar: SizedBox(
         height: 90,
-        child: BottomNavigationBar(
-          elevation: 0,
-          // backgroundColor: Colors.blue,
-          selectedItemColor: Colors.blue,
-          unselectedItemColor: Colors.grey,
-          // showSelectedLabels: false,
-          // showUnselectedLabels: false,
-          currentIndex: currentIndex,
-          onTap: (index) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
-          items: [
-            BottomNavigationBarItem(
-              icon: Padding(
-                padding: const EdgeInsets.only(bottom: 6.0),
-                child: SvgPicture.asset(
-                  'assets/navbar/leaderboard_icon.svg',
+        child: Stack(
+          children: [
+            Align(
+              alignment: Alignment.center,
+              child: BottomNavigationBar(
+                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                elevation: 0,
+                // backgroundColor: Colors.blue,
+                selectedItemColor: Colors.blue,
+                unselectedItemColor: Colors.grey,
+                // showSelectedLabels: false,
+                // showUnselectedLabels: false,
+                currentIndex: currentIndex,
+                onTap: (index) {
+                  setState(() {
+                    currentIndex = index;
+                  });
+                },
+                items: [
+                  BottomNavigationBarItem(
+                    icon: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/navbar/cryptic_hunt_icon.svg',
+                          color: const Color(0xffFF8618),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "The Hunt",
+                          style: (currentIndex == 0)
+                              ? selectedStyle(context)
+                              : null,
+                        ),
+                      ],
+                    ),
+                    label: "",
+                  ),
+                  BottomNavigationBarItem(
+                      icon: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            'assets/navbar/leaderboard_icon.svg',
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "Leaderboard",
+                            style: (currentIndex == 1)
+                                ? selectedStyle(context)
+                                : null,
+                          ),
+                        ],
+                      ),
+                      label: ""),
+                ],
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: VerticalDivider(
+                  color: Colors.black,
+                  thickness: 1,
                 ),
               ),
-              label: "Leaderboard",
-            ),
-            BottomNavigationBarItem(
-              icon: Padding(
-                padding: const EdgeInsets.only(bottom: 6.0),
-                child: SvgPicture.asset(
-                  'assets/navbar/cryptic_hunt_icon.svg',
-                  color: const Color(0xffFF8618),
-                ),
-              ),
-              label: "The Hunt",
-            ),
+            )
           ],
         ),
       ),

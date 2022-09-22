@@ -4,8 +4,9 @@ import 'package:cryptic_hunt/Providers/LoadingScreen/HomeScreenLoadingPercentage
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class LoadingScreen extends StatelessWidget {
+  static String id = "MyHomePage";
+  const LoadingScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

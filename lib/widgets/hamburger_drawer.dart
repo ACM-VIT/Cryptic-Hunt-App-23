@@ -1,5 +1,7 @@
-import 'package:cryptic_hunt/screens/profile.dart';
+import 'package:cryptic_hunt/Providers/profile_notifier.dart';
+import 'package:cryptic_hunt/screens/profile_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../screens/faq_screen.dart';
 import 'hamburger_item.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -64,7 +66,7 @@ class HamburgerDrawer extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const CountdownTimer()),
+                MaterialPageRoute(builder: (context) => const CountDownTimer()),
               );
             },
           ),
@@ -89,7 +91,18 @@ class HamburgerDrawer extends StatelessWidget {
             svgPicture: SvgPicture.asset('assets/HamBurger/profile.svg'),
             text: 'Profile',
             onTap: () {
-              Navigator.pushNamed(context, ProfilePage.id);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ChangeNotifierProvider(
+                          create: (_) => ProfileNotifier(),
+                          builder: (context, child) {
+                            return ProfilePage(
+                              state: Provider.of<ProfileNotifier>(context),
+                            );
+                          },
+                        )),
+              );
             },
           ),
         ],
