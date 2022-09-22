@@ -12,7 +12,7 @@ QuestionGroupDetail _$QuestionGroupDetailFromJson(Map<String, dynamic> json) =>
       json['id'] as String,
       json['description'] as String,
       json['isSequence'] as bool,
-      json['numQuestionsSolvedQuestionGroup'] as int,
+      json['numQuestionsSolvedQuestionGroup'] as int? ?? 0,
       json['numberOfQuestions'] as int,
     )..questions = (json['questions'] as List<dynamic>?)
         ?.map((e) => Question.fromJson(e as Map<String, dynamic>))

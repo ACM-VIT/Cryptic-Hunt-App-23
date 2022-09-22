@@ -19,7 +19,7 @@ class _TimeDisplayState extends State<TimeDisplay> {
       height: 80,
       width: 80,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey, width: 1.5),
+        border: Border.all(color: Colors.black, width: 1.5),
         borderRadius: BorderRadius.circular(5),
       ),
       child: Padding(
@@ -27,8 +27,9 @@ class _TimeDisplayState extends State<TimeDisplay> {
         child: Text(
           contentDisplayed,
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: Colors.black,
+          style: TextStyle(
+            height: 1.3,
+            color: Theme.of(context).primaryColor,
             fontSize: 45,
             fontWeight: FontWeight.bold,
           ),

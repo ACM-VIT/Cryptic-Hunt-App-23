@@ -14,10 +14,15 @@ class QuestionGroupListNotifier extends ChangeNotifier {
   }
 
   Future<void> getQuestionGroups() async {
-    isBusy(true);
-    questionGroups =
-        await api.getQuestionGroup(endpoint: "/questiongroups") ?? [];
-    isBusy(false);
+    try {
+      isBusy(true);
+      questionGroups =
+          await api.getQuestionGroup(endpoint: "/questiongroups") ?? [];
+      isBusy(false);
+    } catch (e) {
+      isBusy(false);
+      rethrow;
+    }
   }
 
   void isBusy(bool x) {

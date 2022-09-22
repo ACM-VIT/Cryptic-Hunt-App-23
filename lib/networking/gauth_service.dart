@@ -31,6 +31,6 @@ class GAuthService {
 
     await FirebaseAuth.instance.signInWithCredential(credential);
 
-    String? token = await auth.currentUser?.getIdToken();
+    String? token = await auth.currentUser?.getIdToken(true);
   }
 }

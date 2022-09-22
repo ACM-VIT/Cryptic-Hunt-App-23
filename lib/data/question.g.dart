@@ -7,10 +7,10 @@ part of 'question.dart';
 // **************************************************************************
 
 Question _$QuestionFromJson(Map<String, dynamic> json) => Question(
-      json['hint'] as String,
+      json['hint'] as String?,
       json['description'] as String,
       json['title'] as String,
-      json['costOfHint'] as int,
+      json['costOfHint'] as int?,
       json['pointsAwarded'] as int,
       json['solved'] as bool,
       json['seq'] as int,
