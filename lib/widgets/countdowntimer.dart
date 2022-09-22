@@ -71,50 +71,56 @@ class _CountDownTimerState extends State<CountDownTimer> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    const Text(
-                      "Cryptic Hunt",
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.left,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Cryptic Hunt",
+                          style: Theme.of(context).textTheme.headline1,
+                          textAlign: TextAlign.left,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Text("Phase 1",
+                              style: Theme.of(context).textTheme.subtitle1),
+                        ),
+                      ],
                     ),
                     const Expanded(child: SizedBox()),
                     SvgPicture.asset('assets/Owl-7.svg')
                   ],
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text("Phase 1",
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 17.5,
-                        fontWeight: FontWeight.bold)),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Container(
-                  decoration: const BoxDecoration(
-                      border: Border(bottom: BorderSide(color: Colors.orange))),
-                ),
-              ),
+              Divider(
+                color: Theme.of(context).primaryColor,
+              )
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              //   child: Container(
+              //     decoration: const BoxDecoration(
+              //         border: Border(bottom: BorderSide(color: Colors.orange))),
+              //   ),
+              // ),
               // const SizedBox(
               //   height: 10,
               // ),
-              const Padding(
+              ,
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
                 child: Text(
                   "Tick! Tock!",
-                  style: TextStyle(
-                      color: Colors.grey,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline1
+                      ?.copyWith(fontSize: 20),
                 ),
               ),
               Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TimeDisplay(hours),
                   Text(
@@ -135,11 +141,22 @@ class _CountDownTimerState extends State<CountDownTimer> {
                   TimeDisplay(seconds),
                 ],
               ),
+              Padding(
+                padding: EdgeInsets.only(top: 33, bottom: 20),
+                child: Text(
+                  "Prompts",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline1
+                      ?.copyWith(fontSize: 18),
+                ),
+              ),
               Expanded(
                   child: ChangeNotifierProvider(
                 create: (context) => QuestionGroupListNotifier(),
                 builder: (context, child) => QuestionGroupList(
-                    state: Provider.of<QuestionGroupListNotifier>(context)),
+                    state: Provider.of<QuestionGroupListNotifier>(context,
+                        listen: false)),
               ))
             ],
           ),

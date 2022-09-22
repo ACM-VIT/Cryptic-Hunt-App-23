@@ -10,23 +10,45 @@ class QuestionGroupListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      child: Card(
-        elevation: 0,
-        borderOnForeground: true,
-        //todo: Change color
-        shape: RoundedRectangleBorder(side: BorderSide(color: Colors.amber)),
-        child: Row(
-          children: [
-            Column(
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Container(
+        width: double.infinity,
+        child: Card(
+          color: Colors.transparent,
+          elevation: 0,
+          borderOnForeground: true,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5),
+              side: BorderSide(color: Theme.of(context).primaryColor)),
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(questionGroup.description.substring(0, 20)),
-                Text(questionGroup.numberOfQuestions.toString())
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      questionGroup.name,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline1
+                          ?.copyWith(fontSize: 16, fontWeight: FontWeight.w500),
+                    ),
+                    Text(
+                      questionGroup.numQuestionsSolvedQuestionGroup.toString() +
+                          "/" +
+                          questionGroup.numberOfQuestions.toString() +
+                          " Questions solved",
+                      style: Theme.of(context).textTheme.subtitle1,
+                    )
+                  ],
+                ),
+                Icon(Icons.arrow_forward_ios)
               ],
             ),
-            Icon(Icons.arrow_forward_ios)
-          ],
+          ),
         ),
       ),
     );
