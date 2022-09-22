@@ -1,9 +1,8 @@
 import 'package:cryptic_hunt/Providers/question_group_list_notifier.dart';
 import 'package:cryptic_hunt/screens/leaderboard.dart';
-import 'package:cryptic_hunt/screens/loading_screen.dart';
 import 'package:cryptic_hunt/widgets/questionGroupList.dart';
-import 'package:provider/provider.dart';
 import 'timedisplay.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'dart:async';

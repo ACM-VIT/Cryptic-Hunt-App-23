@@ -9,6 +9,7 @@ import 'package:cryptic_hunt/widgets/signup/textWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cryptic_hunt/widgets/alerts/questionLockAlert.dart';
+import 'package:cryptic_hunt/widgets/signup/textWidget.dart';
 
 import '../data/question.dart';
 
@@ -122,7 +123,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       child: back),
                   Padding(
                       padding: const EdgeInsets.fromLTRB(8, 40, 0, 0),
-                      child: TextWidget("Question Prompt", fontFamily,
+                      child: CustomTextWidget("Question Prompt", fontFamily,
                           FontWeight.w600, 24, const Color(0xff000000)))
                 ]),
                 const Padding(
@@ -141,7 +142,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       children: [
                         Padding(
                             padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-                            child: TextWidget(
+                            child: CustomTextWidget(
                                 widget
                                     .notifier
                                     .questionGroupDetail!
@@ -153,7 +154,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                                 const Color(0xff000000))),
                         Padding(
                             padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
-                            child: TextWidget(
+                            child: CustomTextWidget(
                                 widget
                                         .notifier
                                         .questionGroupDetail!
@@ -217,7 +218,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
                       child: ListView(
                         children: [
-                          TextWidget(
+                          CustomTextWidget(
                               widget.notifier.questionGroupDetail!
                                   .questions![index].description,
                               fontFamily,

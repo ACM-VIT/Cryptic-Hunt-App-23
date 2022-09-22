@@ -2,9 +2,10 @@ import 'package:cryptic_hunt/Providers/profile_notifier.dart';
 import 'package:cryptic_hunt/screens/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../screens/faq_screen.dart';
 import 'hamburger_item.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:cryptic_hunt/widgets/countdowntimer.dart';
+import 'package:cryptic_hunt/widgets/countdown_timer.dart';
 
 class HamburgerDrawer extends StatelessWidget {
   const HamburgerDrawer({Key? key}) : super(key: key);
@@ -77,8 +78,12 @@ class HamburgerDrawer extends StatelessWidget {
               svgPicture: SvgPicture.asset('assets/HamBurger/resources.svg'),
               text: 'Resources'),
           HamburgerItem(
-              svgPicture: SvgPicture.asset('assets/HamBurger/faq.svg'),
-              text: 'Frequently Asked Questions'),
+            svgPicture: SvgPicture.asset('assets/HamBurger/faq.svg'),
+            text: 'Frequently Asked Questions',
+            onTap: () {
+              Navigator.pushNamed(context, FaqScreen.id);
+            },
+          ),
           HamburgerItem(
               svgPicture: SvgPicture.asset('assets/HamBurger/sponsors.svg'),
               text: 'Our Sponsors'),
