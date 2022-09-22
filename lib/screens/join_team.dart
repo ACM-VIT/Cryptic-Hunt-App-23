@@ -1,7 +1,7 @@
 import 'package:cryptic_hunt/widgets/button.dart';
 import 'package:cryptic_hunt/widgets/signup/textWidget.dart';
 import 'package:cryptic_hunt/widgets/textField.dart';
-import 'package:cryptic_hunt/widgets/wrong_teamcode_alertdialog.dart';
+import 'package:cryptic_hunt/widgets/alerts/wrong_teamcode_alertdialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

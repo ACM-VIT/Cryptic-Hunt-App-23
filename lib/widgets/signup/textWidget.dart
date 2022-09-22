@@ -5,7 +5,8 @@ class CustomTextWidget extends StatelessWidget {
   FontWeight weight;
   double fontSize;
   Color color;
-  CustomTextWidget(this.text, this.fontFamily, this.weight, this.fontSize, this.color,
+  CustomTextWidget(
+      this.text, this.fontFamily, this.weight, this.fontSize, this.color,
       {Key? key})
       : super(key: key);
 
