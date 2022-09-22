@@ -15,7 +15,6 @@ import 'package:cryptic_hunt/widgets/countdowntimer.dart';
 import 'package:cryptic_hunt/screens/timeline.dart';
 import 'package:cryptic_hunt/screens/createTeam.dart';
 
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -33,7 +32,7 @@ class myApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Routes",
-      initialRoute: Hamburger.id,
+      initialRoute: NavigationManager.id,
       routes: {
         ProfilePage.id: (context) => ProfilePage(),
         NavigationManager.id: (context) => const NavigationManager(),
