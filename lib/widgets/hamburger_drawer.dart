@@ -82,8 +82,8 @@ class HamburgerDrawer extends StatelessWidget {
                           create: (context) => ArchivePageNotifier(),
                           builder: (context, child) => ArchiveScreen(
                               notifier: Provider.of<ArchivePageNotifier>(
-                                  context,
-                                  listen: false)),
+                            context,
+                          )),
                         )),
               );
             },

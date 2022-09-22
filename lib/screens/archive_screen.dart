@@ -16,12 +16,21 @@ class _ArchiveScreenState extends State<ArchiveScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: QuestionGroupList(
-          state: widget.notifier,
-          canTap: false,
-        ),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 100,
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: QuestionGroupList(
+                state: widget.notifier,
+                canTap: false,
+              ),
+            ),
+          )
+        ],
       ),
     );
   }

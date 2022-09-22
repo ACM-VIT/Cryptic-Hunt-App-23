@@ -155,8 +155,9 @@ class _CountDownTimerState extends State<CountDownTimer> {
                   child: ChangeNotifierProvider(
                 create: (context) => QuestionGroupListNotifier(),
                 builder: (context, child) => QuestionGroupList(
-                    state: Provider.of<QuestionGroupListNotifier>(context,
-                        listen: false)),
+                    state: Provider.of<QuestionGroupListNotifier>(
+                  context,
+                )),
               ))
             ],
           ),
