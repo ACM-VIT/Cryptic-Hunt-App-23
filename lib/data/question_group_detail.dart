@@ -12,6 +12,7 @@ class QuestionGroupDetail {
   int numberOfQuestions;
   String description;
   bool isSequence;
+  @JsonKey(defaultValue: 0)
   int numQuestionsSolvedQuestionGroup;
   List<Question>? questions;
 

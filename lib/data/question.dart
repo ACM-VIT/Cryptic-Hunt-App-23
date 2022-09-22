@@ -6,8 +6,10 @@ part 'question.g.dart';
 class Question {
   Question(this.hint, this.description, this.title, this.costOfHint,
       this.pointsAwarded, this.solved, this.seq);
-  String hint, description, title;
-  int costOfHint, pointsAwarded, seq;
+  String? hint;
+  String description, title;
+  int? costOfHint;
+  int pointsAwarded, seq;
   bool solved;
 
   factory Question.fromJson(Map<String, dynamic> json) =>
