@@ -1,5 +1,3 @@
-import 'login.dart';
-import '../services/qr_scanner.dart';
 import 'package:cryptic_hunt/widgets/countdowntimer.dart';
 
 import 'package:flutter/material.dart';

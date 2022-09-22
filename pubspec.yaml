@@ -71,19 +71,11 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
     - assets/Owl-7.svg
-    - assets/onBoarding/a.svg
-    - assets/onBoarding/b.svg
-    - assets/onBoarding/c.svg
-    - assets/Loading/Owl.svg
-    - assets/navbar/cryptic_hunt_icon.svg
-    - assets/navbar/leaderboard_icon.svg
-    - assets/HamBurger/timeline.svg
-    - assets/HamBurger/profilepic.svg
-    - assets/HamBurger/archive.svg
-    - assets/HamBurger/profile.svg
-    - assets/HamBurger/resources.svg
-    - assets/HamBurger/sponsors.svg
-    - assets/HamBurger/faq.svg
+    - assets/onBoarding/    
+    - assets/Loading/
+    - assets/navbar/    
+    - assets/HamBurger/    
+    - assets/leaderboard/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -102,6 +94,7 @@ flutter:
     - family: NotoSans
       fonts:
         - asset: fonts/NotoSans/NotoSans-Bold.ttf
+        - asset: fonts/NotoSans/NotoSans-SemiBold.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
