@@ -1,19 +1,10 @@
 import 'package:cryptic_hunt/Providers/home_page_notifier.dart';
-import 'package:cryptic_hunt/Providers/multiple_question_screen_notifier.dart';
-import 'package:cryptic_hunt/Providers/question_group_list_notifier.dart';
-import 'package:cryptic_hunt/Providers/standalone_question_screen_notifier.dart';
 import 'package:cryptic_hunt/locator.dart';
 
-import 'package:cryptic_hunt/data/question.dart';
 import 'package:cryptic_hunt/screens/home_page.dart';
-import 'package:cryptic_hunt/screens/multiple_question_screen.dart';
-import 'package:cryptic_hunt/screens/question_screen.dart';
-import 'package:cryptic_hunt/screens/standalone_question_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'Providers/sequence_question_screen_notifier.dart';
 import 'providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
-import 'screens/hamburger.dart';
 import 'screens/login.dart';
 import 'screens/navigation_manager.dart';
 import 'screens/onBoarding.dart';
@@ -24,7 +15,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cryptic_hunt/screens/loading_screen.dart';
-import '/screens/question_screen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -84,9 +74,6 @@ class myApp extends StatelessWidget {
         // Hamburger.id: (context) => const Hamburger(),
         CountDownTimer.id: (context) => const CountDownTimer(),
         SpeakerScreen.id: (context) => const SpeakerScreen(),
-
-        MultipleQuestionScreen.id: (context) =>
-            MultipleQuestionScreen(notifier: MultipleQuestionScreenNotifier()),
       },
     );
   }
