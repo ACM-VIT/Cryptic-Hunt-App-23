@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/textField.dart';
+import '../widgets/custom_text_field.dart';
 import '../widgets/signup/textWidget.dart';
 
 class SignUp extends StatelessWidget {
@@ -50,7 +50,7 @@ class SignUp extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                      child: CustomTextfeild("Enter your name here", controller,
+                      child: CustomTextField("Enter your name here", controller,
                           TextInputType.text),
                     ),
                     Padding(
@@ -60,7 +60,7 @@ class SignUp extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                      child: CustomTextfeild("Enter your E-mail Address here",
+                      child: CustomTextField("Enter your E-mail Address here",
                           controller, TextInputType.text),
                     ),
                     Padding(
@@ -70,7 +70,7 @@ class SignUp extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                      child: CustomTextfeild("Enter your Phone Number here",
+                      child: CustomTextField("Enter your Phone Number here",
                           controller, TextInputType.number),
                     ),
                   ],
