@@ -81,6 +81,7 @@ flutter:
     - assets/HamBurger/faq.svg
     - assets/login/google_icon.png
     - assets/login/treasure.png
+    - assets/question/
     - assets/profilepagebg.svg
     - assets/profilepageleadericon.svg
     - assets/CreateTeam/logo.svg
