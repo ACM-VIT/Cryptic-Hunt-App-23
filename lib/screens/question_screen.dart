@@ -1,6 +1,7 @@
 import 'package:cryptic_hunt/Providers/question_screen_notifier.dart';
 import 'package:cryptic_hunt/data/answer.dart';
 import 'package:cryptic_hunt/data/buy_hint.dart';
+import 'package:cryptic_hunt/services/qr_scanner.dart';
 import 'package:cryptic_hunt/widgets/alerts/alert.dart';
 import 'package:cryptic_hunt/widgets/alerts/alreadySubmittedAlert.dart';
 import 'package:cryptic_hunt/widgets/alerts/buyHint.Alert.dart';
@@ -10,9 +11,11 @@ import 'package:cryptic_hunt/widgets/alerts/successAlert.dart';
 import 'package:cryptic_hunt/widgets/alerts/wrongAnswerAlert.dart';
 import 'package:cryptic_hunt/widgets/signup/textWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cryptic_hunt/widgets/alerts/questionLockAlert.dart';
 import 'package:cryptic_hunt/widgets/signup/textWidget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../data/hint.dart';
 import '../data/question.dart';
@@ -245,16 +248,52 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
                       child: ListView(
-                        children: [
-                          CustomTextWidget(
-                              widget.notifier.questionGroupDetail!
-                                  .questions![index].description,
-                              fontFamily,
-                              FontWeight.w600,
-                              18,
-                              const Color(0xff181818)),
-                        ],
-                      )),
+                          padding: EdgeInsets.all(8),
+                          children: <Widget>[
+                                Linkify(
+                                  text: widget.notifier.questionGroupDetail!
+                                      .questions![index].description,
+                                  onOpen: (link) async {
+                                    if (await canLaunchUrl(
+                                        Uri.parse(link.url))) {
+                                      await launchUrl(Uri.parse(link.url));
+                                    } else {
+                                      throw 'Could not launch $link';
+                                    }
+                                  },
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headline1
+                                      ?.copyWith(fontSize: 18),
+                                  linkStyle: Theme.of(context)
+                                      .textTheme
+                                      .headline1
+                                      ?.copyWith(
+                                          fontSize: 18,
+                                          color:
+                                              Theme.of(context).primaryColor),
+                                ),
+                              ] +
+                              widget
+                                  .notifier
+                                  .questionGroupDetail!
+                                  .questions![widget.notifier.currentIndex]
+                                  .images
+                                  .map<Widget>((e) => Image.network(
+                                        e,
+                                        fit: BoxFit.contain,
+                                      ))
+                                  .toList()
+
+                          // CustomTextWidget(
+                          //     widget.notifier.questionGroupDetail!
+                          //         .questions![index].description,
+                          //     fontFamily,
+                          //     FontWeight.w600,
+                          //     18,
+                          //     const Color(0xff181818)),
+
+                          )),
                 )),
                 if (!(widget.notifier.questionGroupDetail
                             ?.questions![widget.notifier.currentIndex].solved ??
@@ -372,27 +411,38 @@ class _QuestionScreenState extends State<QuestionScreen> {
                               ?.questions![widget.notifier.currentIndex]
                               .solved ??
                           false)) {
+                        Answer? answer;
                         if (widget.notifier.showScanButton) {
+                          await Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => QrScanner(
+                              onScan: (ans) {
+                                answer = Answer(
+                                    ans,
+                                    widget.notifier.questionGroupDetail!.id,
+                                    widget.notifier.currentIndex + 1);
+                              },
+                            ),
+                          ));
                         } else {
-                          Answer answer = Answer(
+                          answer = Answer(
                               _controller.text,
                               widget.notifier.questionGroupDetail!.id,
                               widget.notifier.currentIndex + 1);
-                          bool x = await widget.notifier.submitAns(answer);
-                          if (x) {
-                            await widget.notifier.getQuestionGroupDetail(
-                                widget.questionGroupDetailId);
+                        }
+                        bool x = await widget.notifier.submitAns(answer!);
+                        if (x) {
+                          await widget.notifier.getQuestionGroupDetail(
+                              widget.questionGroupDetailId);
 
-                            if (widget.notifier.questionGroupDetail
-                                    ?.numQuestionsSolvedQuestionGroup ==
-                                widget.notifier.questionGroupDetail
-                                    ?.numberOfQuestions)
-                              _showMyDialog(Alert.success);
-                            else
-                              _showMyDialog(Alert.partialSubmit);
-                          } else {
-                            _showMyDialog(Alert.wrong);
-                          }
+                          if (widget.notifier.questionGroupDetail
+                                  ?.numQuestionsSolvedQuestionGroup ==
+                              widget.notifier.questionGroupDetail
+                                  ?.numberOfQuestions)
+                            _showMyDialog(Alert.success);
+                          else
+                            _showMyDialog(Alert.partialSubmit);
+                        } else {
+                          _showMyDialog(Alert.wrong);
                         }
                       }
                     },

@@ -10,7 +10,7 @@ class PartialSuccessAlert extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Success'),
+      title: const Text('Solve next Question'),
       content: SingleChildScrollView(
         child: ListBody(
           children: const <Widget>[
