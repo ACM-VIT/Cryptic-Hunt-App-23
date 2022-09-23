@@ -25,6 +25,7 @@ class Team {
   String updatedAt;
   int points;
   List<User>? members;
+  @JsonKey(defaultValue: 0)
   int rank;
 
   factory Team.fromJson(Map<String, dynamic> json) => _$TeamFromJson(json);

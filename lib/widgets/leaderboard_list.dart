@@ -1,107 +1,55 @@
+import 'package:cryptic_hunt/Providers/leaderboard_page_notifier.dart';
+import 'package:cryptic_hunt/widgets/leaderboard_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class LeaderboardList extends StatefulWidget {
-  const LeaderboardList({super.key});
+class LeaderBoardList extends StatefulWidget {
+  LeaderBoardList({super.key, required this.state});
+  LeaderBoardPageNotifier state;
 
   @override
-  State<LeaderboardList> createState() => _LeaderboardListState();
+  State<LeaderBoardList> createState() => _LeaderBoardListState();
 }
 
-class _LeaderboardListState extends State<LeaderboardList> {
-  final teamNames = [
-    "Sankalp",
-    "Harsh",
-    "Sumona",
-    "Himanshu",
-    "Rohan",
-  ];
+class _LeaderBoardListState extends State<LeaderBoardList> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) => getLeaderBoard());
+
+    super.initState();
+  }
+
+  Future<void> getLeaderBoard() async {
+    widget.state.getLeaderBoard();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: 5,
-        itemBuilder: (BuildContext context, int index) {
-          String currentTeamName = teamNames[index];
-          String profilePicturePath = 'assets/dude1.png';
-          int points = 50;
-
-          if (index == 0) {
-            String medalPath = 'assets/leaderboard/gold.svg';
-            return ListTile(
-              leading: Row(
-                children: [
-                  Text("${index + 1}"),
-                  CircleAvatar(child: Image.asset(profilePicturePath)),
-                ],
-              ),
-              title: Row(
-                children: [
-                  Text(currentTeamName),
-                  const Expanded(child: SizedBox()),
-                  SvgPicture.asset(medalPath),
-                  const SizedBox(width: 10),
-                  Text("${points.toString()} PTS"),
-                ],
-              ),
-            );
-          } else if (index == 1) {
-            String medalPath = 'assets/leaderboard/silver.svg';
-            return ListTile(
-              leading: Row(
-                children: [
-                  Text("${index + 1}"),
-                  CircleAvatar(child: Image.asset(profilePicturePath)),
-                ],
-              ),
-              title: Row(
-                children: [
-                  Text(currentTeamName),
-                  const Expanded(child: SizedBox()),
-                  SvgPicture.asset(medalPath),
-                  const SizedBox(width: 10),
-                  Text("${points.toString()} PTS"),
-                ],
-              ),
-            );
-          } else if (index == 2) {
-            String medalPath = 'assets/leaderboard/bronze.svg';
-            return ListTile(
-              leading: Row(
-                children: [
-                  Text("${index + 1}"),
-                  CircleAvatar(child: Image.asset(profilePicturePath)),
-                ],
-              ),
-              title: Row(
-                children: [
-                  Text(currentTeamName),
-                  const Expanded(child: SizedBox()),
-                  SvgPicture.asset(medalPath),
-                  const SizedBox(width: 10),
-                  Text("${points.toString()} PTS"),
-                ],
-              ),
-            );
-          } else {
-            String medalPath = 'assets/leaderboard/empty_image.svg';
-            return ListTile(
-              leading: Row(
-                children: [
-                  Text("${index + 1}"),
-                  CircleAvatar(child: Image.asset(profilePicturePath)),
-                ],
-              ),
-              title: Row(
-                children: [
-                  Text(currentTeamName),
-                  const Expanded(child: SizedBox()),
-                  SvgPicture.asset(medalPath),
-                  const SizedBox(width: 10),
-                  Text("${points.toString()} PTS"),
-                ],
-              ),
-            );
-          }
-        });
+    return (widget.state.busy)
+        ? Center(
+            child: CircularProgressIndicator(),
+          )
+        : RefreshIndicator(
+            onRefresh: getLeaderBoard,
+            child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                physics: const ScrollPhysics(),
+                itemCount: widget.state.leaderBoard?.topTeams.length ?? 0,
+                itemBuilder: (BuildContext context, int index) {
+                  String assetName;
+                  if (index == 0) {
+                    assetName = 'assets/leaderboard/gold.svg';
+                  } else if (index == 1) {
+                    assetName = 'assets/leaderboard/silver.svg';
+                  } else if (index == 2) {
+                    assetName = 'assets/leaderboard/bronze.svg';
+                  } else {
+                    assetName = 'assets/leaderboard/empty_image.svg';
+                  }
+                  return LeaderBoardListItem(
+                      team: widget.state.leaderBoard!.topTeams[index],
+                      index: index,
+                      assetName: assetName);
+                }));
   }
 }

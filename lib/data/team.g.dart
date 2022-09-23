@@ -17,7 +17,7 @@ Team _$TeamFromJson(Map<String, dynamic> json) => Team(
       (json['members'] as List<dynamic>?)
           ?.map((e) => User.fromJson(e as Map<String, dynamic>))
           .toList(),
-      json['rank'] as int,
+      json['rank'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$TeamToJson(Team instance) => <String, dynamic>{
