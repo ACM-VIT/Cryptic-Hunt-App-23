@@ -14,17 +14,32 @@ class ProfileService {
   User? _user;
   Team? _team;
 
+  Future<User?> get user async {
+    if (_user == null) {
+      await getUserDetails();
+    }
+    return _user;
+  }
+
+  // Future<Team?> get team async {
+  //   if (_team == null && _user != null) {
+  //     await getTeamDetails(id: _user!.teamId);
+  //   }
+
+  //   return _team;
+  // }
+
   Future<User?> getUserDetails({String endpoint = '/users/profile'}) async {
     try {
       Response response = await dio.get(
         endpoint,
       );
-      print('-------------------USER DETAILS ----------------------\n');
-      print(response.data);
-      print('------------------------------------------------------');
+      // print('-------------------USER DETAILS ----------------------\n');
+      // print(response.data);
+      // print('------------------------------------------------------');
       if (response.statusCode == 200) {
-        User user = User.fromJson(response.data);
-        return user;
+        _user = User.fromJson(response.data);
+        return _user;
       }
     } on DioError catch (de, e) {
       print("[ERROR_GET_USER] ${de.response} \n ${de.requestOptions.headers}");
