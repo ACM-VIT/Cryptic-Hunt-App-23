@@ -1,6 +1,6 @@
 import 'package:cryptic_hunt/widgets/custom_button.dart';
 import 'package:cryptic_hunt/widgets/signup/textWidget.dart';
-import 'package:cryptic_hunt/widgets/alerts/wrong_teamcode_alertdialog.dart';
+import 'package:cryptic_hunt/widgets/alerts/custom_alert_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -83,7 +83,10 @@ class JoinTeamScreen extends StatelessWidget {
                   onPressed: () {
                     showDialog(
                         context: context,
-                        builder: (context) => const WrongTeamCodeAlertDialog());
+                        builder: (context) => CustomAlertDialog(
+                            title: "Error",
+                            message: "You have entered Invalid Code",
+                            buttonText: "Retry!"));
                   },
                   style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.all(20),

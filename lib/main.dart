@@ -63,12 +63,12 @@ class myApp extends StatelessWidget {
                 color: Color(0XFF777777),
                 fontSize: 14,
                 fontWeight: FontWeight.w400)),
-        inputDecorationTheme: InputDecorationTheme(
-          focusedBorder: const OutlineInputBorder(
+        inputDecorationTheme: const InputDecorationTheme(
+          focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Color(0xffff7a01), width: 2),
             borderRadius: BorderRadius.all(Radius.circular(7)),
           ),
-          border: const OutlineInputBorder(
+          border: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(7))),
         ),
       ),
