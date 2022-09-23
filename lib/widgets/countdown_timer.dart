@@ -1,5 +1,5 @@
 import 'package:cryptic_hunt/Providers/question_group_list_notifier.dart';
-import 'package:cryptic_hunt/screens/leaderboard.dart';
+import 'package:cryptic_hunt/screens/leaderboard_page.dart';
 import 'package:cryptic_hunt/widgets/questionGroupList.dart';
 import 'timedisplay.dart';
 import 'package:provider/provider.dart';
@@ -49,7 +49,7 @@ class _CountDownTimerState extends State<CountDownTimer> {
   final pages = [
     // const MyHomePage(),
     const CountDownTimer(),
-    const Leaderboard()
+    const LeaderboardPage()
   ];
 
   @override
