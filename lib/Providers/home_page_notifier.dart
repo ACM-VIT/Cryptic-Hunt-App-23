@@ -15,7 +15,7 @@ class HomePageNotifier extends ChangeNotifier {
 
   HomePageNotifier() {
     auth = GetIt.I<GAuthService>();
-    auth.authStateOrTokenChange().listen((User? user) async {
+    auth.authState().listen((User? user) async {
       if (user == null) {
         if (state != HomePageState.loggedOut) {
           state = HomePageState.loggedOut;
@@ -27,11 +27,7 @@ class HomePageNotifier extends ChangeNotifier {
           notifyListeners();
         }
         SharedPreferences pref = await SharedPreferences.getInstance();
-        String token = await user.getIdToken(true);
-        print("---------------------");
-        print(token);
-        print("---------------------");
-
+        String token = await user.getIdToken();
         pref.setString('tokenId', token);
       }
     });

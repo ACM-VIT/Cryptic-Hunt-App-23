@@ -1,38 +1,45 @@
+import 'package:cryptic_hunt/networking/util.dart';
 import 'package:dio/dio.dart';
+import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/user.dart';
 import '../data/team.dart';
 
 class ProfileService {
-  ProfileService(this.baseUrl) {
-    dio = Dio(BaseOptions(baseUrl: baseUrl));
-    dio.interceptors.add(
-        InterceptorsWrapper(onRequest: (RequestOptions options, handler) async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      String? token = prefs.getString("tokenId");
-      options.headers.addAll(
-        {
-          'Authorization': 'Bearer $token',
-        },
-      );
-      return handler.next(options);
-    }));
+  ProfileService() {
+    dio = GetIt.I<MyDio>().dio;
   }
 
-  final String baseUrl;
   late Dio dio;
+  User? _user;
+  Team? _team;
+
+  Future<User?> get user async {
+    if (_user == null) {
+      await getUserDetails();
+    }
+    return _user;
+  }
+
+  // Future<Team?> get team async {
+  //   if (_team == null && _user != null) {
+  //     await getTeamDetails(id: _user!.teamId);
+  //   }
+
+  //   return _team;
+  // }
 
   Future<User?> getUserDetails({String endpoint = '/users/profile'}) async {
     try {
       Response response = await dio.get(
         endpoint,
       );
-      print('-------------------USER DETAILS ----------------------\n');
-      print(response.data);
-      print('------------------------------------------------------');
+      // print('-------------------USER DETAILS ----------------------\n');
+      // print(response.data);
+      // print('------------------------------------------------------');
       if (response.statusCode == 200) {
-        User user = User.fromJson(response.data);
-        return user;
+        _user = User.fromJson(response.data);
+        return _user;
       }
     } on DioError catch (de, e) {
       print("[ERROR_GET_USER] ${de.response} \n ${de.requestOptions.headers}");
