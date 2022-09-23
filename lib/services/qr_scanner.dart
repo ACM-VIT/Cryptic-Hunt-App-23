@@ -2,26 +2,15 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-class QrScanner extends StatelessWidget {
-  static String id = 'QR_Scanner';
-  const QrScanner({Key? key}) : super(key: key);
+class QrScanner extends StatefulWidget {
+  QrScanner({Key? key, required this.onScan}) : super(key: key);
+  void Function(String) onScan;
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: QrScannerWidget(),
-    );
-  }
+  State<StatefulWidget> createState() => QrScannerState();
 }
 
-class QrScannerWidget extends StatefulWidget {
-  const QrScannerWidget({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() => QrScannerWidgetState();
-}
-
-class QrScannerWidgetState extends State<QrScannerWidget> {
+class QrScannerState extends State<QrScanner> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   Barcode? result;
   QRViewController? controller;
@@ -45,27 +34,27 @@ class QrScannerWidgetState extends State<QrScannerWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 6,
-            child: QRView(
-              key: qrKey,
-              onQRViewCreated: _onQRViewCreated,
-              overlay: QrScannerOverlayShape(
-                cutOutSize: MediaQuery.of(context).size.width * 0.8,
-                borderRadius: 10,
-                borderLength: 20,
-                borderWidth: 10,
-              ),
+      body: Stack(
+        children: [
+          QRView(
+            key: qrKey,
+            onQRViewCreated: _onQRViewCreated,
+            overlay: QrScannerOverlayShape(
+              borderColor: Theme.of(context).primaryColor,
+              cutOutSize: MediaQuery.of(context).size.width * 0.8,
+              borderRadius: 10,
+              borderLength: 20,
+              borderWidth: 10,
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: Center(
-              child: (result != null)
-                  ? Text('Data: ${result!.code}')
-                  : const Text('Keep QR code 30cm away from camera'),
+          Align(
+            alignment: Alignment.topRight,
+            child: IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios_new,
+                color: Theme.of(context).primaryColor,
+              ),
+              onPressed: () => Navigator.of(context).pop(),
             ),
           )
         ],
@@ -77,9 +66,9 @@ class QrScannerWidgetState extends State<QrScannerWidget> {
     this.controller = controller;
     controller.resumeCamera();
     controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        result = scanData;
-      });
+      widget.onScan(scanData.code!.substring(7));
+      // print("-------------------------${scanData.code!}-----------------");
+      Navigator.of(context).pop();
     });
   }
 

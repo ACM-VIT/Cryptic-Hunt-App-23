@@ -51,15 +51,15 @@ class HamburgerPage extends StatelessWidget {
                 );
               },
             ),
-            ListTile(
-              title: const Text('QR Scanner'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const QrScanner()),
-                );
-              },
-            ),
+            // ListTile(
+            //   title: const Text('QR Scanner'),
+            //   onTap: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => const QrScanner()),
+            //     );
+            //   },
+            // ),
             ListTile(
               title: const Text('Login'),
               onTap: () {

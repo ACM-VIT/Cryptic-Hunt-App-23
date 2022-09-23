@@ -2,6 +2,7 @@
     package="com.example.cryptic_hunt">
 
     <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
    <application
         android:label="cryptic_hunt"
         android:name="${applicationName}"
