@@ -4,7 +4,8 @@ import 'package:cryptic_hunt/data/leaderboard.dart';
 import 'package:cryptic_hunt/data/question_group.dart';
 import 'package:cryptic_hunt/data/question_group_detail.dart';
 import 'package:cryptic_hunt/data/submission.dart';
-import 'package:cryptic_hunt/screens/leaderboard.dart';
+import 'package:cryptic_hunt/data/team.dart';
+import 'package:cryptic_hunt/screens/leaderboard_page.dart';
 import 'package:dio/dio.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -42,8 +43,11 @@ class LeaderBoardService {
       );
       print(response.data);
       if (response.statusCode == 200) {
-        LeaderBoard leaderBoard = LeaderBoard.fromJson(response.data);
-        return leaderBoard;
+        // LeaderBoard leaderBoard = LeaderBoard.fromJson(response.data);
+        // return leaderBoard;
+        List<Team> teams =
+            (response.data).map<Team>((i) => Team.fromJson(i)).toList();
+        return LeaderBoard(null, teams);
       }
     } on DioError catch (de, e) {
       print(

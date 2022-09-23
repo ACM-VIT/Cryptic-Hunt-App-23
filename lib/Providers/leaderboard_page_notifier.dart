@@ -9,7 +9,7 @@ class LeaderBoardPageNotifier extends ChangeNotifier {
   bool showTeamCard = false;
   LeaderBoard? leaderBoard;
 
-  Future<void> getLeaderBoard(String id) async {
+  Future<void> getLeaderBoard() async {
     isBusy(true);
     leaderBoard = await api.getLeaderBoard();
     if (leaderBoard?.currentTeam != null) {
