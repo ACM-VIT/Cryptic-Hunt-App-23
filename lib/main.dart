@@ -1,25 +1,29 @@
 import 'package:cryptic_hunt/Providers/home_page_notifier.dart';
 
-import 'package:cryptic_hunt/Providers/profile_notifier.dart';
-import 'package:cryptic_hunt/Providers/question_group_list_notifier.dart';
-
 import 'package:cryptic_hunt/locator.dart';
 
 import 'package:cryptic_hunt/screens/home_page.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:cryptic_hunt/screens/profile_page.dart';
+import 'package:cryptic_hunt/screens/hamburger.dart';
+import 'package:cryptic_hunt/screens/join_team.dart';
 
-
+import 'package:cryptic_hunt/screens/create_team.dart';
+import 'package:cryptic_hunt/screens/faq_screen.dart';
 import 'providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
+import 'screens/hamburger.dart';
 import 'screens/login.dart';
 import 'screens/navigation_manager.dart';
 import 'screens/onBoarding.dart';
+import 'screens/Loading.dart';
 import 'package:cryptic_hunt/screens/speakerScreen.dart';
 import 'package:cryptic_hunt/screens/signUp.dart';
-import 'package:cryptic_hunt/widgets/countdowntimer.dart';
+import 'package:cryptic_hunt/widgets/countdown_timer.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:cryptic_hunt/screens/timeline.dart';
+import 'package:cryptic_hunt/screens/createTeam.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cryptic_hunt/screens/loading_screen.dart';
@@ -71,6 +75,8 @@ class myApp extends StatelessWidget {
       title: "Routes",
       initialRoute: HomePage.id,
       routes: {
+        JoinTeam.id: (context) => const JoinTeam(),
+
         HomePage.id: (context) => ChangeNotifierProvider(
               create: (context) => HomePageNotifier(),
               child: Consumer<HomePageNotifier>(
@@ -83,10 +89,18 @@ class myApp extends StatelessWidget {
         // SplashScreen.id: (context) => const SplashScreen(),
         Login.id: (context) => const Login(),
         OnBoarding.id: (context) => const OnBoarding(),
+        Loading.id: (context) => const Loading(),
+
+        Hamburger.id: (context) => const Hamburger(),
+        // QuestionPage.id: (context) => QuestionPage(),
+
         // Hamburger.id: (context) => const Hamburger(),
         CountDownTimer.id: (context) => const CountDownTimer(),
         SpeakerScreen.id: (context) => const SpeakerScreen(),
-        ProfilePage.id: (context) => ProfilePage(state: ProfileNotifier()),
+        Timeline.id: (context) => const Timeline(),
+        CreateTeamFirst.id: (context) => CreateTeamFirst(),
+        CreateTeam.id: (context) => const CreateTeamPage(),
+        FaqScreen.id: (context) => const FaqScreen(),
       },
     );
   }

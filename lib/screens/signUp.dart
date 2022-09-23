@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/textField.dart';
+import '../widgets/custom_text_field.dart';
 import '../widgets/signup/textWidget.dart';
 
 class SignUp extends StatelessWidget {
@@ -25,12 +25,12 @@ class SignUp extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
-                      child: TextWidget("Sign Up", fontFamily, FontWeight.w600,
-                          28, const Color(0xffff7a01)),
+                      child: CustomTextWidget("Sign Up", fontFamily,
+                          FontWeight.w600, 28, const Color(0xffff7a01)),
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 1, 0, 16),
-                      child: TextWidget(
+                      child: CustomTextWidget(
                           "Enter your credentials to continue",
                           fontFamily,
                           FontWeight.w500,
@@ -45,32 +45,32 @@ class SignUp extends StatelessWidget {
                     // Credentials widgets
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
-                      child: TextWidget("Name", fontFamily, FontWeight.w500, 16,
-                          const Color(0xff181818)),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                      child: Textfeild("Enter your name here", controller,
-                          TextInputType.text),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                      child: TextWidget("Username", fontFamily, FontWeight.w500,
-                          16, const Color(0xff181818)),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                      child: Textfeild("Enter your E-mail Address here",
-                          controller, TextInputType.text),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                      child: TextWidget("Phone Number", fontFamily,
+                      child: CustomTextWidget("Name", fontFamily,
                           FontWeight.w500, 16, const Color(0xff181818)),
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                      child: Textfeild("Enter your Phone Number here",
+                      child: CustomTextField("Enter your name here", controller,
+                          TextInputType.text),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                      child: CustomTextWidget("Username", fontFamily,
+                          FontWeight.w500, 16, const Color(0xff181818)),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                      child: CustomTextField("Enter your E-mail Address here",
+                          controller, TextInputType.text),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                      child: CustomTextWidget("Phone Number", fontFamily,
+                          FontWeight.w500, 16, const Color(0xff181818)),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                      child: CustomTextField("Enter your Phone Number here",
                           controller, TextInputType.number),
                     ),
                   ],
