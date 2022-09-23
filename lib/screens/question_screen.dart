@@ -1,8 +1,11 @@
 import 'package:cryptic_hunt/Providers/question_screen_notifier.dart';
 import 'package:cryptic_hunt/data/answer.dart';
+import 'package:cryptic_hunt/data/buy_hint.dart';
 import 'package:cryptic_hunt/widgets/alerts/alert.dart';
 import 'package:cryptic_hunt/widgets/alerts/alreadySubmittedAlert.dart';
+import 'package:cryptic_hunt/widgets/alerts/buyHint.Alert.dart';
 import 'package:cryptic_hunt/widgets/alerts/partialSuccessAlert.dart';
+import 'package:cryptic_hunt/widgets/alerts/showHintAlert.dart';
 import 'package:cryptic_hunt/widgets/alerts/successAlert.dart';
 import 'package:cryptic_hunt/widgets/alerts/wrongAnswerAlert.dart';
 import 'package:cryptic_hunt/widgets/signup/textWidget.dart';
@@ -11,6 +14,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cryptic_hunt/widgets/alerts/questionLockAlert.dart';
 import 'package:cryptic_hunt/widgets/signup/textWidget.dart';
 
+import '../data/hint.dart';
 import '../data/question.dart';
 
 class QuestionScreen extends StatefulWidget {
@@ -82,6 +86,30 @@ class _QuestionScreenState extends State<QuestionScreen> {
           } else if (alert == Alert.questionLock) {
             return QuestionLockAlert(
                 onPressed: () => Navigator.of(context).pop());
+          } else if (alert == Alert.partialSubmit) {
+            return PartialSuccessAlert(
+                onPressed: () => Navigator.of(context).pop());
+          } else if (alert == Alert.buyHint) {
+            return BuyHintAlert(
+              onPressed: () async {
+                Hint? hint = await widget.notifier.getHint(BuyHint(
+                    widget.questionGroupDetailId,
+                    widget.notifier.currentIndex + 1));
+                if (hint != null) {
+                  Navigator.of(context).pop();
+                  _showMyDialog(Alert.showHint);
+                }
+              },
+              cost: widget.notifier.questionGroupDetail!
+                      .questions![widget.notifier.currentIndex].costOfHint ??
+                  0,
+            );
+          } else if (alert == Alert.showHint) {
+            return HintAlert(
+                onPressed: () => Navigator.of(context).pop(),
+                hintText: widget.notifier.questionGroupDetail!
+                        .questions![widget.notifier.currentIndex].hint ??
+                    "error");
           }
           return SuccessAlert(onPressed: () {
             int count = 0;
@@ -228,6 +256,55 @@ class _QuestionScreenState extends State<QuestionScreen> {
                         ],
                       )),
                 )),
+                if (!(widget.notifier.questionGroupDetail
+                            ?.questions![widget.notifier.currentIndex].solved ??
+                        false) &&
+                    widget
+                            .notifier
+                            .questionGroupDetail
+                            ?.questions![widget.notifier.currentIndex]
+                            .costOfHint !=
+                        null)
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      width: 80,
+                      child: TextButton(
+                        onPressed: () {
+                          if (widget
+                                  .notifier
+                                  .questionGroupDetail!
+                                  .questions![widget.notifier.currentIndex]
+                                  .hint ==
+                              null) {
+                            _showMyDialog(Alert.buyHint);
+                          } else {
+                            _showMyDialog(Alert.showHint);
+                          }
+                        },
+                        child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(4, 4, 0, 4),
+                                  child: Icon(
+                                    Icons.contact_support,
+                                    color: Theme.of(context).primaryColor,
+                                  )),
+                              Text(
+                                "hint",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontFamily: fontFamily,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14),
+                              )
+                            ]),
+                      ),
+                    ),
+                  ),
                 if (!(widget.notifier.questionGroupDetail
                         ?.questions![widget.notifier.currentIndex].solved ??
                     false))

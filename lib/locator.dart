@@ -6,11 +6,11 @@ import 'package:get_it/get_it.dart';
 
 void setup() {
   GetIt.I.registerLazySingleton<ApiService>(
-      () => ApiService("http://ec2-3-221-42-199.compute-1.amazonaws.com"));
+      () => ApiService("https://crypticstaging.acmvit.in/"));
   GetIt.I.registerLazySingleton<GoogleSignInProvider>(
       () => GoogleSignInProvider());
 
   GetIt.I.registerSingleton<GAuthService>(GAuthService());
   GetIt.I.registerSingleton<ProfileService>(
-      ProfileService('https://cryptic.aarav.wtf'));
+      ProfileService('https://crypticstaging.acmvit.in/'));
 }
