@@ -1,4 +1,5 @@
 import 'package:cryptic_hunt/Providers/archive_page_notifier.dart';
+import 'package:cryptic_hunt/widgets/custom_app_bar.dart';
 import 'package:cryptic_hunt/widgets/questionGroupList.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -16,21 +17,21 @@ class _ArchiveScreenState extends State<ArchiveScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(
-            height: 100,
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: QuestionGroupList(
-                state: widget.notifier,
-                canTap: false,
+      body: SafeArea(
+        child: Column(
+          children: [
+            CustomAppBarWidget(title: "Archive"),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: QuestionGroupList(
+                  state: widget.notifier,
+                  canTap: false,
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

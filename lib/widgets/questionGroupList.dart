@@ -31,20 +31,17 @@ class _QuestionGroupListState extends State<QuestionGroupList> {
       {required Widget child, required QuestionGroup questionGroup}) {
     return GestureDetector(
       onTap: () {
-        if (widget.canTap) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ChangeNotifierProvider(
-                  create: (context) => QuestionScreenNotifier(),
-                  builder: (context, child) => Consumer<QuestionScreenNotifier>(
-                    builder: (context, value, child) => QuestionScreen(
-                        notifier: value,
-                        questionGroupDetailId: questionGroup.id),
-                  ),
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ChangeNotifierProvider(
+                create: (context) => QuestionScreenNotifier(),
+                builder: (context, child) => Consumer<QuestionScreenNotifier>(
+                  builder: (context, value, child) => QuestionScreen(
+                      notifier: value, questionGroupDetailId: questionGroup.id),
                 ),
-              )).then((value) => widget.state.getQuestionGroups());
-        }
+              ),
+            )).then((value) => widget.state.getQuestionGroups());
       },
       child: child,
     );

@@ -8,7 +8,6 @@ class CustomAppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: const Color(0xFFFF8619),
         child: Padding(
             padding: const EdgeInsets.fromLTRB(4, 8, 4, 12),
             child: Column(
