@@ -1,9 +1,17 @@
 import 'package:cryptic_hunt/widgets/signup/textWidget.dart';
 import 'package:flutter/material.dart';
 
-class WrongTeamCodeAlertDialog extends StatelessWidget {
+class CustomAlertDialog extends StatelessWidget {
   final fontFamily = "Poppins";
-  const WrongTeamCodeAlertDialog({Key? key}) : super(key: key);
+  final String title, message, buttonText;
+  String? imgLink;
+  CustomAlertDialog(
+      {this.imgLink,
+      required this.title,
+      required this.message,
+      required this.buttonText,
+      Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +24,7 @@ class WrongTeamCodeAlertDialog extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            "Error!",
+            title,
             style: TextStyle(
               fontWeight: FontWeight.w700,
               fontFamily: fontFamily,
@@ -26,12 +34,27 @@ class WrongTeamCodeAlertDialog extends StatelessWidget {
           ),
         ],
       ),
-      content: CustomTextWidget(
-        "You have entered invalid code!",
-        fontFamily,
-        FontWeight.w500,
-        14,
-        const Color(0xFF181818),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          CustomTextWidget(
+            message,
+            fontFamily,
+            FontWeight.w500,
+            14,
+            const Color(0xFF181818),
+          ),
+          imgLink != null
+              ? Image.network(
+                  imgLink.toString(),
+                  fit: BoxFit.fill,
+                  height: 250,
+                  width: 250,
+                )
+              : const SizedBox(
+                  height: 0,
+                ),
+        ],
       ),
       actions: [
         Row(
@@ -43,11 +66,11 @@ class WrongTeamCodeAlertDialog extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   primary: const Color(0xffFF7A01),
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.all(10),
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
                   child: Text(
-                    "Retry!",
-                    style: TextStyle(
+                    buttonText,
+                    style: const TextStyle(
                         color: Colors.white,
                         fontFamily: "Poppins",
                         fontWeight: FontWeight.w500,
