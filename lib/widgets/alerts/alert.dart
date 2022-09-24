@@ -4,4 +4,6 @@ enum Alert {
   wrong,
   questionLock,
   partialSubmit,
+  buyHint,
+  showHint,
 }

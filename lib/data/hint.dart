@@ -4,10 +4,11 @@ part 'hint.g.dart';
 
 @JsonSerializable()
 class Hint {
-  Hint(this.answer, this.questionGroupId, this.seq);
-  String answer;
+  Hint(this.hint, this.teamId, this.questionSeq, this.questionGroupId);
+  String teamId;
   String questionGroupId;
-  int seq;
+  int questionSeq;
+  String hint;
 
   factory Hint.fromJson(Map<String, dynamic> json) => _$HintFromJson(json);
 

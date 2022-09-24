@@ -1,8 +1,11 @@
 import 'package:cryptic_hunt/Providers/home_page_notifier.dart';
+import 'package:cryptic_hunt/Providers/team_notifier.dart';
 
 import 'package:cryptic_hunt/locator.dart';
 
 import 'package:cryptic_hunt/screens/home_page.dart';
+import 'package:cryptic_hunt/screens/team_menu_page.dart';
+import 'package:cryptic_hunt/screens/team_page.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
@@ -59,12 +62,19 @@ class myApp extends StatelessWidget {
         textTheme: TextTheme(
             headline1: GoogleFonts.poppins().copyWith(
                 color: Colors.black, fontSize: 28, fontWeight: FontWeight.w600),
+            headline2: GoogleFonts.poppins().copyWith(
+                color: Colors.black, fontSize: 28, fontWeight: FontWeight.w600),
             subtitle1: GoogleFonts.poppins().copyWith(
                 color: Color(0XFF777777),
                 fontSize: 14,
-                fontWeight: FontWeight.w400)),
-        inputDecorationTheme: const InputDecorationTheme(
-          focusedBorder: OutlineInputBorder(
+
+                fontWeight: FontWeight.w400),
+            subtitle2: GoogleFonts.notoSans().copyWith(
+                color: Color(0XFF777777),
+                fontSize: 16,
+                fontWeight: FontWeight.w500)),
+        inputDecorationTheme: InputDecorationTheme(
+          focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Color(0xffff7a01), width: 2),
             borderRadius: BorderRadius.all(Radius.circular(7)),
           ),
@@ -75,7 +85,8 @@ class myApp extends StatelessWidget {
       title: "Routes",
       initialRoute: HomePage.id,
       routes: {
-        JoinTeam.id: (context) => const JoinTeam(),
+        TeamMenuPage.id: (context) => Scaffold(body: TeamMenuPage()),
+        JoinTeamScreen.id: (context) => JoinTeamScreen(),
 
         HomePage.id: (context) => ChangeNotifierProvider(
               create: (context) => HomePageNotifier(),
@@ -92,6 +103,7 @@ class myApp extends StatelessWidget {
         Loading.id: (context) => const Loading(),
 
         Hamburger.id: (context) => const Hamburger(),
+        NavigationManager.id: (context) => const NavigationManager(),
         // QuestionPage.id: (context) => QuestionPage(),
 
         // Hamburger.id: (context) => const Hamburger(),
@@ -99,7 +111,6 @@ class myApp extends StatelessWidget {
         SpeakerScreen.id: (context) => const SpeakerScreen(),
         Timeline.id: (context) => const Timeline(),
         CreateTeamFirst.id: (context) => CreateTeamFirst(),
-        CreateTeam.id: (context) => const CreateTeamPage(),
         FaqScreen.id: (context) => const FaqScreen(),
       },
     );

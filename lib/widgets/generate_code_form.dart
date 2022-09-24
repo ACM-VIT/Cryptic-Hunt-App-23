@@ -1,13 +1,24 @@
+import 'package:cryptic_hunt/Providers/team_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
-class GenerateCodeForm extends StatelessWidget {
+class GenerateCodeForm extends StatefulWidget {
   const GenerateCodeForm({Key? key}) : super(key: key);
 
   @override
+  State<GenerateCodeForm> createState() => _GenerateCodeFormState();
+}
+
+class _GenerateCodeFormState extends State<GenerateCodeForm> {
+  String? teamname;
+  final teamNameController = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(
           height: 28,
@@ -24,8 +35,11 @@ class GenerateCodeForm extends StatelessWidget {
         const SizedBox(
           height: 8,
         ),
-        const TextField(
-          decoration: InputDecoration(
+        TextField(
+          onChanged: (val) {
+            teamname = val;
+          },
+          decoration: const InputDecoration(
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Color(0xFFFF7A01), width: 1.0),
             ),
@@ -46,8 +60,9 @@ class GenerateCodeForm extends StatelessWidget {
         const SizedBox(
           height: 8,
         ),
-        const TextField(
-          decoration: InputDecoration(
+        TextField(
+          controller: teamNameController,
+          decoration: const InputDecoration(
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Color(0xFFFF7A01), width: 1.0),
             ),
@@ -60,28 +75,46 @@ class GenerateCodeForm extends StatelessWidget {
         const SizedBox(
           height: 32,
         ),
-        ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-              primary: const Color(0xFFFF7A01),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8))),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 11),
-                child: Text(
-                  "Generate Code",
-                  style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: const Color(0xFFFFFFFF)),
+        (Provider.of<TeamNotifier>(context).busy)
+            ? const Center(child: CircularProgressIndicator())
+            : ElevatedButton(
+                onPressed: (Provider.of<TeamNotifier>(context).codeGenerated)
+                    ? null
+                    : () async {
+                        if (teamNameController.text.isNotEmpty) {
+                          final provider =
+                              Provider.of<TeamNotifier>(context, listen: false);
+                          bool result = await provider.createTeam(teamname);
+
+                          if (result) {
+                            // create team successful
+                            provider.updateCodeGeneration(true);
+                          }
+                        } else {
+                          // create team failed
+                          // TODO: Show alert dialog for create team failed
+                        }
+                      },
+                style: ElevatedButton.styleFrom(
+                    primary: const Color(0xFFFF7A01),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8))),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 11),
+                      child: Text(
+                        "Generate Code",
+                        style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFFFFFFFF)),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
-        ),
         const SizedBox(
           height: 50,
         ),

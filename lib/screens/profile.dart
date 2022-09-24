@@ -35,7 +35,7 @@ class ProfilePage extends StatelessWidget {
                   'assets/profilepagebg.svg',
                 ),
               ),
-              const CustomAppBar(),
+              CustomAppBarWidget(title: "Profile"),
             ],
           ),
           const SizedBox(
