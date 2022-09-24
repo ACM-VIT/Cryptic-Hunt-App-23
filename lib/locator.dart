@@ -8,15 +8,14 @@ import 'package:get_it/get_it.dart';
 
 void setup() {
   GetIt.I.registerLazySingleton<MyDio>(
-      () => MyDio(baseUrl: "https://crypticstaging.acmvit.in/"));
+      () => MyDio(baseUrl: "http://20.193.148.31"));
   GetIt.I.registerLazySingleton<ApiService>(() => ApiService());
 
   GetIt.I.registerSingleton<GAuthService>(GAuthService());
   GetIt.I.registerSingleton<ProfileService>(ProfileService());
 
   GetIt.I.registerLazySingleton<LeaderBoardService>(
-      () => LeaderBoardService("https://crypticstaging.acmvit.in/"));
+      () => LeaderBoardService("http://20.193.148.31"));
 
-  GetIt.I.registerSingleton<TeamService>(
-      TeamService('https://crypticstaging.acmvit.in'));
+  GetIt.I.registerSingleton<TeamService>(TeamService('http://20.193.148.31'));
 }

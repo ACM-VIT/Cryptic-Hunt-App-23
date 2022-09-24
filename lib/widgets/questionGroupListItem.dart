@@ -5,13 +5,16 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:cryptic_hunt/data/question_group.dart';
 
 class QuestionGroupListItem extends StatelessWidget {
-  QuestionGroupListItem({super.key, required this.questionGroup});
+  QuestionGroupListItem({
+    super.key,
+    required this.questionGroup,
+  });
   QuestionGroup questionGroup;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.only(bottom: 10, right: 8),
       child: Container(
         width: double.infinity,
         child: Card(

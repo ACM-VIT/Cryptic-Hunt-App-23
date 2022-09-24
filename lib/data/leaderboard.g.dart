@@ -7,16 +7,16 @@ part of 'leaderboard.dart';
 // **************************************************************************
 
 LeaderBoard _$LeaderBoardFromJson(Map<String, dynamic> json) => LeaderBoard(
-      json['currentTeam'] == null
+      json['team'] == null
           ? null
-          : Team.fromJson(json['currentTeam'] as Map<String, dynamic>),
-      (json['topTeams'] as List<dynamic>)
+          : Team.fromJson(json['team'] as Map<String, dynamic>),
+      (json['leaderboard'] as List<dynamic>)
           .map((e) => Team.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 Map<String, dynamic> _$LeaderBoardToJson(LeaderBoard instance) =>
     <String, dynamic>{
-      'topTeams': instance.topTeams.map((e) => e.toJson()).toList(),
-      'currentTeam': instance.currentTeam?.toJson(),
+      'leaderboard': instance.leaderboard.map((e) => e.toJson()).toList(),
+      'team': instance.team?.toJson(),
     };
