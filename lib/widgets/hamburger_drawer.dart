@@ -1,6 +1,8 @@
 import 'package:cryptic_hunt/Providers/profile_notifier.dart';
+import 'package:cryptic_hunt/Providers/team_notifier.dart';
 import 'package:cryptic_hunt/networking/gauth_service.dart';
 import 'package:cryptic_hunt/screens/profile_page.dart';
+import 'package:cryptic_hunt/screens/team_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';

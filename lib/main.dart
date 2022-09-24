@@ -1,8 +1,11 @@
 import 'package:cryptic_hunt/Providers/home_page_notifier.dart';
+import 'package:cryptic_hunt/Providers/team_notifier.dart';
 
 import 'package:cryptic_hunt/locator.dart';
 
 import 'package:cryptic_hunt/screens/home_page.dart';
+import 'package:cryptic_hunt/screens/team_menu_page.dart';
+import 'package:cryptic_hunt/screens/team_page.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
@@ -81,7 +84,8 @@ class myApp extends StatelessWidget {
       title: "Routes",
       initialRoute: HomePage.id,
       routes: {
-        JoinTeam.id: (context) => const JoinTeam(),
+        TeamMenuPage.id: (context) => Scaffold(body: TeamMenuPage()),
+        JoinTeamScreen.id: (context) => JoinTeamScreen(),
 
         HomePage.id: (context) => ChangeNotifierProvider(
               create: (context) => HomePageNotifier(),
@@ -98,6 +102,7 @@ class myApp extends StatelessWidget {
         Loading.id: (context) => const Loading(),
 
         Hamburger.id: (context) => const Hamburger(),
+        NavigationManager.id: (context) => const NavigationManager(),
         // QuestionPage.id: (context) => QuestionPage(),
 
         // Hamburger.id: (context) => const Hamburger(),
@@ -105,7 +110,6 @@ class myApp extends StatelessWidget {
         SpeakerScreen.id: (context) => const SpeakerScreen(),
         Timeline.id: (context) => const Timeline(),
         CreateTeamFirst.id: (context) => CreateTeamFirst(),
-        CreateTeam.id: (context) => const CreateTeamPage(),
         FaqScreen.id: (context) => const FaqScreen(),
       },
     );

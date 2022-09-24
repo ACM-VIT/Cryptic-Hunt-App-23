@@ -1,5 +1,7 @@
 import 'package:cryptic_hunt/Providers/login_page_notifier.dart';
+import 'package:cryptic_hunt/Providers/team_notifier.dart';
 import 'package:cryptic_hunt/screens/navigation_manager.dart';
+import 'package:cryptic_hunt/screens/team_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -109,7 +111,6 @@ class LoginPage extends StatelessWidget {
                           height: 50,
                           child: ElevatedButton(
                             onPressed: () {
-                              // writeInSharedPreference();
                               provider.login();
                             },
                             style: ElevatedButton.styleFrom(

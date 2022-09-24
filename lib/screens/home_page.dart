@@ -1,11 +1,13 @@
 import 'dart:ui';
 
 import 'package:cryptic_hunt/Providers/home_page_notifier.dart';
+import 'package:cryptic_hunt/Providers/team_notifier.dart';
 import 'package:cryptic_hunt/Providers/leaderboard_page_notifier.dart';
 import 'package:cryptic_hunt/data/leaderboard.dart';
 import 'package:cryptic_hunt/screens/loading_screen.dart';
 import 'package:cryptic_hunt/screens/navigation_manager.dart';
 import 'package:cryptic_hunt/screens/onBoarding.dart';
+import 'package:cryptic_hunt/screens/team_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
@@ -42,11 +44,20 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (notifier.state == HomePageState.loggedOut)
-        ? OnBoarding()
-        : ChangeNotifierProvider(
-            create: (context) => LeaderBoardPageNotifier(),
-            child: NavigationManager(),
-          );
+    if (notifier.state == HomePageState.loggedOut) {
+      return const OnBoarding();
+    } else if (notifier.state == HomePageState.notInTeam) {
+      return ChangeNotifierProvider(
+        create: (_) => TeamNotifier(),
+        builder: (context, child) {
+          return TeamPage(notifier: Provider.of<TeamNotifier>(context));
+        },
+      );
+    } else {
+      return ChangeNotifierProvider(
+        create: (context) => LeaderBoardPageNotifier(),
+        child: NavigationManager(),
+      );
+
   }
 }

@@ -20,21 +20,25 @@ class GAuthService {
   Stream<User?> authState() => auth.authStateChanges();
 
   Future login() async {
-    final googleUser = await googleSignIn.signIn();
-    if (googleUser == null) return;
-    _user = googleUser;
+    try {
+      final googleUser = await googleSignIn.signIn();
+      if (googleUser == null) return false;
+      _user = googleUser;
 
-    final googleAuth = await googleUser.authentication;
+      final googleAuth = await googleUser.authentication;
 
-    _accessToken = googleAuth.accessToken;
-    _idToken = googleAuth.idToken;
+      _accessToken = googleAuth.accessToken;
+      _idToken = googleAuth.idToken;
 
-    final credential = GoogleAuthProvider.credential(
-        accessToken: _accessToken, idToken: _idToken);
+      final credential = GoogleAuthProvider.credential(
+          accessToken: _accessToken, idToken: _idToken);
 
-    await FirebaseAuth.instance.signInWithCredential(credential);
+      await FirebaseAuth.instance.signInWithCredential(credential);
 
-    String? token = await auth.currentUser?.getIdToken();
+      String? token = await auth.currentUser?.getIdToken();
+    } on Exception catch (e) {
+      print(e.toString());
+    }
 
     // await GetIt.I<ProfileService>().getUserDetails();
   }

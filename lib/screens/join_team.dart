@@ -1,3 +1,5 @@
+import 'package:cryptic_hunt/Providers/team_notifier.dart';
+import 'package:cryptic_hunt/screens/navigation_manager.dart';
 import 'package:cryptic_hunt/widgets/custom_button.dart';
 import 'package:cryptic_hunt/widgets/signup/textWidget.dart';
 import 'package:cryptic_hunt/widgets/alerts/wrong_teamcode_alertdialog.dart';
@@ -5,21 +7,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-class JoinTeam extends StatelessWidget {
-  static String id = "JoinTeam";
-  const JoinTeam({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(toolbarHeight: 0),
-      body: JoinTeamScreen(),
-    );
-  }
-}
+import 'package:provider/provider.dart';
 
 class JoinTeamScreen extends StatelessWidget {
+  static String id = "JoinTeam";
   final fontFamily = "Poppins";
   final teamCodeController = TextEditingController();
   final bool validCode = false;
@@ -63,7 +54,6 @@ class JoinTeamScreen extends StatelessWidget {
                     letterSpacing: 4.0, color: Color(0xFFFF7A01)),
                 textAlign: TextAlign.center,
                 controller: teamCodeController,
-                keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
@@ -79,22 +69,36 @@ class JoinTeamScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 30, 16, 60),
-              child: ElevatedButton(
-                  onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) => const WrongTeamCodeAlertDialog());
-                  },
-                  style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.all(20),
-                      primary: const Color(0xffFF7A01),
-                      minimumSize: const Size.fromHeight(40)),
-                  child: const Text("JOIN TEAM",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: "Poppins",
-                        fontWeight: FontWeight.w600,
-                      ))),
+              child: Provider.of<TeamNotifier>(context, listen: false).busy
+                  ? const Center(child: CircularProgressIndicator())
+                  : ElevatedButton(
+                      onPressed: () async {
+                        if (teamCodeController.text.isNotEmpty) {
+                          final navigator = Navigator.of(context);
+                          print(teamCodeController.text);
+                          bool result = await Provider.of<TeamNotifier>(context,
+                                  listen: false)
+                              .joinTeam(teamCodeController.text);
+
+                          if (result) {
+                            // user successfully joined a team
+                            navigator.pushNamed(NavigationManager.id);
+                          } else {
+                            // join team failed
+                            // TODO: Show alert dialog saying that join team failed
+                          }
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.all(20),
+                          primary: const Color(0xffFF7A01),
+                          minimumSize: const Size.fromHeight(40)),
+                      child: const Text("JOIN TEAM",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w600,
+                          ))),
             ),
           ],
         )
