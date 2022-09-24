@@ -66,14 +66,14 @@ class HamburgerDrawer extends StatelessWidget {
                           height: 17,
                           width: 1,
                         ),
-                        Text(
-                          "50 PTS",
-                          style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: Color(0xFF777777)),
-                        )
+                        // Text(
+                        //   "50 PTS",
+                        //   style: TextStyle(
+                        //       fontFamily: 'Poppins',
+                        //       fontWeight: FontWeight.w600,
+                        //       fontSize: 14,
+                        //       color: Color(0xFF777777)),
+                        // )
                       ],
                     )
                   ],

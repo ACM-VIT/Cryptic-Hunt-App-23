@@ -31,20 +31,17 @@ class _QuestionGroupListState extends State<QuestionGroupList> {
       {required Widget child, required QuestionGroup questionGroup}) {
     return GestureDetector(
       onTap: () {
-        if (widget.canTap) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ChangeNotifierProvider(
-                  create: (context) => QuestionScreenNotifier(),
-                  builder: (context, child) => Consumer<QuestionScreenNotifier>(
-                    builder: (context, value, child) => QuestionScreen(
-                        notifier: value,
-                        questionGroupDetailId: questionGroup.id),
-                  ),
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ChangeNotifierProvider(
+                create: (context) => QuestionScreenNotifier(),
+                builder: (context, child) => Consumer<QuestionScreenNotifier>(
+                  builder: (context, value, child) => QuestionScreen(
+                      notifier: value, questionGroupDetailId: questionGroup.id),
                 ),
-              )).then((value) => widget.state.getQuestionGroups());
-        }
+              ),
+            )).then((value) => widget.state.getQuestionGroups());
       },
       child: child,
     );
@@ -58,12 +55,15 @@ class _QuestionGroupListState extends State<QuestionGroupList> {
           )
         : RefreshIndicator(
             onRefresh: getQuestionGroup,
-            child: ListView.builder(
-              itemCount: widget.state.questionGroups.length,
-              itemBuilder: (context, index) => _detector(
-                questionGroup: widget.state.questionGroups[index],
-                child: QuestionGroupListItem(
-                    questionGroup: widget.state.questionGroups[index]),
+            child: Scrollbar(
+              controller: ScrollController(),
+              child: ListView.builder(
+                itemCount: widget.state.questionGroups.length,
+                itemBuilder: (context, index) => _detector(
+                  questionGroup: widget.state.questionGroups[index],
+                  child: QuestionGroupListItem(
+                      questionGroup: widget.state.questionGroups[index]),
+                ),
               ),
             ),
           );
