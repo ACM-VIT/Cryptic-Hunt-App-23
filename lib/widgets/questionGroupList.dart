@@ -56,8 +56,8 @@ class _QuestionGroupListState extends State<QuestionGroupList> {
         : RefreshIndicator(
             onRefresh: getQuestionGroup,
             child: Scrollbar(
+              controller: ScrollController(),
               child: ListView.builder(
-                padding: EdgeInsets.all(4),
                 itemCount: widget.state.questionGroups.length,
                 itemBuilder: (context, index) => _detector(
                   questionGroup: widget.state.questionGroups[index],

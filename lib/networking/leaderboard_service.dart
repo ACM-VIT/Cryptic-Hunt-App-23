@@ -43,11 +43,11 @@ class LeaderBoardService {
       );
       print(response.data);
       if (response.statusCode == 200) {
-        // LeaderBoard leaderBoard = LeaderBoard.fromJson(response.data);
-        // return leaderBoard;
-        List<Team> teams =
-            (response.data).map<Team>((i) => Team.fromJson(i)).toList();
-        return LeaderBoard(null, teams);
+        LeaderBoard leaderBoard = LeaderBoard.fromJson(response.data);
+        return leaderBoard;
+        // List<Team> teams =
+        //     (response.data).map<Team>((i) => Team.fromJson(i)).toList();
+        // return LeaderBoard(null, teams);
       }
     } on DioError catch (de, e) {
       print(

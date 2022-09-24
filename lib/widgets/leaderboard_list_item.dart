@@ -27,12 +27,12 @@ class LeaderBoardListItem extends StatelessWidget {
               style: Theme.of(context).textTheme.subtitle2,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CircleAvatar(
-              backgroundImage: AssetImage(profilePicturePath),
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(8.0),
+          //   child: CircleAvatar(
+          //     backgroundImage: AssetImage(profilePicturePath),
+          //   ),
+          // ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
