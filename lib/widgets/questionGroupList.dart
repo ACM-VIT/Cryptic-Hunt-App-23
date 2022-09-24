@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class QuestionGroupList extends StatefulWidget {
-  QuestionGroupList({super.key, required this.state});
+  QuestionGroupList({super.key, required this.state, this.canTap = true});
   QuestionGroupListNotifier state;
+  bool canTap;
 
   @override
   State<QuestionGroupList> createState() => _QuestionGroupListState();
@@ -30,17 +31,20 @@ class _QuestionGroupListState extends State<QuestionGroupList> {
       {required Widget child, required QuestionGroup questionGroup}) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ChangeNotifierProvider(
-                create: (context) => QuestionScreenNotifier(),
-                builder: (context, child) => Consumer<QuestionScreenNotifier>(
-                  builder: (context, value, child) => QuestionScreen(
-                      notifier: value, questionGroupDetailId: questionGroup.id),
+        if (widget.canTap) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ChangeNotifierProvider(
+                  create: (context) => QuestionScreenNotifier(),
+                  builder: (context, child) => Consumer<QuestionScreenNotifier>(
+                    builder: (context, value, child) => QuestionScreen(
+                        notifier: value,
+                        questionGroupDetailId: questionGroup.id),
+                  ),
                 ),
-              ),
-            )).then((value) => widget.state.getQuestionGroups());
+              )).then((value) => widget.state.getQuestionGroups());
+        }
       },
       child: child,
     );
