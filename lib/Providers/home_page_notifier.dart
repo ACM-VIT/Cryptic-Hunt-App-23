@@ -16,7 +16,7 @@ class HomePageNotifier extends ChangeNotifier {
   HomePageNotifier() {
     auth = GetIt.I<GAuthService>();
     auth.authState().listen((User? user) async {
-    profileService = GetIt.I<ProfileService>();
+      profileService = GetIt.I<ProfileService>();
 
       if (user == null) {
         if (state != HomePageState.loggedOut) {

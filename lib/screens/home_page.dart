@@ -39,6 +39,7 @@ import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   static String id = 'HomePage';
+
   HomePage({Key? key, required this.notifier}) : super(key: key);
   HomePageNotifier notifier;
 
@@ -58,6 +59,6 @@ class HomePage extends StatelessWidget {
         create: (context) => LeaderBoardPageNotifier(),
         child: NavigationManager(),
       );
-
+    }
   }
 }

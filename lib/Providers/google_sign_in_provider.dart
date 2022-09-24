@@ -19,7 +19,7 @@ class GoogleSignInProvider with ChangeNotifier {
   GoogleSignInAccount? get user => _user;
   final auth = FirebaseAuth.instance;
 
-  ApiService apiService = ApiService('https://cryptic.aarav.wtf');
+  ApiService apiService = ApiService();
 
   Future login() async {
     final googleUser = await googleSignIn.signIn();
