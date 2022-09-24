@@ -1,4 +1,3 @@
-import 'package:cryptic_hunt/Providers/google_sign_in_provider.dart';
 import 'package:cryptic_hunt/Providers/login_page_notifier.dart';
 import 'package:cryptic_hunt/Providers/team_notifier.dart';
 import 'package:cryptic_hunt/screens/navigation_manager.dart';

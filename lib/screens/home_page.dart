@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:cryptic_hunt/Providers/home_page_notifier.dart';
 import 'package:cryptic_hunt/Providers/team_notifier.dart';
+import 'package:cryptic_hunt/Providers/leaderboard_page_notifier.dart';
+import 'package:cryptic_hunt/data/leaderboard.dart';
 import 'package:cryptic_hunt/screens/loading_screen.dart';
 import 'package:cryptic_hunt/screens/navigation_manager.dart';
 import 'package:cryptic_hunt/screens/onBoarding.dart';
@@ -52,11 +54,10 @@ class HomePage extends StatelessWidget {
         },
       );
     } else {
-      return const NavigationManager();
-    }
-  }
+      return ChangeNotifierProvider(
+        create: (context) => LeaderBoardPageNotifier(),
+        child: NavigationManager(),
+      );
 
-  // (notifier.state == HomePageState.loggedOut)
-  //   ? OnBoarding()
-  //   : NavigationManager();
+  }
 }

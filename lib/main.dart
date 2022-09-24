@@ -62,10 +62,16 @@ class myApp extends StatelessWidget {
         textTheme: TextTheme(
             headline1: GoogleFonts.poppins().copyWith(
                 color: Colors.black, fontSize: 28, fontWeight: FontWeight.w600),
+            headline2: GoogleFonts.poppins().copyWith(
+                color: Colors.black, fontSize: 28, fontWeight: FontWeight.w600),
             subtitle1: GoogleFonts.poppins().copyWith(
                 color: Color(0XFF777777),
                 fontSize: 14,
-                fontWeight: FontWeight.w400)),
+                fontWeight: FontWeight.w400),
+            subtitle2: GoogleFonts.notoSans().copyWith(
+                color: Color(0XFF777777),
+                fontSize: 16,
+                fontWeight: FontWeight.w500)),
         inputDecorationTheme: InputDecorationTheme(
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Color(0xffff7a01), width: 2),

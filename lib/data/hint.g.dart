@@ -7,13 +7,15 @@ part of 'hint.dart';
 // **************************************************************************
 
 Hint _$HintFromJson(Map<String, dynamic> json) => Hint(
-      json['answer'] as String,
+      json['hint'] as String,
+      json['teamId'] as String,
+      json['questionSeq'] as int,
       json['questionGroupId'] as String,
-      json['seq'] as int,
     );
 
 Map<String, dynamic> _$HintToJson(Hint instance) => <String, dynamic>{
-      'answer': instance.answer,
+      'teamId': instance.teamId,
       'questionGroupId': instance.questionGroupId,
-      'seq': instance.seq,
+      'questionSeq': instance.questionSeq,
+      'hint': instance.hint,
     };

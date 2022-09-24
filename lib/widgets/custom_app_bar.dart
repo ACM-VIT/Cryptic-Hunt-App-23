@@ -1,17 +1,9 @@
 import 'package:cryptic_hunt/widgets/signup/textWidget.dart';
 import 'package:flutter/material.dart';
 
-class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const CustomAppBarWidget();
-  }
-}
-
 class CustomAppBarWidget extends StatelessWidget {
-  const CustomAppBarWidget({Key? key}) : super(key: key);
+  CustomAppBarWidget({Key? key, required this.title}) : super(key: key);
+  String title;
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +16,15 @@ class CustomAppBarWidget extends StatelessWidget {
                 Row(
                   children: [
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
                       child: const Icon(
                         Icons.navigate_before,
                         color: Color(0xff181818),
                       ),
                     ),
-                    CustomTextWidget("Profile", "Poppins", FontWeight.w600, 18,
+                    CustomTextWidget(title, "Poppins", FontWeight.w600, 18,
                         const Color(0xff181818))
                   ],
                 ),

@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 
-import 'leaderboard.dart';
+import 'leaderboard_page.dart';
 import '/widgets/countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,7 +18,7 @@ class NavigationManager extends StatefulWidget {
 class _NavigationManagerState extends State<NavigationManager> {
   final pages = [
     CountDownTimer(),
-    const Leaderboard(),
+    const LeaderboardPage(),
   ];
   int currentIndex = 0;
 
@@ -29,14 +29,16 @@ class _NavigationManagerState extends State<NavigationManager> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          elevation: 0,
-          systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: Theme.of(context).scaffoldBackgroundColor,
-          ),
-          iconTheme:
-              IconThemeData(color: Theme.of(context).primaryColor, size: 30)),
+      appBar: (currentIndex == 0)
+          ? AppBar(
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              elevation: 0,
+              systemOverlayStyle: SystemUiOverlayStyle(
+                statusBarColor: Theme.of(context).scaffoldBackgroundColor,
+              ),
+              iconTheme: IconThemeData(
+                  color: Theme.of(context).primaryColor, size: 30))
+          : null,
       drawer: const HamburgerDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

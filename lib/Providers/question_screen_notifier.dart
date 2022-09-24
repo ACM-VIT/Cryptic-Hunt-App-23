@@ -1,3 +1,5 @@
+import 'package:cryptic_hunt/data/buy_hint.dart';
+import 'package:cryptic_hunt/data/hint.dart';
 import 'package:cryptic_hunt/data/question.dart';
 import 'package:cryptic_hunt/data/question_group_detail.dart';
 import 'package:cryptic_hunt/data/submission.dart';
@@ -45,6 +47,15 @@ class QuestionScreenNotifier extends ChangeNotifier {
     Submission? submission = await api.submitAnswer(answer: answer);
     isBusy(false);
     return (submission == null) ? false : submission.isCorrect;
+  }
+
+  Future<Hint?> getHint(BuyHint buyHint) async {
+    isBusy(true);
+    Hint? hint = await api.buyHint(buyHint: buyHint);
+    if (hint != null)
+      questionGroupDetail!.questions![buyHint.seq - 1].hint = hint.hint;
+    isBusy(false);
+    return hint;
   }
 
   void changePage(int x) {

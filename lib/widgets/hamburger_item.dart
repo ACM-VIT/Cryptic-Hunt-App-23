@@ -14,11 +14,10 @@ class HamburgerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: svgPicture,
-      title: Text(
-        text,
-        style: const TextStyle(
-            fontFamily: 'Poppins', fontWeight: FontWeight.w500, fontSize: 14),
-      ),
+      title: Text(text,
+          style: Theme.of(context).textTheme.subtitle1?.copyWith(
+              color: Theme.of(context).primaryColor,
+              fontWeight: FontWeight.w500)),
       onTap: onTap,
     );
   }

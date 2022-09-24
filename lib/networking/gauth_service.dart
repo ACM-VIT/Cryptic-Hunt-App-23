@@ -1,6 +1,9 @@
+import 'package:cryptic_hunt/networking/profile_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:dio/dio.dart';
+import 'package:cryptic_hunt/data/user.dart' as profile;
 
 class GAuthService {
   final googleSignIn = GoogleSignIn();
@@ -14,7 +17,7 @@ class GAuthService {
   GoogleSignInAccount? get user => _user;
   final auth = FirebaseAuth.instance;
 
-  Stream<User?> authStateOrTokenChange() => auth.idTokenChanges();
+  Stream<User?> authState() => auth.authStateChanges();
 
   Future login() async {
     try {
@@ -32,9 +35,11 @@ class GAuthService {
 
       await FirebaseAuth.instance.signInWithCredential(credential);
 
-      String? token = await auth.currentUser?.getIdToken(true);
+      String? token = await auth.currentUser?.getIdToken();
     } on Exception catch (e) {
       print(e.toString());
     }
+
+    // await GetIt.I<ProfileService>().getUserDetails();
   }
 }

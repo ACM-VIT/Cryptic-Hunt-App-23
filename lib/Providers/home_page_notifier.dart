@@ -1,11 +1,10 @@
 import 'package:cryptic_hunt/networking/gauth_service.dart';
-import 'package:cryptic_hunt/networking/profile_service.dart';
-import 'package:cryptic_hunt/networking/team_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cryptic_hunt/data/user.dart' as profile;
+import 'package:cryptic_hunt/networking/profile_service.dart';
 
 enum HomePageState { loggedOut, loggedIn, notInTeam, defaultScreen }
 
@@ -16,8 +15,9 @@ class HomePageNotifier extends ChangeNotifier {
 
   HomePageNotifier() {
     auth = GetIt.I<GAuthService>();
+    auth.authState().listen((User? user) async {
     profileService = GetIt.I<ProfileService>();
-    auth.authStateOrTokenChange().listen((User? user) async {
+
       if (user == null) {
         if (state != HomePageState.loggedOut) {
           state = HomePageState.loggedOut;
@@ -38,11 +38,7 @@ class HomePageNotifier extends ChangeNotifier {
         }
 
         SharedPreferences pref = await SharedPreferences.getInstance();
-        String token = await user.getIdToken(true);
-        print("---------------------");
-        print(token);
-        print("---------------------");
-
+        String token = await user.getIdToken();
         pref.setString('tokenId', token);
       }
     });
