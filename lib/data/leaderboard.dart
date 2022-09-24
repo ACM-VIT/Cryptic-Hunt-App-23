@@ -5,10 +5,10 @@ part 'leaderboard.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class LeaderBoard {
-  LeaderBoard(this.currentTeam, this.topTeams);
+  LeaderBoard(this.team, this.leaderboard);
 
-  List<Team> topTeams;
-  Team? currentTeam;
+  List<Team> leaderboard;
+  Team? team;
 
   factory LeaderBoard.fromJson(Map<String, dynamic> json) =>
       _$LeaderBoardFromJson(json);

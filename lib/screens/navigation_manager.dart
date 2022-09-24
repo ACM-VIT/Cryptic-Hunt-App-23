@@ -39,7 +39,7 @@ class _NavigationManagerState extends State<NavigationManager> {
               iconTheme: IconThemeData(
                   color: Theme.of(context).primaryColor, size: 30))
           : null,
-      drawer: const HamburgerDrawer(),
+      drawer: HamburgerDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: IndexedStack(

@@ -58,6 +58,6 @@ class HomePage extends StatelessWidget {
         create: (context) => LeaderBoardPageNotifier(),
         child: NavigationManager(),
       );
-
+    }
   }
 }

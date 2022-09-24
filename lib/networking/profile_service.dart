@@ -21,6 +21,10 @@ class ProfileService {
     return _user;
   }
 
+  User? getUser() {
+    return _user;
+  }
+
   // Future<Team?> get team async {
   //   if (_team == null && _user != null) {
   //     await getTeamDetails(id: _user!.teamId);

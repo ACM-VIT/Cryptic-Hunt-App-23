@@ -34,7 +34,7 @@ class _LeaderBoardListState extends State<LeaderBoardList> {
             child: ListView.builder(
                 scrollDirection: Axis.vertical,
                 physics: const ScrollPhysics(),
-                itemCount: widget.state.leaderBoard?.topTeams.length ?? 0,
+                itemCount: widget.state.leaderBoard?.leaderboard.length ?? 0,
                 itemBuilder: (BuildContext context, int index) {
                   String assetName;
                   if (index == 0) {
@@ -47,7 +47,7 @@ class _LeaderBoardListState extends State<LeaderBoardList> {
                     assetName = 'assets/leaderboard/empty_image.svg';
                   }
                   return LeaderBoardListItem(
-                      team: widget.state.leaderBoard!.topTeams[index],
+                      team: widget.state.leaderBoard!.leaderboard[index],
                       index: index,
                       assetName: assetName);
                 }));
