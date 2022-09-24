@@ -15,24 +15,6 @@ class LeaderboardPage extends StatefulWidget {
 }
 
 class _LeaderboardPageState extends State<LeaderboardPage> {
-  // final teamNames = [
-  //   "FSAKKL",
-  //   "Snkalp",
-  //   "ankalp",
-  //   "Skalp",
-  //   "Sankap",
-  //   "Sanlp",
-  //   "Harsh",
-  //   "Sumona",
-  //   "Himanshu",
-  //   "Hahu",
-  //   "manshu",
-  //   "Hinshu",
-  //   "Himashu",
-  //   "Himanu",
-  //   "Rohan",
-  // ];
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -58,12 +40,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
                 child: Text(
                     "Do you have what it takes to be on the leaderboard?",
                     style: Theme.of(context).textTheme.subtitle1)),
-            // const Text(
-            //   "Time remaining",
-            //   style: TextStyle(
-            //     color: Color(0xffFF8618),
-            //   ),
-            // ),
+
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 8.0),
               child: Divider(
@@ -78,72 +55,27 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
                 builder: (context, value, child) =>
                     LeaderBoardList(state: value),
               ),
-
-              // if (index == 0) {
-              // return ListItem(
-              //     index,
-              //     teamNames[index],
-              //     'assets/leaderboard/gold.svg',
-              //     'assets/dude1.png',
-              //     50);
-              // } else if (index == 1) {
-              //   return ListItem(
-              //       index,
-              //       teamNames[index],
-              //       'assets/leaderboard/silver.svg',
-              //       'assets/dude1.png',
-              //       50);
-              // }
-              // if (index == 2) {
-              //   return ListItem(
-              //       index,
-              //       teamNames[index],
-              //       'assets/leaderboard/bronze.svg',
-              //       'assets/dude1.png',
-              //       50);
-              // } else {
-              //   return ListItem(
-              //       index,
-              //       teamNames[index],
-              //       'assets/leaderboard/empty_image.svg',
-              //       'assets/dude1.png',
-              //       50);
-              // }
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.0),
-              child: Divider(
-                height: 10,
-                thickness: 1.0,
-                color: Theme.of(context).primaryColor,
+            if (Provider.of<LeaderBoardPageNotifier>(context).showTeamCard)
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                child: Divider(
+                  height: 10,
+                  thickness: 1.0,
+                  color: Theme.of(context).primaryColor,
+                ),
               ),
-            ),
-
-            // Flexible(
-            //   child: ListView.builder(
-            //       shrinkWrap: true,
-            //       physics: NeverScrollableScrollPhysics(),
-            //       itemCount: 5,
-            //       itemBuilder: (BuildContext context, int index) {
-            //         String currentTeamName = teamNames[index];
-            //         String profilePicturePath = 'assets/dude1.png';
-            //         int points = 50;
-
-            //         return ListTile(
-            //           title: Text(currentTeamName),
-            //           leading: Row(
-            //             children: [
-            //               Text("${index + 1}"),
-            //               const SizedBox(
-            //                 width: 10,
-            //               ),
-            //               Image.asset(profilePicturePath),
-            //             ],
-            //           ),
-            //           trailing: Text("$points PTS"),
-            //         );
-            //       }),
-            // ),
+            if (Provider.of<LeaderBoardPageNotifier>(context).showTeamCard)
+              Container(
+                  child: LeaderBoardListItem(
+                      team: Provider.of<LeaderBoardPageNotifier>(context)
+                          .leaderBoard!
+                          .team!),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        color: Theme.of(context).primaryColor, width: 2),
+                    borderRadius: BorderRadius.all(Radius.circular(7)),
+                  ))
           ],
         ),
       ),

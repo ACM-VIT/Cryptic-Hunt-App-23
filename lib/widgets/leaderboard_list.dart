@@ -36,15 +36,13 @@ class _LeaderBoardListState extends State<LeaderBoardList> {
                 physics: const ScrollPhysics(),
                 itemCount: widget.state.leaderBoard?.leaderboard.length ?? 0,
                 itemBuilder: (BuildContext context, int index) {
-                  String assetName;
+                  String? assetName;
                   if (index == 0) {
                     assetName = 'assets/leaderboard/gold.svg';
                   } else if (index == 1) {
                     assetName = 'assets/leaderboard/silver.svg';
                   } else if (index == 2) {
                     assetName = 'assets/leaderboard/bronze.svg';
-                  } else {
-                    assetName = 'assets/leaderboard/empty_image.svg';
                   }
                   return LeaderBoardListItem(
                       team: widget.state.leaderBoard!.leaderboard[index],

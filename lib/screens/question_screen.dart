@@ -445,6 +445,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                           _showMyDialog(Alert.wrong);
                         }
                       }
+                      _controller.text = "";
                     },
                     style: ElevatedButton.styleFrom(
                         primary: const Color(0xffFF7A01),

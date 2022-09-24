@@ -6,6 +6,7 @@ import 'package:cryptic_hunt/locator.dart';
 import 'package:cryptic_hunt/screens/home_page.dart';
 import 'package:cryptic_hunt/screens/team_menu_page.dart';
 import 'package:cryptic_hunt/screens/team_page.dart';
+import 'package:flutter/services.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
@@ -34,6 +35,12 @@ Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   setup();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: Color(0xFFFFF4EA),
+      statusBarColor: Color(0xFFFFF4EA),
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarIconBrightness: Brightness.dark));
   runApp(
     MultiProvider(
       providers: [
