@@ -33,7 +33,7 @@ class _LeaderBoardListState extends State<LeaderBoardList> {
             onRefresh: getLeaderBoard,
             child: ListView.builder(
                 scrollDirection: Axis.vertical,
-                physics: const ScrollPhysics(),
+                physics: const AlwaysScrollableScrollPhysics(),
                 itemCount: widget.state.leaderBoard?.leaderboard.length ?? 0,
                 itemBuilder: (BuildContext context, int index) {
                   String? assetName;
