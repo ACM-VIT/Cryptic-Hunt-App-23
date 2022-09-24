@@ -15,24 +15,28 @@ class HomePageNotifier extends ChangeNotifier {
 
   HomePageNotifier() {
     auth = GetIt.I<GAuthService>();
+    profileService = GetIt.I<ProfileService>();
     auth.authState().listen((User? user) async {
-      profileService = GetIt.I<ProfileService>();
-
       if (user == null) {
         if (state != HomePageState.loggedOut) {
           state = HomePageState.loggedOut;
           notifyListeners();
         }
       } else {
-        //profile.User? profileUser = await profileService.getUserDetails();
-        profile.User profileUser = profile.User('2', 'efa', 'fads', 'ads',
-            'afsd', 'fa', 'asd', 'hhfh', 'afe', 'afds');
+        //profile.User? profileUser = profileService.getUser();
+        profile.User? profileUser =
+            await GetIt.I<ProfileService>().getUserDetails();
+
+        print("yes");
+        print(profileUser);
         if (profileUser != null && profileUser.teamId == null) {
           state = HomePageState.notInTeam;
           notifyListeners();
           return;
         }
-        if (state != HomePageState.loggedIn) {
+        if (profileUser != null &&
+            profileUser.teamId != null &&
+            state != HomePageState.loggedIn) {
           state = HomePageState.loggedIn;
           notifyListeners();
         }

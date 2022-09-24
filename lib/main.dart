@@ -6,16 +6,16 @@ import 'package:cryptic_hunt/locator.dart';
 import 'package:cryptic_hunt/screens/home_page.dart';
 import 'package:cryptic_hunt/screens/team_menu_page.dart';
 import 'package:cryptic_hunt/screens/team_page.dart';
+import 'package:flutter/services.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:cryptic_hunt/screens/hamburger.dart';
 import 'package:cryptic_hunt/screens/join_team.dart';
 
 import 'package:cryptic_hunt/screens/create_team.dart';
 import 'package:cryptic_hunt/screens/faq_screen.dart';
 import 'providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
-import 'screens/hamburger.dart';
+
 import 'screens/login.dart';
 import 'screens/navigation_manager.dart';
 import 'screens/onBoarding.dart';
@@ -35,6 +35,12 @@ Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   setup();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: Color(0xFFFFF4EA),
+      statusBarColor: Color(0xFFFFF4EA),
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarIconBrightness: Brightness.dark));
   runApp(
     MultiProvider(
       providers: [
@@ -67,7 +73,6 @@ class myApp extends StatelessWidget {
             subtitle1: GoogleFonts.poppins().copyWith(
                 color: Color(0XFF777777),
                 fontSize: 14,
-
                 fontWeight: FontWeight.w400),
             subtitle2: GoogleFonts.notoSans().copyWith(
                 color: Color(0XFF777777),
@@ -102,7 +107,6 @@ class myApp extends StatelessWidget {
         OnBoarding.id: (context) => const OnBoarding(),
         Loading.id: (context) => const Loading(),
 
-        Hamburger.id: (context) => const Hamburger(),
         NavigationManager.id: (context) => const NavigationManager(),
         // QuestionPage.id: (context) => QuestionPage(),
 

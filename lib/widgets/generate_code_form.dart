@@ -39,6 +39,7 @@ class _GenerateCodeFormState extends State<GenerateCodeForm> {
           onChanged: (val) {
             teamname = val;
           },
+          controller: teamNameController,
           decoration: const InputDecoration(
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Color(0xFFFF7A01), width: 1.0),
@@ -61,7 +62,6 @@ class _GenerateCodeFormState extends State<GenerateCodeForm> {
           height: 8,
         ),
         TextField(
-          controller: teamNameController,
           decoration: const InputDecoration(
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Color(0xFFFF7A01), width: 1.0),
@@ -82,6 +82,7 @@ class _GenerateCodeFormState extends State<GenerateCodeForm> {
                     ? null
                     : () async {
                         if (teamNameController.text.isNotEmpty) {
+                          print("ytresdfghjkbv");
                           final provider =
                               Provider.of<TeamNotifier>(context, listen: false);
                           bool result = await provider.createTeam(teamname);

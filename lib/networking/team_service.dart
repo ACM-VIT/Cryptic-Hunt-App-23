@@ -1,26 +1,16 @@
+import 'package:cryptic_hunt/networking/util.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/user.dart';
 import '../data/team.dart';
 
 class TeamService {
-  TeamService(this.baseUrl) {
-    dio = Dio(BaseOptions(baseUrl: baseUrl));
-    dio.interceptors.add(
-        InterceptorsWrapper(onRequest: (RequestOptions options, handler) async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      String? token = prefs.getString("tokenId");
-      options.headers.addAll(
-        {
-          'Authorization': 'Bearer $token',
-        },
-      );
-      return handler.next(options);
-    }));
+  TeamService() {
+    dio = GetIt.I<MyDio>().dio;
   }
 
-  final String baseUrl;
   late Dio dio;
 
   Future<Team?> createTeam(
