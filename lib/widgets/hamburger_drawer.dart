@@ -1,5 +1,7 @@
 import 'package:cryptic_hunt/Providers/profile_notifier.dart';
+import 'package:cryptic_hunt/Providers/team_notifier.dart';
 import 'package:cryptic_hunt/screens/profile_page.dart';
+import 'package:cryptic_hunt/screens/team_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../screens/faq_screen.dart';
@@ -85,8 +87,24 @@ class HamburgerDrawer extends StatelessWidget {
             },
           ),
           HamburgerItem(
-              svgPicture: SvgPicture.asset('assets/HamBurger/sponsors.svg'),
-              text: 'Our Sponsors'),
+            svgPicture: SvgPicture.asset('assets/HamBurger/sponsors.svg'),
+            text: 'Our Sponsors',
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChangeNotifierProvider(
+                    create: (_) => TeamNotifier(),
+                    builder: (context, child) {
+                      return TeamPage(
+                        notifier: Provider.of<TeamNotifier>(context),
+                      );
+                    },
+                  ),
+                ),
+              );
+            },
+          ),
           HamburgerItem(
             svgPicture: SvgPicture.asset('assets/HamBurger/profile.svg'),
             text: 'Profile',
