@@ -1,12 +1,19 @@
 import 'package:cryptic_hunt/Providers/profile_notifier.dart';
+
 import 'package:cryptic_hunt/Providers/team_notifier.dart';
 import 'package:cryptic_hunt/networking/gauth_service.dart';
+
+import 'package:cryptic_hunt/screens/archive_screen.dart';
 import 'package:cryptic_hunt/screens/profile_page.dart';
 import 'package:cryptic_hunt/screens/team_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
+
 import '../screens/faq_screen.dart';
+
+import '../Providers/archive_page_notifier.dart';
+
 import 'hamburger_item.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cryptic_hunt/widgets/countdown_timer.dart';
@@ -85,6 +92,19 @@ class HamburgerDrawer extends StatelessWidget {
             HamburgerItem(
               svgPicture: SvgPicture.asset('assets/HamBurger/archive.svg'),
               text: 'Archive',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ChangeNotifierProvider(
+                            create: (context) => ArchivePageNotifier(),
+                            builder: (context, child) => ArchiveScreen(
+                                notifier: Provider.of<ArchivePageNotifier>(
+                              context,
+                            )),
+                          )),
+                );
+              },
             ),
             HamburgerItem(
                 svgPicture: SvgPicture.asset('assets/HamBurger/resources.svg'),
