@@ -2,7 +2,7 @@ import 'package:cryptic_hunt/Providers/team_notifier.dart';
 import 'package:cryptic_hunt/screens/navigation_manager.dart';
 import 'package:cryptic_hunt/widgets/custom_button.dart';
 import 'package:cryptic_hunt/widgets/signup/textWidget.dart';
-import 'package:cryptic_hunt/widgets/alerts/wrong_teamcode_alertdialog.dart';
+import 'package:cryptic_hunt/widgets/alerts/custom_alert_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -69,6 +69,7 @@ class JoinTeamScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 30, 16, 60),
+
               child: Provider.of<TeamNotifier>(context, listen: false).busy
                   ? const Center(child: CircularProgressIndicator())
                   : ElevatedButton(

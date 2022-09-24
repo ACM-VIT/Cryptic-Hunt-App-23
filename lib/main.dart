@@ -67,6 +67,7 @@ class myApp extends StatelessWidget {
             subtitle1: GoogleFonts.poppins().copyWith(
                 color: Color(0XFF777777),
                 fontSize: 14,
+
                 fontWeight: FontWeight.w400),
             subtitle2: GoogleFonts.notoSans().copyWith(
                 color: Color(0XFF777777),
@@ -77,7 +78,7 @@ class myApp extends StatelessWidget {
             borderSide: BorderSide(color: Color(0xffff7a01), width: 2),
             borderRadius: BorderRadius.all(Radius.circular(7)),
           ),
-          border: const OutlineInputBorder(
+          border: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(7))),
         ),
       ),
