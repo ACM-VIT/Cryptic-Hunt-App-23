@@ -33,6 +33,7 @@ class TeamCodeForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text("Team Code",
             style: GoogleFonts.poppins(
@@ -52,22 +53,31 @@ class TeamCodeForm extends StatelessWidget {
           height: 20,
         ),
         Container(
-          width: MediaQuery.of(context).size.width / 2,
-          color: const Color(0xFFFFFFFF),
+          width: MediaQuery.of(context).size.width * 0.3,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10), color: Colors.white),
           padding: const EdgeInsets.all(8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(Provider.of<TeamNotifier>(context).team?.teamcode ?? ''),
+              Text(
+                Provider.of<TeamNotifier>(context).team?.teamcode ?? '',
+                style: TextStyle(letterSpacing: 2),
+              ),
               const SizedBox(
-                width: 16,
+                width: 5,
               ),
               GestureDetector(
-                child: const Icon(
+                child: Icon(
                   Icons.copy,
+                  color: Theme.of(context).primaryColor,
                 ),
                 onTap: () {
-                  Clipboard.setData(const ClipboardData(text: "text"));
+                  Clipboard.setData(ClipboardData(
+                      text: Provider.of<TeamNotifier>(context, listen: false)
+                              .team
+                              ?.teamcode ??
+                          ''));
                 },
               )
             ],
