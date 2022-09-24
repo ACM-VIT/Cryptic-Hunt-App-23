@@ -35,11 +35,10 @@ class GAuthService {
 
       await FirebaseAuth.instance.signInWithCredential(credential);
 
-      String? token = await auth.currentUser?.getIdToken();
+      // String? token = await auth.currentUser?.getIdToken();
+
     } on Exception catch (e) {
       print(e.toString());
     }
-
-    // await GetIt.I<ProfileService>().getUserDetails();
   }
 }

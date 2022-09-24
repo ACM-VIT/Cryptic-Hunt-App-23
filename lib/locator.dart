@@ -14,9 +14,7 @@ void setup() {
   GetIt.I.registerSingleton<GAuthService>(GAuthService());
   GetIt.I.registerSingleton<ProfileService>(ProfileService());
 
-  GetIt.I.registerLazySingleton<LeaderBoardService>(
-      () => LeaderBoardService("https://crypticstaging.acmvit.in/"));
+  GetIt.I.registerLazySingleton<LeaderBoardService>(() => LeaderBoardService());
 
-  GetIt.I.registerSingleton<TeamService>(
-      TeamService('https://crypticstaging.acmvit.in'));
+  GetIt.I.registerSingleton<TeamService>(TeamService());
 }
