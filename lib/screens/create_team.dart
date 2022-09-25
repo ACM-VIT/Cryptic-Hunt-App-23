@@ -1,3 +1,4 @@
+import 'package:cryptic_hunt/Providers/home_page_notifier.dart';
 import 'package:cryptic_hunt/Providers/team_notifier.dart';
 import 'package:cryptic_hunt/data/team.dart';
 import 'package:cryptic_hunt/screens/navigation_manager.dart';
@@ -86,7 +87,8 @@ class TeamCodeForm extends StatelessWidget {
         const SizedBox(height: 45),
         ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, NavigationManager.id);
+            Provider.of<HomePageNotifier>(context, listen: false)
+                .changeState(HomePageState.loggedIn);
           },
           style: ElevatedButton.styleFrom(
             primary: const Color(0xFFFF7A01),

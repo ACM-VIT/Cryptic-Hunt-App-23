@@ -46,4 +46,11 @@ class HomePageNotifier extends ChangeNotifier {
       }
     });
   }
+
+  void changeState(HomePageState state) {
+    if (this.state != state) {
+      this.state = state;
+      notifyListeners();
+    }
+  }
 }

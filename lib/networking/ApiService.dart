@@ -1,5 +1,6 @@
 import 'package:cryptic_hunt/data/answer.dart';
 import 'package:cryptic_hunt/data/buy_hint.dart';
+import 'package:cryptic_hunt/data/phase.dart';
 import 'package:cryptic_hunt/data/question_group.dart';
 import 'package:cryptic_hunt/data/question_group_detail.dart';
 import 'package:cryptic_hunt/data/submission.dart';
@@ -31,6 +32,26 @@ class ApiService {
       return response;
     } else {
       return null;
+    }
+  }
+
+  Future<Phase?> getCurrentPhase({
+    String endpoint = "/questiongroups/current-phase",
+  }) async {
+    try {
+      Response response = await dio.get(
+        endpoint,
+      );
+      print(response.data);
+      if (response.statusCode == 200) {
+        Phase phase = Phase.fromJson(response.data);
+
+        return phase;
+      }
+    } on DioError catch (de, e) {
+      print(
+          "[ERROR_GET_QUESTION_GROUP] ${de.response} \n ${de.requestOptions.headers}");
+      rethrow;
     }
   }
 
