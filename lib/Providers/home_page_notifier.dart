@@ -18,16 +18,15 @@ class HomePageNotifier extends ChangeNotifier {
     profileService = GetIt.I<ProfileService>();
     auth.authState().listen((User? user) async {
       if (user == null) {
+        print("yes");
         if (state != HomePageState.loggedOut) {
           state = HomePageState.loggedOut;
           notifyListeners();
         }
       } else {
         //profile.User? profileUser = profileService.getUser();
-        profile.User? profileUser =
-            await GetIt.I<ProfileService>().getUserDetails();
+        profile.User? profileUser = await profileService.getUserDetails();
 
-        print("yes");
         print(profileUser);
         if (profileUser != null && profileUser.teamId == null) {
           state = HomePageState.notInTeam;
@@ -46,5 +45,12 @@ class HomePageNotifier extends ChangeNotifier {
         pref.setString('tokenId', token);
       }
     });
+  }
+
+  void changeState(HomePageState state) {
+    if (this.state != state) {
+      this.state = state;
+      notifyListeners();
+    }
   }
 }
