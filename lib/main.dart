@@ -7,6 +7,7 @@ import 'package:cryptic_hunt/screens/home_page.dart';
 import 'package:cryptic_hunt/screens/team_menu_page.dart';
 import 'package:cryptic_hunt/screens/team_page.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
@@ -32,7 +33,8 @@ import 'package:provider/provider.dart';
 import 'package:cryptic_hunt/screens/loading_screen.dart';
 
 Future main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await Firebase.initializeApp();
   setup();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
