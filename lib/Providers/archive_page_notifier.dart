@@ -10,7 +10,7 @@ class ArchivePageNotifier extends QuestionGroupListNotifier {
   ArchivePageNotifier() : super();
 
   @override
-  Future<void> getQuestionGroups() async {
+  Future<void> getQuestionGroups({bool showLoading = true}) async {
     try {
       isBusy(true);
       questionGroups = await api.getArchive() ?? [];

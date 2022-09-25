@@ -13,9 +13,10 @@ class QuestionGroupListNotifier extends ChangeNotifier {
     api = GetIt.I<ApiService>();
   }
 
-  Future<void> getQuestionGroups() async {
+  Future<void> getQuestionGroups({bool showLoading = true}) async {
+    if (busy) return;
     try {
-      isBusy(true);
+      isBusy(true && showLoading);
       questionGroups =
           await api.getQuestionGroup(endpoint: "/questiongroups") ?? [];
       isBusy(false);

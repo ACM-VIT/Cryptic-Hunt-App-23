@@ -44,12 +44,9 @@ class _CountDownTimerState extends State<CountDownTimer> {
                 ),
               ),
               Expanded(
-                  child: ChangeNotifierProvider(
-                create: (context) => QuestionGroupListNotifier(),
-                builder: (context, child) => QuestionGroupList(
-                    state: Provider.of<QuestionGroupListNotifier>(
-                  context,
-                )),
+                  child: Consumer<QuestionGroupListNotifier>(
+                builder: (context, value, child) =>
+                    QuestionGroupList(state: value),
               ))
             ],
           ),
@@ -82,6 +79,8 @@ class _PhaseTimerState extends State<PhaseTimer> {
       // print("------------yygvu--------");
       // print(DateTime.parse(event.time).day);
       startTimer(DateTime.parse(event.time));
+      Provider.of<QuestionGroupListNotifier>(context, listen: false)
+          .getQuestionGroups(showLoading: false);
       // startTimer(DateTime(22, 10, 2));
       // print(DateTime(22, 10, 2).difference(DateTime.now()));
     });

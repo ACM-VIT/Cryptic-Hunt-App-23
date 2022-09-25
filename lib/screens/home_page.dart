@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:cryptic_hunt/Providers/home_page_notifier.dart';
 import 'package:cryptic_hunt/Providers/phase_notifier.dart';
+import 'package:cryptic_hunt/Providers/question_group_list_notifier.dart';
 import 'package:cryptic_hunt/Providers/team_notifier.dart';
 import 'package:cryptic_hunt/Providers/leaderboard_page_notifier.dart';
 import 'package:cryptic_hunt/data/leaderboard.dart';
@@ -63,6 +64,9 @@ class HomePage extends StatelessWidget {
           ),
           ChangeNotifierProvider<PhaseNotifier>(
             create: (context) => PhaseNotifier(),
+          ),
+          ChangeNotifierProvider<QuestionGroupListNotifier>(
+            create: (context) => QuestionGroupListNotifier(),
           ),
         ],
         child: NavigationManager(),
