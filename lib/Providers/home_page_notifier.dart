@@ -1,6 +1,7 @@
 import 'package:cryptic_hunt/networking/gauth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cryptic_hunt/data/user.dart' as profile;
@@ -36,9 +37,7 @@ class HomePageNotifier extends ChangeNotifier {
         if (profileUser != null && profileUser.teamId == null) {
           state = HomePageState.notInTeam;
           notifyListeners();
-          return;
-        }
-        if (profileUser != null &&
+        } else if (profileUser != null &&
             profileUser.teamId != null &&
             state != HomePageState.loggedIn) {
           state = HomePageState.loggedIn;
@@ -49,6 +48,7 @@ class HomePageNotifier extends ChangeNotifier {
         String token = await user.getIdToken();
         pref.setString('tokenId', token);
       }
+      FlutterNativeSplash.remove();
     });
   }
 
