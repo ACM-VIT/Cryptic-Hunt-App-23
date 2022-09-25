@@ -1,137 +1,241 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:getwidget/components/accordion/gf_accordion.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:cryptic_hunt/constants.dart';
 
-class FaqScreen extends StatelessWidget {
-  static String id = 'FaqScreen';
-  const FaqScreen({Key? key}) : super(key: key);
+import '../widgets/custom_app_bar.dart';
+
+class FaqSection extends StatelessWidget {
+  const FaqSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFFFF4EA),
-      body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+    return ListView(
+      padding: const EdgeInsets.symmetric(horizontal: 35),
+      children: [
+        const SizedBox(height: 25),
+        Center(
+          child: Text(
+            "About Us",
+            style: Theme.of(context)
+                .textTheme
+                .headline1
+                ?.copyWith(color: const Color(0xFFFF8618), fontSize: 20),
+          ),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        Text(
+            "Vestibulum dictum ultrices elit a luctus. Sed in ante ut leo congue posuere at sit amet ligula. Pellentesque eget augue nec nisl sodales blandit sed et sem. Aenean quis finibus arcu, in hendreri",
+            style: GoogleFonts.inter(
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+                color: const Color(0xFF000000))),
+        const SizedBox(
+          height: 42,
+        ),
+        SvgPicture.asset('assets/faq/faq_owl.svg'),
+        const SizedBox(
+          height: 41,
+        ),
+        Text(
+          "FAQ",
+          style: Theme.of(context)
+              .textTheme
+              .headline1
+              ?.copyWith(color: const Color(0xFFFF8618), fontSize: 20),
+        ),
+        const SizedBox(height: 20),
+        ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (BuildContext context, int index) {
+            return ExpansionTile(
+              title: Text(
+                faqList[index]['question'],
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle1
+                    ?.copyWith(fontSize: 15),
+              ),
               children: [
-                const SizedBox(
-                  height: 100,
-                ),
-                Text("About Us",
-                    style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20,
-                        color: const Color(0xFFFF8618))),
-                const SizedBox(
-                  height: 16,
-                ),
-                Text(
-                    "Vestibulum dictum ultrices elit a luctus. Sed in ante ut leo congue posuere at sit amet ligula. Pellentesque eget augue nec nisl sodales blandit sed et sem. Aenean quis finibus arcu, in hendreri",
-                    style: GoogleFonts.inter(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14,
-                        color: const Color(0xFF000000))),
-                const SizedBox(
-                  height: 42,
-                ),
-                Image.asset("assets/faq/owl.png"),
-                const SizedBox(
-                  height: 41,
+                ListTile(
+                  title: Text(
+                    faqList[index]['answer'],
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle1
+                        ?.copyWith(fontSize: 12),
+                  ),
                 ),
               ],
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            Text("FAQ",
-                style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
-                    color: const Color(0xFFFF8618))),
-            const SizedBox(
-              height: 16,
-            ),
-            const DropDownItem(
-              title: "Class aptent  euko usos?",
-              content:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare suspendisse mi rhoncus ornare cras. Scelerisque aliquam sed arcu quis diam donec.",
-            ),
-            const Divider(
-              thickness: 1,
-              color: Color(0xFF000000),
-            ),
-            const DropDownItem(
-              title: "Class aptent taciti inc epta euko usos?",
-              content:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare suspendisse mi rhoncus ornare cras. Scelerisque aliquam sed arcu quis diam donec.",
-            ),
-            const Divider(
-              thickness: 1,
-              color: Color(0xFF000000),
-            ),
-            const DropDownItem(
-              title: "Class aptent taciti inc epta euko usos?",
-              content:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare suspendisse mi rhoncus ornare cras. Scelerisque aliquam sed arcu quis diam donec.",
-            ),
-            const Divider(
-              thickness: 1,
-              color: Color(0xFF000000),
-            ),
-            const DropDownItem(
-              title: "Class aptent taciti inc epta euko usos?",
-              content:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare suspendisse mi rhoncus ornare cras. Scelerisque aliquam sed arcu quis diam donec.",
-            ),
-            const Divider(
-              thickness: 1,
-              color: Color(0xFF000000),
-            ),
-            const DropDownItem(
-              title: "Class aptent taciti inc epta euko usos?",
-              content:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare suspendisse mi rhoncus ornare cras. Scelerisque aliquam sed arcu quis diam donec.",
-            ),
-            const Divider(
-              thickness: 1,
-              color: Color(0xFF000000),
-            ),
-            const DropDownItem(
-              title: "Class aptent taciti inc epta euko usos?",
-              content:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare suspendisse mi rhoncus ornare cras. Scelerisque aliquam sed arcu quis diam donec.",
-            ),
-            const Divider(
-              thickness: 1,
-              color: Color(0xFF000000),
-            ),
-            const DropDownItem(
-              title: "Class aptent taciti inc epta euko usos?",
-              content:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare suspendisse mi rhoncus ornare cras. Scelerisque aliquam sed arcu quis diam donec.",
-            ),
-            const Divider(
-              thickness: 1,
-              color: Color(0xFF000000),
-            ),
-            const DropDownItem(
-              title: "Class aptent taciti inc epta euko usos?",
-              content:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare suspendisse mi rhoncus ornare cras. Scelerisque aliquam sed arcu quis diam donec.",
-            ),
-            const Divider(
-              thickness: 1,
-              color: Color(0xFF000000),
-            ),
+            );
+          },
+          separatorBuilder: (BuildContext context, int index) =>
+              const Divider(),
+          itemCount: faqList.length,
+        ),
+        const SizedBox(height: 40),
+      ],
+    );
+  }
+}
+
+class FaqScreen extends StatelessWidget {
+  static String id = 'FaqScreen';
+  FaqScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            CustomAppBarWidget(title: 'FAQs'),
+            Expanded(child: FaqSection()),
           ],
         ),
       ),
     );
   }
 }
+
+// class FaqScreen extends StatelessWidget {
+//   static String id = 'FaqScreen';
+//   const FaqScreen({Key? key}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return SafeArea(
+//       child: Scaffold(
+//         body: Column(
+//           children: [
+//             CustomAppBarWidget(title: 'FAQs'),
+//             Expanded(
+//               child: ListView(
+//                 padding: const EdgeInsets.symmetric(horizontal: 35),
+//                 children: [
+//                   const SizedBox(height: 45),
+//                   Column(
+//                     crossAxisAlignment: CrossAxisAlignment.center,
+//                     children: [
+//                       Text(
+//                         "About Us",
+//                         style: Theme.of(context).textTheme.headline1?.copyWith(
+//                             color: const Color(0xFFFF8618), fontSize: 20),
+//                       ),
+//                       const SizedBox(
+//                         height: 16,
+//                       ),
+//                       Text(
+//                           "Vestibulum dictum ultrices elit a luctus. Sed in ante ut leo congue posuere at sit amet ligula. Pellentesque eget augue nec nisl sodales blandit sed et sem. Aenean quis finibus arcu, in hendreri",
+//                           style: GoogleFonts.inter(
+//                               fontWeight: FontWeight.w400,
+//                               fontSize: 14,
+//                               color: const Color(0xFF000000))),
+//                       const SizedBox(
+//                         height: 42,
+//                       ),
+//                       SvgPicture.asset('assets/faq/faq_owl.svg'),
+//                       const SizedBox(
+//                         height: 41,
+//                       ),
+//                     ],
+//                   ),
+//                   const SizedBox(
+//                     height: 40,
+//                   ),
+//                   Text("FAQ",
+//                       style: GoogleFonts.poppins(
+//                           fontWeight: FontWeight.w600,
+//                           fontSize: 20,
+//                           color: const Color(0xFFFF8618))),
+//                   const SizedBox(
+//                     height: 16,
+//                   ),
+//                   const DropDownItem(
+//                     title: "Class aptent  euko usos?",
+//                     content:
+//                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare suspendisse mi rhoncus ornare cras. Scelerisque aliquam sed arcu quis diam donec.",
+//                   ),
+//                   const Divider(
+//                     thickness: 1,
+//                     color: Color(0xFF000000),
+//                   ),
+//                   const DropDownItem(
+//                     title: "Class aptent taciti inc epta euko usos?",
+//                     content:
+//                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare suspendisse mi rhoncus ornare cras. Scelerisque aliquam sed arcu quis diam donec.",
+//                   ),
+//                   const Divider(
+//                     thickness: 1,
+//                     color: Color(0xFF000000),
+//                   ),
+//                   const DropDownItem(
+//                     title: "Class aptent taciti inc epta euko usos?",
+//                     content:
+//                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare suspendisse mi rhoncus ornare cras. Scelerisque aliquam sed arcu quis diam donec.",
+//                   ),
+//                   const Divider(
+//                     thickness: 1,
+//                     color: Color(0xFF000000),
+//                   ),
+//                   const DropDownItem(
+//                     title: "Class aptent taciti inc epta euko usos?",
+//                     content:
+//                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare suspendisse mi rhoncus ornare cras. Scelerisque aliquam sed arcu quis diam donec.",
+//                   ),
+//                   const Divider(
+//                     thickness: 1,
+//                     color: Color(0xFF000000),
+//                   ),
+//                   const DropDownItem(
+//                     title: "Class aptent taciti inc epta euko usos?",
+//                     content:
+//                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare suspendisse mi rhoncus ornare cras. Scelerisque aliquam sed arcu quis diam donec.",
+//                   ),
+//                   const Divider(
+//                     thickness: 1,
+//                     color: Color(0xFF000000),
+//                   ),
+//                   const DropDownItem(
+//                     title: "Class aptent taciti inc epta euko usos?",
+//                     content:
+//                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare suspendisse mi rhoncus ornare cras. Scelerisque aliquam sed arcu quis diam donec.",
+//                   ),
+//                   const Divider(
+//                     thickness: 1,
+//                     color: Color(0xFF000000),
+//                   ),
+//                   const DropDownItem(
+//                     title: "Class aptent taciti inc epta euko usos?",
+//                     content:
+//                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare suspendisse mi rhoncus ornare cras. Scelerisque aliquam sed arcu quis diam donec.",
+//                   ),
+//                   const Divider(
+//                     thickness: 1,
+//                     color: Color(0xFF000000),
+//                   ),
+//                   const DropDownItem(
+//                     title: "Class aptent taciti inc epta euko usos?",
+//                     content:
+//                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare suspendisse mi rhoncus ornare cras. Scelerisque aliquam sed arcu quis diam donec.",
+//                   ),
+//                   const Divider(
+//                     thickness: 1,
+//                     color: Color(0xFF000000),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class DropDownItem extends StatelessWidget {
   final String title;

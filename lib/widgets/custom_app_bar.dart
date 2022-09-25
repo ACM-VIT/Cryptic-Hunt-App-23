@@ -7,32 +7,34 @@ class CustomAppBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Padding(
-            padding: const EdgeInsets.fromLTRB(4, 8, 4, 12),
-            child: Column(
+    return Padding(
+        padding: const EdgeInsets.fromLTRB(4, 8, 4, 0),
+        child: Column(
+          children: [
+            Row(
               children: [
-                Row(
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: const Icon(
-                        Icons.navigate_before,
-                        color: Color(0xff181818),
-                      ),
-                    ),
-                    CustomTextWidget(title, "Poppins", FontWeight.w600, 18,
-                        const Color(0xff181818))
-                  ],
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Icon(
+                    Icons.navigate_before,
+                    color: Color(0xff181818),
+                  ),
                 ),
-                Container(
-                  height: 1.2,
-                  width: double.infinity,
-                  color: Colors.black,
-                )
+                CustomTextWidget(title, "Poppins", FontWeight.w600, 18,
+                    const Color(0xff181818))
               ],
-            )));
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Container(
+                height: 1.2,
+                width: double.infinity,
+                color: Colors.black,
+              ),
+            )
+          ],
+        ));
   }
 }

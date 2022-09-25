@@ -16,7 +16,7 @@ import 'package:cryptic_hunt/screens/create_team.dart';
 import 'package:cryptic_hunt/screens/faq_screen.dart';
 import 'providers/LoadingScreen/HomeScreenLoadingPercentage.dart';
 
-import 'screens/login.dart';
+import 'screens/google_sign_in_page.dart';
 import 'screens/navigation_manager.dart';
 import 'screens/onBoarding.dart';
 import 'screens/Loading.dart';
@@ -72,7 +72,7 @@ class myApp extends StatelessWidget {
         textTheme: TextTheme(
             headline1: GoogleFonts.poppins().copyWith(
                 color: Colors.black, fontSize: 28, fontWeight: FontWeight.w600),
-            headline2: GoogleFonts.poppins().copyWith(
+            headline2: GoogleFonts.notoSans().copyWith(
                 color: Colors.black, fontSize: 28, fontWeight: FontWeight.w600),
             subtitle1: GoogleFonts.poppins().copyWith(
                 color: Color(0XFF777777),
@@ -94,7 +94,7 @@ class myApp extends StatelessWidget {
       title: "Routes",
       initialRoute: HomePage.id,
       routes: {
-        TeamMenuPage.id: (context) => Scaffold(body: TeamMenuPage()),
+        TeamMenuPage.id: (context) => const Scaffold(body: TeamMenuPage()),
         JoinTeamScreen.id: (context) => JoinTeamScreen(),
 
         HomePage.id: (context) => ChangeNotifierProvider(
@@ -107,8 +107,8 @@ class myApp extends StatelessWidget {
         NavigationManager.id: (context) => const NavigationManager(),
         SignUp.id: (context) => SignUp(),
         // SplashScreen.id: (context) => const SplashScreen(),
-        Login.id: (context) => const Login(),
-        OnBoarding.id: (context) => const OnBoarding(),
+        GoogleSignInPage.id: (context) => const GoogleSignInPage(),
+        OnBoarding.id: (context) => OnBoarding(),
         Loading.id: (context) => const Loading(),
 
         NavigationManager.id: (context) => const NavigationManager(),
@@ -119,7 +119,7 @@ class myApp extends StatelessWidget {
         SpeakerScreen.id: (context) => const SpeakerScreen(),
         Timeline.id: (context) => const Timeline(),
         CreateTeamFirst.id: (context) => CreateTeamFirst(),
-        FaqScreen.id: (context) => const FaqScreen(),
+        FaqScreen.id: (context) => FaqScreen(),
       },
     );
   }

@@ -6,22 +6,37 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cryptic_hunt/data/user.dart' as profile;
 import 'package:cryptic_hunt/networking/profile_service.dart';
 
-enum HomePageState { loggedOut, loggedIn, notInTeam, defaultScreen }
+enum HomePageState {
+  loggedOut,
+  loggedIn,
+  notInTeam,
+  onBoardingScreen,
+}
 
 class HomePageNotifier extends ChangeNotifier {
   late GAuthService auth;
   late ProfileService profileService;
-  HomePageState state = HomePageState.loggedOut;
+  HomePageState state = HomePageState.onBoardingScreen;
 
   HomePageNotifier() {
     auth = GetIt.I<GAuthService>();
     profileService = GetIt.I<ProfileService>();
+    print('profile service ${profileService}');
     auth.authState().listen((User? user) async {
+      print('yes');
+      print(user);
       if (user == null) {
-        if (state != HomePageState.loggedOut) {
-          state = HomePageState.loggedOut;
+        if (state != HomePageState.onBoardingScreen) {
+          state = HomePageState.onBoardingScreen;
           notifyListeners();
+          return;
         }
+
+        // if (state != HomePageState.loggedOut) {
+        //   state = HomePageState.loggedOut;
+        //   notifyListeners();
+        //   return;
+        // }
       } else {
         //profile.User? profileUser = profileService.getUser();
         profile.User? profileUser =

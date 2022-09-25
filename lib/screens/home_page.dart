@@ -4,6 +4,7 @@ import 'package:cryptic_hunt/Providers/home_page_notifier.dart';
 import 'package:cryptic_hunt/Providers/team_notifier.dart';
 import 'package:cryptic_hunt/Providers/leaderboard_page_notifier.dart';
 import 'package:cryptic_hunt/data/leaderboard.dart';
+import 'package:cryptic_hunt/screens/google_sign_in_page.dart';
 import 'package:cryptic_hunt/screens/loading_screen.dart';
 import 'package:cryptic_hunt/screens/navigation_manager.dart';
 import 'package:cryptic_hunt/screens/onBoarding.dart';
@@ -45,8 +46,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (notifier.state == HomePageState.loggedOut) {
-      return const OnBoarding();
+    if (notifier.state == HomePageState.onBoardingScreen) {
+      return OnBoarding();
+    } else if (notifier.state == HomePageState.loggedOut) {
+      return GoogleSignInPage();
     } else if (notifier.state == HomePageState.notInTeam) {
       return ChangeNotifierProvider(
         create: (_) => TeamNotifier(),

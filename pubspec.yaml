@@ -95,7 +95,6 @@ flutter:
     - assets/HamBurger/sponsors.svg
     - assets/HamBurger/faq.svg
     - assets/login/google_icon.png
-    - assets/login/treasure.png
     - assets/createTeam/Heading.svg
     - assets/question/
     - assets/profilepagebg.svg
@@ -103,7 +102,12 @@ flutter:
     - assets/CreateTeam/logo.svg
     - assets/join_team_bg.svg
     - assets/CreateTeam/copy.svg
-    - assets/faq/owl.png
+    - assets/login/google_sign_in_owl.svg
+    - assets/login/google_logo.svg
+    - assets/splash/splash_bg.png
+    - assets/splash/splash_bottom_text.png
+    - assets/splash/splash_centre_text.png
+    - assets/faq/faq_owl.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -142,18 +146,18 @@ flutter_native_splash:
   # of your splash screen to a solid color.  Use background_image to set the background of your
   # splash screen to a png image.  This is useful for gradients. The image will be stretch to the
   # size of the app. Only one parameter can be used, color and background_image cannot both be set.
-  # color: "#42a5f5"
-  background_image: "assets/splash/bg.png"
+  # color: "#FF7A01"
+  background_image: "assets/splash/splash_bg.png"
 
   # Optional parameters are listed below.  To enable a parameter, uncomment the line by removing
   # the leading # character.
   # The image parameter allows you to specify an image used in the splash screen.  It must be a
   # png file and should be sized for 4x pixel density.
-  #image: assets/splash.png
+  image: assets/splash/splash_centre_text.png
   # The branding property allows you to specify an image used as branding in the splash screen.
   # It must be a png file. It is supported for Android, iOS and the Web.  For Android 12,
   # see the Android 12 section below.
-  #branding: assets/dart.png
+  branding: assets/splash/splash_bottom_text.png
   # To position the branding image at the bottom of the screen you can use bottom, bottomRight,
   # and bottomLeft. The default values is bottom if not specified or specified something else.
   #branding_mode: bottom
