@@ -149,7 +149,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomAppBarWidget(title: "Question Prompt"),
+                    CustomAppBarWidget(
+                        title: widget.notifier.questionGroupDetail?.name ??
+                            "Question Prompt"),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,

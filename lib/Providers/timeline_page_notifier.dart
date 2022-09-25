@@ -1,24 +1,22 @@
-import 'package:cryptic_hunt/networking/ApiService.dart';
-import 'package:flutter/foundation.dart';
+import 'package:cryptic_hunt/data/timeline_object.dart';
+import 'package:cryptic_hunt/networking/timeline_service.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
 
-import '../data/question_group.dart';
-
-class QuestionGroupListNotifier extends ChangeNotifier {
+class TimelinePageNotifier extends ChangeNotifier {
   bool busy = false;
-  List<QuestionGroup> questionGroups = [];
-  late ApiService api;
+  List<TimelineObject> timelineObjectList = [];
+  late TimelineService api;
 
-  QuestionGroupListNotifier() {
-    api = GetIt.I<ApiService>();
+  TimelinePageNotifier() {
+    api = GetIt.I<TimelineService>();
   }
 
   Future<void> getQuestionGroups({bool showLoading = true}) async {
     if (busy) return;
     try {
       isBusy(true && showLoading);
-      questionGroups =
-          await api.getQuestionGroup(endpoint: "/questiongroups") ?? [];
+      timelineObjectList = await api.getTimelineObject() ?? [];
       if (showLoading == false) notifyListeners();
       isBusy(false);
     } catch (e) {

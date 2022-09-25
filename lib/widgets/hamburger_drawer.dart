@@ -1,5 +1,6 @@
 import 'package:cryptic_hunt/Providers/profile_notifier.dart';
 import 'package:cryptic_hunt/Providers/team_notifier.dart';
+import 'package:cryptic_hunt/Providers/timeline_page_notifier.dart';
 import 'package:cryptic_hunt/networking/gauth_service.dart';
 
 import 'package:cryptic_hunt/screens/archive_screen.dart';
@@ -86,7 +87,14 @@ class HamburgerDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Timeline()),
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ChangeNotifierProvider<TimelinePageNotifier>(
+                            create: (context) => TimelinePageNotifier(),
+                            builder: (context, child) => Timeline(
+                                notifier:
+                                    Provider.of<TimelinePageNotifier>(context)),
+                          )),
                 );
               },
             ),
