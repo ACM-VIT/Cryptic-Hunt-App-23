@@ -14,6 +14,7 @@ Question _$QuestionFromJson(Map<String, dynamic> json) => Question(
       json['pointsAwarded'] as int,
       json['solved'] as bool,
       json['seq'] as int,
+      (json['images'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$QuestionToJson(Question instance) => <String, dynamic>{
@@ -24,4 +25,5 @@ Map<String, dynamic> _$QuestionToJson(Question instance) => <String, dynamic>{
       'pointsAwarded': instance.pointsAwarded,
       'seq': instance.seq,
       'solved': instance.solved,
+      'images': instance.images,
     };

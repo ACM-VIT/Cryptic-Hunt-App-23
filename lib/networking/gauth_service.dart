@@ -1,6 +1,9 @@
+import 'package:cryptic_hunt/networking/profile_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:dio/dio.dart';
+import 'package:cryptic_hunt/data/user.dart' as profile;
 
 class GAuthService {
   final googleSignIn = GoogleSignIn();
@@ -14,23 +17,33 @@ class GAuthService {
   GoogleSignInAccount? get user => _user;
   final auth = FirebaseAuth.instance;
 
-  Stream<User?> authStateOrTokenChange() => auth.idTokenChanges();
+  Stream<User?> authState() => auth.authStateChanges();
+
+  Future logout() async {
+    await auth.signOut();
+    await googleSignIn.signOut();
+  }
 
   Future login() async {
-    final googleUser = await googleSignIn.signIn();
-    if (googleUser == null) return;
-    _user = googleUser;
+    try {
+      final googleUser = await googleSignIn.signIn();
+      if (googleUser == null) return false;
+      _user = googleUser;
 
-    final googleAuth = await googleUser.authentication;
+      final googleAuth = await googleUser.authentication;
 
-    _accessToken = googleAuth.accessToken;
-    _idToken = googleAuth.idToken;
+      _accessToken = googleAuth.accessToken;
+      _idToken = googleAuth.idToken;
 
-    final credential = GoogleAuthProvider.credential(
-        accessToken: _accessToken, idToken: _idToken);
+      final credential = GoogleAuthProvider.credential(
+          accessToken: _accessToken, idToken: _idToken);
 
-    await FirebaseAuth.instance.signInWithCredential(credential);
+      await FirebaseAuth.instance.signInWithCredential(credential);
 
-    String? token = await auth.currentUser?.getIdToken(true);
+      String? token = await auth.currentUser?.getIdToken();
+      print('token $token');
+    } on Exception catch (e) {
+      print(e.toString());
+    }
   }
 }

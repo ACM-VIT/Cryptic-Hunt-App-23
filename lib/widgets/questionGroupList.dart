@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class QuestionGroupList extends StatefulWidget {
-  QuestionGroupList({super.key, required this.state});
+  QuestionGroupList({super.key, required this.state, this.canTap = true});
   QuestionGroupListNotifier state;
+  bool canTap;
 
   @override
   State<QuestionGroupList> createState() => _QuestionGroupListState();
@@ -54,12 +55,15 @@ class _QuestionGroupListState extends State<QuestionGroupList> {
           )
         : RefreshIndicator(
             onRefresh: getQuestionGroup,
-            child: ListView.builder(
-              itemCount: widget.state.questionGroups.length,
-              itemBuilder: (context, index) => _detector(
-                questionGroup: widget.state.questionGroups[index],
-                child: QuestionGroupListItem(
-                    questionGroup: widget.state.questionGroups[index]),
+            child: Scrollbar(
+              controller: ScrollController(),
+              child: ListView.builder(
+                itemCount: widget.state.questionGroups.length,
+                itemBuilder: (context, index) => _detector(
+                  questionGroup: widget.state.questionGroups[index],
+                  child: QuestionGroupListItem(
+                      questionGroup: widget.state.questionGroups[index]),
+                ),
               ),
             ),
           );

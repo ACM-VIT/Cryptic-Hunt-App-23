@@ -1,4 +1,5 @@
 import 'package:cryptic_hunt/data/user.dart';
+import 'package:cryptic_hunt/networking/gauth_service.dart';
 import 'package:cryptic_hunt/networking/profile_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
@@ -26,6 +27,12 @@ class ProfileNotifier extends ChangeNotifier {
   Future<void> getTeam() async {
     isBusy(true);
     team = await api.getTeamDetails(id: teamId);
+    isBusy(false);
+  }
+
+  Future<void> logOut() async {
+    isBusy(true);
+    await GetIt.I<GAuthService>().logout();
     isBusy(false);
   }
 

@@ -5,8 +5,10 @@ import 'package:cryptic_hunt/data/question_group.dart';
 import 'package:cryptic_hunt/data/question_group_detail.dart';
 import 'package:cryptic_hunt/data/submission.dart';
 import 'package:cryptic_hunt/data/team.dart';
+import 'package:cryptic_hunt/networking/util.dart';
 import 'package:cryptic_hunt/screens/leaderboard_page.dart';
 import 'package:dio/dio.dart';
+import 'package:get_it/get_it.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,22 +17,9 @@ import '../data/question.dart';
 import '/constants.dart';
 
 class LeaderBoardService {
-  LeaderBoardService(this.baseUrl) {
-    dio = Dio(BaseOptions(baseUrl: baseUrl));
-    dio.interceptors.add(
-        InterceptorsWrapper(onRequest: (RequestOptions options, handler) async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      String? token = prefs.getString("tokenId");
-      options.headers.addAll(
-        {
-          'Authorization': 'Bearer $token',
-        },
-      );
-      return handler.next(options);
-    }));
+  LeaderBoardService() {
+    dio = GetIt.I<MyDio>().dio;
   }
-
-  final String baseUrl;
 
   late Dio dio;
 
@@ -43,11 +32,11 @@ class LeaderBoardService {
       );
       print(response.data);
       if (response.statusCode == 200) {
-        // LeaderBoard leaderBoard = LeaderBoard.fromJson(response.data);
-        // return leaderBoard;
-        List<Team> teams =
-            (response.data).map<Team>((i) => Team.fromJson(i)).toList();
-        return LeaderBoard(null, teams);
+        LeaderBoard leaderBoard = LeaderBoard.fromJson(response.data);
+        return leaderBoard;
+        // List<Team> teams =
+        //     (response.data).map<Team>((i) => Team.fromJson(i)).toList();
+        // return LeaderBoard(null, teams);
       }
     } on DioError catch (de, e) {
       print(

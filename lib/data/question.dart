@@ -5,12 +5,13 @@ part 'question.g.dart';
 @JsonSerializable()
 class Question {
   Question(this.hint, this.description, this.title, this.costOfHint,
-      this.pointsAwarded, this.solved, this.seq);
+      this.pointsAwarded, this.solved, this.seq, this.images);
   String? hint;
   String description, title;
   int? costOfHint;
   int pointsAwarded, seq;
   bool solved;
+  List<String> images;
 
   factory Question.fromJson(Map<String, dynamic> json) =>
       _$QuestionFromJson(json);
