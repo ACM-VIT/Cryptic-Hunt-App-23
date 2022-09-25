@@ -19,6 +19,11 @@ class GAuthService {
 
   Stream<User?> authState() => auth.authStateChanges();
 
+  Future logout() async {
+    await auth.signOut();
+    await googleSignIn.signOut();
+  }
+
   Future login() async {
     try {
       final googleUser = await googleSignIn.signIn();

@@ -16,31 +16,20 @@ enum HomePageState {
 class HomePageNotifier extends ChangeNotifier {
   late GAuthService auth;
   late ProfileService profileService;
-  HomePageState state = HomePageState.onBoardingScreen;
+  HomePageState state = HomePageState.loggedOut;
 
   HomePageNotifier() {
     auth = GetIt.I<GAuthService>();
     profileService = GetIt.I<ProfileService>();
-    print('profile service ${profileService}');
     auth.authState().listen((User? user) async {
-      print('yes');
-      print(user);
       if (user == null) {
         if (state != HomePageState.onBoardingScreen) {
           state = HomePageState.onBoardingScreen;
           notifyListeners();
-          return;
         }
-
-        // if (state != HomePageState.loggedOut) {
-        //   state = HomePageState.loggedOut;
-        //   notifyListeners();
-        //   return;
-        // }
       } else {
         //profile.User? profileUser = profileService.getUser();
-        profile.User? profileUser =
-            await GetIt.I<ProfileService>().getUserDetails();
+        profile.User? profileUser = await profileService.getUserDetails();
 
         print("yes");
         print(profileUser);
@@ -61,5 +50,12 @@ class HomePageNotifier extends ChangeNotifier {
         pref.setString('tokenId', token);
       }
     });
+  }
+
+  void changeState(HomePageState state) {
+    if (this.state != state) {
+      this.state = state;
+      notifyListeners();
+    }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:cryptic_hunt/Providers/home_page_notifier.dart';
 import 'package:cryptic_hunt/Providers/team_notifier.dart';
 import 'package:cryptic_hunt/screens/navigation_manager.dart';
 import 'package:cryptic_hunt/widgets/custom_button.dart';
@@ -69,7 +70,6 @@ class JoinTeamScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 30, 16, 60),
-
               child: Provider.of<TeamNotifier>(context, listen: false).busy
                   ? const Center(child: CircularProgressIndicator())
                   : ElevatedButton(
@@ -83,7 +83,9 @@ class JoinTeamScreen extends StatelessWidget {
 
                           if (result) {
                             // user successfully joined a team
-                            navigator.pushNamed(NavigationManager.id);
+                            Provider.of<HomePageNotifier>(context,
+                                    listen: false)
+                                .changeState(HomePageState.loggedIn);
                           } else {
                             // join team failed
                             // TODO: Show alert dialog saying that join team failed

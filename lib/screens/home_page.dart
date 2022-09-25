@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:cryptic_hunt/Providers/home_page_notifier.dart';
+import 'package:cryptic_hunt/Providers/phase_notifier.dart';
+import 'package:cryptic_hunt/Providers/question_group_list_notifier.dart';
 import 'package:cryptic_hunt/Providers/team_notifier.dart';
 import 'package:cryptic_hunt/Providers/leaderboard_page_notifier.dart';
 import 'package:cryptic_hunt/data/leaderboard.dart';
@@ -58,10 +60,26 @@ class HomePage extends StatelessWidget {
         },
       );
     } else {
-      return ChangeNotifierProvider(
-        create: (context) => LeaderBoardPageNotifier(),
+      return MultiProvider(
+        providers: [
+          ChangeNotifierProvider<LeaderBoardPageNotifier>(
+            create: (context) => LeaderBoardPageNotifier(),
+          ),
+          ChangeNotifierProvider<PhaseNotifier>(
+            create: (context) => PhaseNotifier(),
+          ),
+          ChangeNotifierProvider<QuestionGroupListNotifier>(
+            create: (context) => QuestionGroupListNotifier(),
+          ),
+        ],
         child: NavigationManager(),
+        builder: ((context, child) => child!),
       );
+      // ChangeNotifierProvider<LeaderBoardPageNotifier>(
+      //   create: (context) => LeaderBoardPageNotifier(),
+      //   builder: (context, child) => child!,
+      //   child: NavigationManager(),
+      // );
     }
   }
 }
