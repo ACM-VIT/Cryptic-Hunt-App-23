@@ -1,5 +1,7 @@
+import 'package:cryptic_hunt/Providers/home_page_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'google_sign_in_page.dart';
 
@@ -87,10 +89,8 @@ class OnBoarding extends StatelessWidget {
                         curve: Curves.linear,
                       );
                     } else {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const GoogleSignInPage()));
+                      Provider.of<HomePageNotifier>(context, listen: false)
+                          .changeState(HomePageState.loggedOut);
                     }
                   },
                   style: ElevatedButton.styleFrom(

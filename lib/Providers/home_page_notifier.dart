@@ -16,7 +16,7 @@ enum HomePageState {
 class HomePageNotifier extends ChangeNotifier {
   late GAuthService auth;
   late ProfileService profileService;
-  HomePageState state = HomePageState.loggedOut;
+  HomePageState state = HomePageState.onBoardingScreen;
 
   HomePageNotifier() {
     auth = GetIt.I<GAuthService>();
