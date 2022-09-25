@@ -22,7 +22,6 @@ class CustomCard extends StatefulWidget {
 }
 
 class _CustomCard extends State<CustomCard> {
-
   @override
   Widget build(BuildContext context) {
     return TimelineTile(
@@ -113,23 +112,22 @@ class _CustomCard extends State<CustomCard> {
                         ),
                       ),
                     ),
+                    Expanded(
+                      child: SizedBox(width: 10),
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(8),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children:  [
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
                           const Icon(Icons.calendar_month_outlined),
                           Text(
                             widget.time,
                             style: const TextStyle(
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w400,
-                              fontSize: 10,
+                              fontSize: 15,
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: SvgPicture.asset('assets/Owl-7.svg',height: 50, fit: BoxFit.fitHeight,),
                           ),
                         ],
                       ),

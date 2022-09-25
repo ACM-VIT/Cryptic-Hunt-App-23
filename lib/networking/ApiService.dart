@@ -49,8 +49,7 @@ class ApiService {
         return phase;
       }
     } on DioError catch (de, e) {
-      print(
-          "[ERROR_GET_QUESTION_GROUP] ${de.response} \n ${de.requestOptions.headers}");
+      print("[ERROR_GET_PHASE] ${de.response} \n ${de.requestOptions.headers}");
       rethrow;
     }
   }

@@ -117,7 +117,6 @@ class myApp extends StatelessWidget {
         // Hamburger.id: (context) => const Hamburger(),
         CountDownTimer.id: (context) => const CountDownTimer(),
         SpeakerScreen.id: (context) => const SpeakerScreen(),
-        Timeline.id: (context) => const Timeline(),
         CreateTeamFirst.id: (context) => CreateTeamFirst(),
         FaqScreen.id: (context) => FaqScreen(),
       },
